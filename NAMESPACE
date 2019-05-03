@@ -3,3 +3,4 @@
 export(convert_between_ensembl_and_symbols)
 export(convert_between_species)
 export(query_gene_ctd)
+export(run_ewce)
