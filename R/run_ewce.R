@@ -1,3 +1,5 @@
+#' Run EWCE with control for GC content and transcript length.
+#'
 #' Perform EWCE bootstrapping across several gene lists in more than one
 #' specificity matrix.
 #'
@@ -6,66 +8,71 @@
 #'   using \code{generate.celltype.data} from the EWCE package, and contains
 #'   mean expression and specificity matrices from a scRNAseq study.
 #' @param reps Number of repeats that should be performed in bootstrapping.
+#' @param genelistSpecies Has to be human, as geneSizeControl is set to TRUE,
+#'   and this requires extracting GC content and transcript length from the
+#'   human ENSEMBL.
+#' @param sctSpecies Either 'mouse' or 'human' depending on the ctd datasets
+#'   being used. Species must be the same across all input ctds.
 #'
 #' @return A dataframe of EWCE results for each of the gene lists in each study.
 #' @export
 
-run_ewce <- function(list_of_genes, ..., reps) {
+run_ewce_controlled <- function(list_of_genes, ..., reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human")) {
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
   argument_names <- as.list(match.call()) %>%
-    within(., rm(list_of_genes))
+    within(., rm(list_of_genes, reps, genelistSpecies, sctSpecies))
   argument_names <- argument_names[-1] %>%
     as.character()
-  
+
   # Create list
   ctd_list <- setNames(list(...), argument_names)
-  
+
   # Setting analysis parameters
   # Set seed so if run again, results will be very similar
   set.seed(1234)
   reps = reps # <- For publishable analysis use >10000. In Skene et al. 2016, 100,000 used.
-  
+
   for (i in seq_along(list_of_genes)) {
     list_name <- names(list_of_genes)[i]
-    
+
     for (j in seq_along(ctd_list)) {
       ctd_name <- names(ctd_list)[j]
-      
+
       print(str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
-      
-      human.hits = list_of_genes[[i]] %>% unique()
-      
+
+      hits = list_of_genes[[i]] %>% unique()
+
       # The next step is to determine the most suitable background set. The experimental methods used to find these gene are all genome wide,
-      # so there is no restriction imposed as a result of that. Thus our initial background set is the set of all human genes.
+      # so there is no restriction imposed as a result of that. Thus our initial background set is the set of all mouse/human genes.
       # Not all human genes have mouse orthologs however, so we need to drop all genes from the target and background set
       # which do not have mouse orthologs.
-      human.bg = unique(c(human.hits, m2h$HGNC.symbol))
-      
+      bg = unique(c(hits, m2h$HGNC.symbol))
+
       # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
       cont_results = bootstrap.enrichment.test(
         sct_data = ctd_list[[j]],
-        hits = human.hits,
-        bg = human.bg,
+        hits = hits,
+        bg = bg,
         reps = reps,
         annotLevel = 1,
         geneSizeControl = TRUE,
-        genelistSpecies = "human",
-        sctSpecies = "mouse"
+        genelistSpecies = genelistSpecies,
+        sctSpecies = sctSpecies
       )
-      
+
       # Level 2 cell types: Bootstrap significance testing controlling for transcript length and GC content
       cont_results_level2 = bootstrap.enrichment.test(
         sct_data = ctd_list[[j]],
-        hits = human.hits,
-        bg = human.bg,
+        hits = hits,
+        bg = bg,
         reps = reps,
         annotLevel = 2,
         geneSizeControl = TRUE,
-        genelistSpecies = "human",
-        sctSpecies = "mouse"
+        genelistSpecies = genelistSpecies,
+        sctSpecies = sctSpecies
       )
-      
+
       # Assembling results dataframe
       if (i == 1 & j == 1) {
         Master_df <- cont_results$results %>%
@@ -94,14 +101,14 @@ run_ewce <- function(list_of_genes, ..., reps) {
                 Study = ctd_name %>% str_replace(., "ctd_", "")
               )
           )
-        
+
       }
-      
+
     }
-    
-    
+
+
   }
-  
+
   return(Master_df)
-  
+
 }
