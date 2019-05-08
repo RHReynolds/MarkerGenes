@@ -1,5 +1,5 @@
-CellType,annotLevel,OverallClass,Desription
-astrocytes_ependymal,1,Glia,
+CellType,annotLevel,OverallClass,Description
+astrocytes_ependymal,1,Astrocytes,
 Dopaminergic Adult,1,Neurons,
 Dopaminergic Neuroblast,1,Neurons,
 Embryonic Dopaminergic Neuron,1,Neurons,
@@ -19,7 +19,7 @@ Oligodendrocytes,1,Oligos,
 Oxytocin and Vasopressin Expressing Neurons,1,Neurons,
 pyramidal CA1,1,Neurons,
 pyramidal SS,1,Neurons,
-Radial glia like cells,1,Glia,
+Radial glia like cells,1,Astrocytes,
 Serotonergic Neuron,1,Neurons,
 Striatal Interneuron,1,Neurons,
 Vascular Leptomeningeal Cells,1,Vascular,
@@ -44,7 +44,7 @@ Embryonic Dopaminergic Neuron 2,2,Neurons,
 Embryonic GABAergic Neuron 1a,2,Neurons,
 Embryonic GABAergic Neuron 1b,2,Neurons,
 Embryonic GABAergic Neuron 2,2,Neurons,
-Epend,2,Glia,Ependymal cells
+Epend,2,Ependymal,Ependymal cells
 Hypothalamic Adcyap1; Tac1 (VMH) Neuron,2,Neurons,
 Hypothalamic Adcyap1(VMH) Neuron,2,Neurons,
 Hypothalamic Avp-high;Gal;Oxt-low Neuron,2,Neurons,
@@ -151,9 +151,9 @@ Oligodendrocyte Precursor,2,Oligos,
 Peric,2,Vascular,Perictyes
 Pvm1,2,Immune,Perivascular macrophages
 Pvm2,2,Immune,Perivascular macrophages
-Radial glia like cells 1,2,Glia,
-Radial glia like cells 2,2,Glia,
-Radial glia like cells 3,2,Glia,
+Radial glia like cells 1,2,Astrocytes,
+Radial glia like cells 2,2,Astrocytes,
+Radial glia like cells 3,2,Astrocytes,
 Red nucleus embryonic neurons,2,Neurons,
 S1PyrDL,2,Neurons,
 S1PyrL23,2,Neurons,

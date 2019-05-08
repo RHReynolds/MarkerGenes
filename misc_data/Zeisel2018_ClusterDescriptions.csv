@@ -1,266 +1,305 @@
-level2class,level1class,OverallClass,Description,Neurotransmitter
-ENT9,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric",Acetylcholine
-ENT8,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric","Glutamate (VGLUT2),Acetylcholine"
-ENT6,Enteric neurons,Neurons,"Excitatory motor neurons, enteric",Acetylcholine
-ENT5,Enteric neurons,Neurons,"Excitatory motor neurons, enteric",Acetylcholine
-ENT4,Enteric neurons,Neurons,"Excitatory neurons, enteric",Acetylcholine
-ENT7,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric","Glutamate (VGLUT2),Acetylcholine"
-ENT3,Enteric neurons,Neurons,"Inhibitory motor neurons, enteric",Nitric oxide
-ENT2,Enteric neurons,Neurons,"Inhibitory motor neurons, enteric",Nitric oxide
-ENT1,Enteric neurons,Neurons,"Descending interneurons, enteric",Nitric oxide
-ENTG1,Enteric glia,PeripheralGlia,"Enteric glia, proliferating",
-ENTG4,Enteric glia,PeripheralGlia,Enteric glia,
-ENTG2,Enteric glia,PeripheralGlia,Enteric glia,
-ENTG3,Enteric glia,PeripheralGlia,Enteric glia,
-ENTG6,Enteric glia,PeripheralGlia,Enteric glia,
-ENTG5,Enteric glia,PeripheralGlia,Enteric glia,
-ENTG7,Enteric glia,PeripheralGlia,Enteric glia,
-ENMFB,Enteric glia,Vascular,Enteric mesothelial fibroblasts,
-MOL3,Oligodendrocytes,Oligos,"Mature oligodendrocytes, spinal cord enriched (high Klk6)",
-MOL2,Oligodendrocytes,Oligos,"Mature oligodendrocytes, hindbrain",
-MFOL1,Oligodendrocytes,Oligos,Myelin forming oligodendrocytes (MFOL),
-MOL1,Oligodendrocytes,Oligos,Mature oligodendrocytes,
-MFOL2,Oligodendrocytes,Oligos,Myelin forming oligodendrocytes (MFOL),
-NFOL1,Oligodendrocytes,Oligos,Newly formed oligodendrocytes (NFOL),
-NFOL2,Oligodendrocytes,Oligos,"Newly formed oligodendrocytes (NFOL), pons/medulla specific",
-COP2,Oligodendrocytes,Oligos,"Committed oligodendrocytes cells (COP), pons/medulla specific",
-COP1,Oligodendrocytes,Oligos,Committed oligodendrocytes cells (COP),
-HBSER2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
-HBSER1,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
-HBSER3,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain",Serotonin
-HBSER4,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
-HBSER5,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain",Serotonin
-TEGLU15,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
-TEGLU16,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1), Nitric oxide"
-TEGLU5,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
-TEGLU4,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU22,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, amygdala",Glutamate (VGLUT1)
-TEGLU23,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA3","Glutamate (VGLUT1), Nitric oxide"
-TEGLU24,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA1","Glutamate (VGLUT1), Nitric oxide"
-TEGLU17,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU18,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU19,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU3,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU14,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU13,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
-TEGLU21,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA1","Glutamate (VGLUT1), Nitric oxide"
-TEGLU10,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU11,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU20,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU12,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
-TEGLU9,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU8,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEGLU7,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
-TEINH10,Telencephalon inhibitory interneurons,Neurons,"R-LM border Cck interneurons, cortex/hippocampus","GABA, Glutamate (VGLUT3)"
-TEINH11,Telencephalon inhibitory interneurons,Neurons,"R-LM border Cck interneurons, cortex/hippocampus","GABA,Glutamate (VGLUT3), Nitric oxide"
-TEINH12,Telencephalon inhibitory interneurons,Neurons,"Non-border Cck interneurons, cortex/hippocampus","GABA,Glutamate (VGLUT3)"
-TEINH9,Telencephalon inhibitory interneurons,Neurons,"Non-border Cck interneurons, hippocampus",GABA
-OBINH5,Olfactory inhibitory neurons,Neurons,"External plexiform layer interneuron, olfactory bulb",GABA
-TEINH5,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus","GABA, Nitric oxide"
-TEINH6,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus",GABA
-TEINH7,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, hippocampus",GABA
-TEINH8,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, hippocampus",GABA
-TEINH4,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus",GABA
-TEINH20,Telencephalon inhibitory interneurons,Neurons,"Inhibitory interneurons, hippocampus",GABA
-TEINH13,Telencephalon inhibitory interneurons,Neurons,"Trilaminar cells, hippocampus","GABA, Glutamate (VGLUT3)"
-TEINH14,Telencephalon inhibitory interneurons,Neurons,"CGE-derived neurogliaform cells Cxcl14+, cortex/hippocampus",GABA
-TEINH16,Telencephalon inhibitory interneurons,Neurons,"Ivy and MGE-derived neurogliaform cells, cortex/hippocampus","GABA, Nitric oxide"
-TEINH15,Telencephalon inhibitory interneurons,Neurons,"CGE-derived neurogliaform cells, cortex/hippocampus","GABA, Nitric oxide"
-TEINH19,Telencephalon inhibitory interneurons,Neurons,"Hippocamposeptal projection, cortex/hippocampus",GABA
-TEINH21,Telencephalon inhibitory interneurons,Neurons,"Sleep-active, long-range projection interneurons, cortex/hippocampus","GABA, Nitric oxide"
-HYPEP7,Cholinergic and monoaminergic neurons,Neurons,"Pmch neurons, hypothalamus",Glutamate (VGLUT2)
-HYPEP6,Cholinergic and monoaminergic neurons,Neurons,"Orexin-producing neurons, hypothalamus",Nitric oxide
-DEINH8,Peptidergic neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
-MBDOP1,Cholinergic and monoaminergic neurons,Neurons,"Dopaminergic neurons, periaqueductal grey",Dopamine
-MBDOP2,Cholinergic and monoaminergic neurons,Neurons,"Dopaminergic neurons, ventral midbrain (SNc, VTA)",Dopamine
-MEGLU14,Cholinergic and monoaminergic neurons,Neurons,Glutamatergic projection neurons of the raphe nucleus,Glutamate (VGLUT3)
-MEGLU11,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU10,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
-MEGLU9,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
-MEGLU8,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
-MEGLU7,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU6,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-DEGLU5,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU3,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU1,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU5,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
-MEGLU4,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
-DEGLU4,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus",Glutamate (VGLUT2)
-DEGLU3,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus",Glutamate (VGLUT2)
-OBNBL1,Glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory",Glutamate (VGLUT1)
-MBCHO1,Di- and mesencephalon excitatory neurons,Neurons,"Cholinergic neurons, midbrain red nucleus",Acetylcholine
-HBGLU9,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain",Glutamate (VGLUT2)
-SCGLU1,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-HBGLU10,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, hindbrain",Glutamate (VGLUT2)
-SCGLU10,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-HBGLU2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
-HBGLU3,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
-HBNOR,Cholinergic and monoaminergic neurons,Neurons,Noradrenergic neurons of the medulla,"Noradrenaline, Nitric oxide"
-HBGLU1,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2, VGLUT3)"
-DEGLU2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hypothalamus","Glutamate (VGLUT1,VGLUT2)"
-DEGLU1,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus","Glutamate (VGLUT1,VGLUT2)"
-MSN1,Telencephalon projecting inhibitory neurons,Neurons,"D1 medium spiny neurons, striatum",GABA
-MSN2,Telencephalon projecting inhibitory neurons,Neurons,"D2 medium spiny neurons, striatum",GABA
-MSN3,Telencephalon projecting inhibitory neurons,Neurons,"D2 medium spiny neurons, striatum",GABA
-MSN5,Telencephalon projecting inhibitory neurons,Neurons,"Patch D1/D2 neurons, striatum",GABA
-MSN4,Telencephalon projecting inhibitory neurons,Neurons,"D1 medium spiny neurons, striatum",GABA
-MSN6,Telencephalon projecting inhibitory neurons,Neurons,"Matrix D1 neurons, striatum",GABA
-OEC,Olfactory ensheathing cells,Astrocytes,Olfactory ensheathing cells,
-DETPH,Non-glutamatergic neuroblasts,Neurons,"Neuroblast-like, habenula",
-RGDG,Dentate gyrus radial glia-like cells,Astrocytes,Dentate gyrus radial glia-like cells,
-RGSZ,Subventricular zone radial glia-like cells,Astrocytes,Subventricular zone radial glia-like cells,
-OPC,Oligodendrocyte precursor cells,Oligos,Oligodendrocytes precursor cells,
-SZNBL,Non-glutamatergic neuroblasts,Neurons,Neuronal intermidate progenitor cells,
-EPMB,Ependymal cells,Ependymal,"Ependymal cells, midbrain",
-HYPEN,Subcommissural organ hypendymal cells,Ependymal,"Hypendymal cell, subcommissural organ",
-OBDOP2,Olfactory inhibitory neurons,Neurons,"Dopaminergic neurons, olfactory nulb","GABA,Dopamine"
-OBINH2,Olfactory inhibitory neurons,Neurons,"Inner horizontal cell, olfactory bulb",GABA
-OBINH3,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
-OBINH1,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
-OBINH4,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
-OBNBL2,Glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory bulb",Glutamate (VGLUT2)
-TEGLU6,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
-TEGLU1,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1, VGLUT3)"
-DGGRC2,Dentate gyrus granule neurons,Neurons,"Granule neurons, dentate gyrus",Glutamate (VGLUT1)
-DGGRC1,Dentate gyrus granule neurons,Neurons,"Granule neuroblasts, dentate gyrus",Glutamate (VGLUT1)
-DGNBL1,Non-glutamatergic neuroblasts,Neurons,"Granule neuroblasts, dentate gyrus",
-DGNBL2,Non-glutamatergic neuroblasts,Neurons,"Granule neuroblasts, dentate gyrus",
-OBNBL3,Non-glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory bulb",GABA
-HYPEP3,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus","Glutamate (VGLUT2), Nitric oxide"
-HYPEP2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Nitric oxide
-HYPEP1,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Glutamate (VGLUT2)
-CBNBL2,Cerebellum neurons,Neurons,"Neuroblasts, cerebellum",
-CBGRC,Cerebellum neurons,Neurons,"Granule neurons, cerebellum",Glutamate (VGLUT1)
-CR,Di- and mesencephalon excitatory neurons,Neurons,"Cajal-Retzius cells, hippocampus",Glutamate (VGLUT2)
-CBNBL1,Glutamatergic neuroblasts,Neurons,"Neuroblasts, cerebellum",Glutamate (VGLUT2)
-SEPNBL,Glutamatergic neuroblasts,Neurons,"Neuroblasts, septum",Glutamate (VGLUT1)
-OBNBL5,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
-OBNBL4,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
-DECHO2,Di- and mesencephalon excitatory neurons,Neurons,"Cholinergic neurons, habenula","Acetylcholine,Glutamate (VGLUT1,VGLUT3)"
-HYPEP5,Peptidergic neurons,Neurons,"Vasopressin-producing cells, hypothalamus",Glutamate (VGLUT2)
-DEINH7,Peptidergic neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
-HYPEP4,Peptidergic neurons,Neurons,"Oxytocin-producing cells, hypothalamus",Nitric oxide
-HBGLU8,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
-HBGLU6,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
-HBGLU7,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
-HBGLU5,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1), Nitric oxide"
-HBGLU4,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
-HBCHO2,Hindbrain neurons,Neurons,"Cholinergic neurons, hindbrain","Acetylcholine, Glutamate (VGLUT2), Nitric oxide"
-HBCHO1,Hindbrain neurons,Neurons,"Cholinergic neurons, hindbrain","Acetylcholine,Glutamate (VGLUT2)"
-HBCHO3,Cholinergic and monoaminergic neurons,Neurons,Afferent nuclei of cranial nerves VI-XII,"Acetylcholine, Nitric oxide"
-HBADR,Cholinergic and monoaminergic neurons,Neurons,Adrenergic cell groups of the medulla,"Adrenaline, Glutamate (VGLUT3)"
-HBCHO4,Cholinergic and monoaminergic neurons,Neurons,Afferent nuclei of cranial nerves III-V,"Acetylcholine, Nitric oxide"
-TECHO,Cholinergic and monoaminergic neurons,Neurons,"Cholinergic interneurons, telencephalon","Acetylcholine, Glutamate (VGLUT3), Nitric oxide"
-DECHO1,Cholinergic and monoaminergic neurons,Neurons,"Cholinergic neurons, septal nucleus, Meissnert and diagonal band","Acetylcholine, Glutamate (VGLUT3), Nitric oxide"
-SCINH1,Hindbrain neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
-HBINH8,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-HBINH7,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-HBINH5,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-CBINH2,Cerebellum neurons,Neurons,"Granular layer interneurons, cerebellum","GABA, Glycine (GLYT2)"
-CBPC,Cerebellum neurons,Neurons,Purkinje cells,GABA
-CBINH1,Cerebellum neurons,Neurons,"Molecular layer interneurons, cerebellum","GABA, Nitric oxide"
-MEINH1,Cerebellum neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
-TEINH17,Telencephalon inhibitory interneurons,Neurons,"Axo-axonic, cortex/hippocampus",GABA
-TEINH18,Telencephalon inhibitory interneurons,Neurons,"Basket and bistratified cells, cortex/hippocampus","GABA, Nitric oxide"
-DEINH2,Telencephalon inhibitory interneurons,Neurons,"Inhibitory neurons, thalamus",GABA
-DEINH1,Telencephalon inhibitory interneurons,Neurons,"Inhibitory neurons, thalamus",GABA
-DEINH6,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",GABA
-MEINH13,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH8,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH14,Peptidergic neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-DEINH4,Peptidergic neurons,Neurons,"Inhibitory neurons, thalamus","GABA, Nitric oxide"
-DEINH5,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",GABA
-TEINH2,Peptidergic neurons,Neurons,"Inhibitory neurons, septal nucleus",GABA
-TEINH1,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, pallidum",GABA
-HBINH4,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-HBINH3,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-HBINH1,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Nitric oxide"
-SCINH11,Peptidergic neurons,Neurons,"Central canal neurons, spinal cord",GABA
-MEINH3,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH4,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
-DEINH3,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
-MEINH2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH7,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH5,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH12,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH11,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
-MEINH9,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-MEINH10,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
-MEINH6,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
-HBINH6,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1)"
-HBINH2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1), Nitric oxide"
-SCGLU8,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU9,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU7,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU3,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU4,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord","Glutamate (VGLUT2), Nitric oxide"
-SCGLU6,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCGLU5,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
-SCINH5,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
-SCINH6,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
-SCINH7,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
-HBINH9,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
-SCINH2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
-SCINH4,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
-SCINH3,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
-SCINH10,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2), Nitric oxide"
-SCINH9,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
-SCINH8,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
-TEINH3,Peptidergic neurons,Neurons,"Inhibitory neurons, telencephalon",GABA
-OBDOP1,Olfactory inhibitory neurons,Neurons,"Dopaminergic periglomerular interneuron, olfactory bulb","GABA,Dopamine"
-HYPEP8,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Glutamate (VGLUT2)
-ABC,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
-VLMC2,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
-VLMC1,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
-VSMCA,Vascular smooth muscle cells,Vascular,"Vascular smooth muscle cells, arterial",
-PER3,Vascular smooth muscle cells,Vascular,Pericytes,
-VECA,Vascular smooth muscle cells,Vascular,"Vascular endothelial cells, arterial",
-PER2,Pericytes,Vascular,"Pericytes, possibly mixed with VENC",
-PER1,Pericytes,Vascular,Pericytes,
-VECV,Vascular endothelial cells,Vascular,"Vascular endothelial cells, venous",
-VECC,Vascular endothelial cells,Vascular,"Vascular endothelial cells, capillary",
-MGL1,Microglia,Immune,Microglia,
-MGL2,Microglia,Immune,"Microglia, activated",
-MGL3,Microglia,Immune,"Microglia, activated",
-PVM2,Perivascular macrophages,Immune,"Perivascular macrophages, activated",
-PVM1,Perivascular macrophages,Immune,Perivascular macrophages,
-SCHW,Schwann cells,PeripheralGlia,Schwann cells,
-SATG2,Satellite glia,PeripheralGlia,Satellite glia,
-SATG1,Satellite glia,PeripheralGlia,"Satellite glia, proliferating",
-ACBG,Astrocytes,Astrocytes,Bergmann glia,
-ACOB,Astrocytes,Astrocytes,Olfactory astrocytes,
-ACTE1,Astrocytes,Astrocytes,"Telencephalon astrocytes, Gfap-high",
-ACTE2,Astrocytes,Astrocytes,"Telencephalon astrocytes, Gfap-low",
-ACNT1,Astrocytes,Astrocytes,"Non-telencephalon astrocytes, Gfap-low",
-ACNT2,Astrocytes,Astrocytes,"Non-telencephalon astrocytes, Gfap-high",
-ACMB,Astrocytes,Astrocytes,Dorsal midbrain Myoc-expressing astrocyte-like,
-EPEN,Ependymal cells,Ependymal,Ependymal cells,
-EPSC,Ependymal cells,Ependymal,"Ependymal cells, spinal cord",
-CHOR,Choroid epithelial cells,Ependymal,Chorid plexus epithelial cells,
-SYNOR3,Sympathetic noradrenergic neurons,Neurons,"Noradrenergic neurons, sympathetic",Noradrenaline
-SYNOR2,Sympathetic noradrenergic neurons,Neurons,"Noradrenergic neurons, sympathetic",Noradrenaline
-SYNOR1,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
-SYNOR4,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
-SYNOR5,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
-SYCHO2,Sympathetic cholinergic neurons,Neurons,"Cholinergic neurons, sympathetic","Acetylcholine, Noradrenaline"
-SYCHO1,Sympathetic cholinergic neurons,Neurons,"Cholinergic neurons, sympathetic","Acetylcholine, Noradrenaline"
-PSPEP1,Peripheral sensory peptidergic neurons,Neurons,"Peptidergicv (PEP2), DRG","Glutamate (VGLUT2), Nitric oxide"
-PSPEP3,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1..4), DRG",Glutamate (VGLUT2)
-PSPEP2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.3), DRG","Glutamate (VGLUT2),Acetylcholine, Nitric oxide"
-PSPEP4,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.1), DRG",Glutamate (VGLUT2)
-PSPEP5,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.2), DRG",Glutamate (VGLUT2)
-PSPEP6,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
-PSPEP7,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
-PSPEP8,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
-PSNF2,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF4/5), DRG","Glutamate (VGLUT1,VGLUT2)"
-PSNF3,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF2/3), DRG","Glutamate (VGLUT1,VGLUT2)"
-PSNF1,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF1), DRG","Glutamate (VGLUT1,VGLUT2)"
-PSNP1,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (TH), DRG","Glutamate (VGLUT2,VGLUT3)"
-PSNP3,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP1.2), DRG",Glutamate (VGLUT2)
-PSNP2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP1.1), DRG",Glutamate (VGLUT2)
-PSNP5,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP2.2), DRG",Glutamate (VGLUT2)
-PSNP4,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP2.1), DRG",Glutamate (VGLUT2)
-PSNP6,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP3), DRG",Glutamate (VGLUT2)
+CellType,annotLevel,level1class,OverallClass,Description,Neurotransmitter
+ENT9,2,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric",Acetylcholine
+ENT8,2,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric","Glutamate (VGLUT2),Acetylcholine"
+ENT6,2,Enteric neurons,Neurons,"Excitatory motor neurons, enteric",Acetylcholine
+ENT5,2,Enteric neurons,Neurons,"Excitatory motor neurons, enteric",Acetylcholine
+ENT4,2,Enteric neurons,Neurons,"Excitatory neurons, enteric",Acetylcholine
+ENT7,2,Enteric neurons,Neurons,"Intrinsic sensory neurons, enteric","Glutamate (VGLUT2),Acetylcholine"
+ENT3,2,Enteric neurons,Neurons,"Inhibitory motor neurons, enteric",Nitric oxide
+ENT2,2,Enteric neurons,Neurons,"Inhibitory motor neurons, enteric",Nitric oxide
+ENT1,2,Enteric neurons,Neurons,"Descending interneurons, enteric",Nitric oxide
+ENTG1,2,Enteric glia,PeripheralGlia,"Enteric glia, proliferating",
+ENTG4,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENTG2,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENTG3,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENTG6,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENTG5,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENTG7,2,Enteric glia,PeripheralGlia,Enteric glia,
+ENMFB,2,Enteric glia,Vascular,Enteric mesothelial fibroblasts,
+MOL3,2,Oligodendrocytes,Oligos,"Mature oligodendrocytes, spinal cord enriched (high Klk6)",
+MOL2,2,Oligodendrocytes,Oligos,"Mature oligodendrocytes, hindbrain",
+MFOL1,2,Oligodendrocytes,Oligos,Myelin forming oligodendrocytes (MFOL),
+MOL1,2,Oligodendrocytes,Oligos,Mature oligodendrocytes,
+MFOL2,2,Oligodendrocytes,Oligos,Myelin forming oligodendrocytes (MFOL),
+NFOL1,2,Oligodendrocytes,Oligos,Newly formed oligodendrocytes (NFOL),
+NFOL2,2,Oligodendrocytes,Oligos,"Newly formed oligodendrocytes (NFOL), pons/medulla specific",
+COP2,2,Oligodendrocytes,Oligos,"Committed oligodendrocytes cells (COP), pons/medulla specific",
+COP1,2,Oligodendrocytes,Oligos,Committed oligodendrocytes cells (COP),
+HBSER2,2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
+HBSER1,2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
+HBSER3,2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain",Serotonin
+HBSER4,2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain","Serotonin, Glutamate (VGLUT3)"
+HBSER5,2,Cholinergic and monoaminergic neurons,Neurons,"Serotonergic neurons, hindbrain",Serotonin
+TEGLU15,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
+TEGLU16,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1), Nitric oxide"
+TEGLU5,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
+TEGLU4,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU22,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, amygdala",Glutamate (VGLUT1)
+TEGLU23,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA3","Glutamate (VGLUT1), Nitric oxide"
+TEGLU24,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA1","Glutamate (VGLUT1), Nitric oxide"
+TEGLU17,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU18,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU19,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU2,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU3,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU14,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU13,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
+TEGLU21,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, hippocampus CA1","Glutamate (VGLUT1), Nitric oxide"
+TEGLU10,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU11,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU20,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU12,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
+TEGLU9,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU8,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEGLU7,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex",Glutamate (VGLUT1)
+TEINH10,2,Telencephalon inhibitory interneurons,Neurons,"R-LM border Cck interneurons, cortex/hippocampus","GABA, Glutamate (VGLUT3)"
+TEINH11,2,Telencephalon inhibitory interneurons,Neurons,"R-LM border Cck interneurons, cortex/hippocampus","GABA,Glutamate (VGLUT3), Nitric oxide"
+TEINH12,2,Telencephalon inhibitory interneurons,Neurons,"Non-border Cck interneurons, cortex/hippocampus","GABA,Glutamate (VGLUT3)"
+TEINH9,2,Telencephalon inhibitory interneurons,Neurons,"Non-border Cck interneurons, hippocampus",GABA
+OBINH5,2,Olfactory inhibitory neurons,Neurons,"External plexiform layer interneuron, olfactory bulb",GABA
+TEINH5,2,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus","GABA, Nitric oxide"
+TEINH6,2,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus",GABA
+TEINH7,2,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, hippocampus",GABA
+TEINH8,2,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, hippocampus",GABA
+TEINH4,2,Telencephalon inhibitory interneurons,Neurons,"Interneuron-selective interneurons, cortex/hippocampus",GABA
+TEINH20,2,Telencephalon inhibitory interneurons,Neurons,"Inhibitory interneurons, hippocampus",GABA
+TEINH13,2,Telencephalon inhibitory interneurons,Neurons,"Trilaminar cells, hippocampus","GABA, Glutamate (VGLUT3)"
+TEINH14,2,Telencephalon inhibitory interneurons,Neurons,"CGE-derived neurogliaform cells Cxcl14+, cortex/hippocampus",GABA
+TEINH16,2,Telencephalon inhibitory interneurons,Neurons,"Ivy and MGE-derived neurogliaform cells, cortex/hippocampus","GABA, Nitric oxide"
+TEINH15,2,Telencephalon inhibitory interneurons,Neurons,"CGE-derived neurogliaform cells, cortex/hippocampus","GABA, Nitric oxide"
+TEINH19,2,Telencephalon inhibitory interneurons,Neurons,"Hippocamposeptal projection, cortex/hippocampus",GABA
+TEINH21,2,Telencephalon inhibitory interneurons,Neurons,"Sleep-active, long-range projection interneurons, cortex/hippocampus","GABA, Nitric oxide"
+HYPEP7,2,Cholinergic and monoaminergic neurons,Neurons,"Pmch neurons, hypothalamus",Glutamate (VGLUT2)
+HYPEP6,2,Cholinergic and monoaminergic neurons,Neurons,"Orexin-producing neurons, hypothalamus",Nitric oxide
+DEINH8,2,Peptidergic neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
+MBDOP1,2,Cholinergic and monoaminergic neurons,Neurons,"Dopaminergic neurons, periaqueductal grey",Dopamine
+MBDOP2,2,Cholinergic and monoaminergic neurons,Neurons,"Dopaminergic neurons, ventral midbrain (SNc, VTA)",Dopamine
+MEGLU14,2,Cholinergic and monoaminergic neurons,Neurons,Glutamatergic projection neurons of the raphe nucleus,Glutamate (VGLUT3)
+MEGLU11,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU10,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
+MEGLU9,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
+MEGLU8,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
+MEGLU7,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU6,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+DEGLU5,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU2,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU3,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU1,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU5,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain",Glutamate (VGLUT1)
+MEGLU4,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, midbrain","Glutamate (VGLUT1), Nitric oxide"
+DEGLU4,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus",Glutamate (VGLUT2)
+DEGLU3,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus",Glutamate (VGLUT2)
+OBNBL1,2,Glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory",Glutamate (VGLUT1)
+MBCHO1,2,Di- and mesencephalon excitatory neurons,Neurons,"Cholinergic neurons, midbrain red nucleus",Acetylcholine
+HBGLU9,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain",Glutamate (VGLUT2)
+SCGLU1,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+HBGLU10,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, hindbrain",Glutamate (VGLUT2)
+SCGLU10,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+HBGLU2,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
+HBGLU3,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
+HBNOR,2,Cholinergic and monoaminergic neurons,Neurons,Noradrenergic neurons of the medulla,"Noradrenaline, Nitric oxide"
+HBGLU1,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2, VGLUT3)"
+DEGLU2,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, hypothalamus","Glutamate (VGLUT1,VGLUT2)"
+DEGLU1,2,Di- and mesencephalon excitatory neurons,Neurons,"Excitatory neurons, thalamus","Glutamate (VGLUT1,VGLUT2)"
+MSN1,2,Telencephalon projecting inhibitory neurons,Neurons,"D1 medium spiny neurons, striatum",GABA
+MSN2,2,Telencephalon projecting inhibitory neurons,Neurons,"D2 medium spiny neurons, striatum",GABA
+MSN3,2,Telencephalon projecting inhibitory neurons,Neurons,"D2 medium spiny neurons, striatum",GABA
+MSN5,2,Telencephalon projecting inhibitory neurons,Neurons,"Patch D1/D2 neurons, striatum",GABA
+MSN4,2,Telencephalon projecting inhibitory neurons,Neurons,"D1 medium spiny neurons, striatum",GABA
+MSN6,2,Telencephalon projecting inhibitory neurons,Neurons,"Matrix D1 neurons, striatum",GABA
+OEC,2,Olfactory ensheathing cells,Astrocytes,Olfactory ensheathing cells,
+DETPH,2,Non-glutamatergic neuroblasts,Neurons,"Neuroblast-like, habenula",
+RGDG,2,Dentate gyrus radial glia-like cells,Astrocytes,Dentate gyrus radial glia-like cells,
+RGSZ,2,Subventricular zone radial glia-like cells,Astrocytes,Subventricular zone radial glia-like cells,
+OPC,2,Oligodendrocyte precursor cells,Oligos,Oligodendrocytes precursor cells,
+SZNBL,2,Non-glutamatergic neuroblasts,Neurons,Neuronal intermidate progenitor cells,
+EPMB,2,Ependymal cells,Ependymal,"Ependymal cells, midbrain",
+HYPEN,2,Subcommissural organ hypendymal cells,Ependymal,"Hypendymal cell, subcommissural organ",
+OBDOP2,2,Olfactory inhibitory neurons,Neurons,"Dopaminergic neurons, olfactory nulb","GABA,Dopamine"
+OBINH2,2,Olfactory inhibitory neurons,Neurons,"Inner horizontal cell, olfactory bulb",GABA
+OBINH3,2,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
+OBINH1,2,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
+OBINH4,2,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
+OBNBL2,2,Glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory bulb",Glutamate (VGLUT2)
+TEGLU6,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1,VGLUT2)"
+TEGLU1,2,Telencephalon projecting excitatory neurons,Neurons,"Excitatory neurons, cerebral cortex","Glutamate (VGLUT1, VGLUT3)"
+DGGRC2,2,Dentate gyrus granule neurons,Neurons,"Granule neurons, dentate gyrus",Glutamate (VGLUT1)
+DGGRC1,2,Dentate gyrus granule neurons,Neurons,"Granule neuroblasts, dentate gyrus",Glutamate (VGLUT1)
+DGNBL1,2,Non-glutamatergic neuroblasts,Neurons,"Granule neuroblasts, dentate gyrus",
+DGNBL2,2,Non-glutamatergic neuroblasts,Neurons,"Granule neuroblasts, dentate gyrus",
+OBNBL3,2,Non-glutamatergic neuroblasts,Neurons,"Neuroblasts, olfactory bulb",GABA
+HYPEP3,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus","Glutamate (VGLUT2), Nitric oxide"
+HYPEP2,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Nitric oxide
+HYPEP1,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Glutamate (VGLUT2)
+CBNBL2,2,Cerebellum neurons,Neurons,"Neuroblasts, cerebellum",
+CBGRC,2,Cerebellum neurons,Neurons,"Granule neurons, cerebellum",Glutamate (VGLUT1)
+CR,2,Di- and mesencephalon excitatory neurons,Neurons,"Cajal-Retzius cells, hippocampus",Glutamate (VGLUT2)
+CBNBL1,2,Glutamatergic neuroblasts,Neurons,"Neuroblasts, cerebellum",Glutamate (VGLUT2)
+SEPNBL,2,Glutamatergic neuroblasts,Neurons,"Neuroblasts, septum",Glutamate (VGLUT1)
+OBNBL5,2,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
+OBNBL4,2,Olfactory inhibitory neurons,Neurons,"Inhibitory neurons, olfactory bulb",GABA
+DECHO2,2,Di- and mesencephalon excitatory neurons,Neurons,"Cholinergic neurons, habenula","Acetylcholine,Glutamate (VGLUT1,VGLUT3)"
+HYPEP5,2,Peptidergic neurons,Neurons,"Vasopressin-producing cells, hypothalamus",Glutamate (VGLUT2)
+DEINH7,2,Peptidergic neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
+HYPEP4,2,Peptidergic neurons,Neurons,"Oxytocin-producing cells, hypothalamus",Nitric oxide
+HBGLU8,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
+HBGLU6,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
+HBGLU7,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1,VGLUT2), Nitric oxide"
+HBGLU5,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT1), Nitric oxide"
+HBGLU4,2,Hindbrain neurons,Neurons,"Excitatory neurons, hindbrain","Glutamate (VGLUT2), Nitric oxide"
+HBCHO2,2,Hindbrain neurons,Neurons,"Cholinergic neurons, hindbrain","Acetylcholine, Glutamate (VGLUT2), Nitric oxide"
+HBCHO1,2,Hindbrain neurons,Neurons,"Cholinergic neurons, hindbrain","Acetylcholine,Glutamate (VGLUT2)"
+HBCHO3,2,Cholinergic and monoaminergic neurons,Neurons,Afferent nuclei of cranial nerves VI-XII,"Acetylcholine, Nitric oxide"
+HBADR,2,Cholinergic and monoaminergic neurons,Neurons,Adrenergic cell groups of the medulla,"Adrenaline, Glutamate (VGLUT3)"
+HBCHO4,2,Cholinergic and monoaminergic neurons,Neurons,Afferent nuclei of cranial nerves III-V,"Acetylcholine, Nitric oxide"
+TECHO,2,Cholinergic and monoaminergic neurons,Neurons,"Cholinergic interneurons, telencephalon","Acetylcholine, Glutamate (VGLUT3), Nitric oxide"
+DECHO1,2,Cholinergic and monoaminergic neurons,Neurons,"Cholinergic neurons, septal nucleus, Meissnert and diagonal band","Acetylcholine, Glutamate (VGLUT3), Nitric oxide"
+SCINH1,2,Hindbrain neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
+HBINH8,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+HBINH7,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+HBINH5,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+CBINH2,2,Cerebellum neurons,Neurons,"Granular layer interneurons, cerebellum","GABA, Glycine (GLYT2)"
+CBPC,2,Cerebellum neurons,Neurons,Purkinje cells,GABA
+CBINH1,2,Cerebellum neurons,Neurons,"Molecular layer interneurons, cerebellum","GABA, Nitric oxide"
+MEINH1,2,Cerebellum neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
+TEINH17,2,Telencephalon inhibitory interneurons,Neurons,"Axo-axonic, cortex/hippocampus",GABA
+TEINH18,2,Telencephalon inhibitory interneurons,Neurons,"Basket and bistratified cells, cortex/hippocampus","GABA, Nitric oxide"
+DEINH2,2,Telencephalon inhibitory interneurons,Neurons,"Inhibitory neurons, thalamus",GABA
+DEINH1,2,Telencephalon inhibitory interneurons,Neurons,"Inhibitory neurons, thalamus",GABA
+DEINH6,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",GABA
+MEINH13,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH8,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH14,2,Peptidergic neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+DEINH4,2,Peptidergic neurons,Neurons,"Inhibitory neurons, thalamus","GABA, Nitric oxide"
+DEINH5,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",GABA
+TEINH2,2,Peptidergic neurons,Neurons,"Inhibitory neurons, septal nucleus",GABA
+TEINH1,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, pallidum",GABA
+HBINH4,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+HBINH3,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+HBINH1,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Nitric oxide"
+SCINH11,2,Peptidergic neurons,Neurons,"Central canal neurons, spinal cord",GABA
+MEINH3,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH4,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
+DEINH3,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, hypothalamus",GABA
+MEINH2,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH7,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH5,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH12,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH11,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
+MEINH9,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+MEINH10,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain","GABA, Nitric oxide"
+MEINH6,2,Di- and mesencephalon inhibitory neurons,Neurons,"Inhibitory neurons, midbrain",GABA
+HBINH6,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1)"
+HBINH2,2,Hindbrain neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1), Nitric oxide"
+SCGLU8,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU9,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU7,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU2,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU3,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU4,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord","Glutamate (VGLUT2), Nitric oxide"
+SCGLU6,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCGLU5,2,Spinal cord excitatory neurons,Neurons,"Excitatory neurons, spinal cord",Glutamate (VGLUT2)
+SCINH5,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
+SCINH6,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
+SCINH7,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
+HBINH9,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, hindbrain","GABA, Glycine (GLYT1,GLYT2)"
+SCINH2,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
+SCINH4,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
+SCINH3,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2)"
+SCINH10,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord","GABA, Glycine (GLYT2), Nitric oxide"
+SCINH9,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
+SCINH8,2,Spinal cord inhibitory neurons,Neurons,"Inhibitory neurons, spinal cord",GABA
+TEINH3,2,Peptidergic neurons,Neurons,"Inhibitory neurons, telencephalon",GABA
+OBDOP1,2,Olfactory inhibitory neurons,Neurons,"Dopaminergic periglomerular interneuron, olfactory bulb","GABA,Dopamine"
+HYPEP8,2,Peptidergic neurons,Neurons,"Peptidergic neurons, hypothalamus",Glutamate (VGLUT2)
+ABC,2,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
+VLMC2,2,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
+VLMC1,2,Vascular and leptomeningeal cells,Vascular,Vascular leptomeningeal cells,
+VSMCA,2,Vascular smooth muscle cells,Vascular,"Vascular smooth muscle cells, arterial",
+PER3,2,Vascular smooth muscle cells,Vascular,Pericytes,
+VECA,2,Vascular smooth muscle cells,Vascular,"Vascular endothelial cells, arterial",
+PER2,2,Pericytes,Vascular,"Pericytes, possibly mixed with VENC",
+PER1,2,Pericytes,Vascular,Pericytes,
+VECV,2,Vascular endothelial cells,Vascular,"Vascular endothelial cells, venous",
+VECC,2,Vascular endothelial cells,Vascular,"Vascular endothelial cells, capillary",
+MGL1,2,Microglia,Immune,Microglia,
+MGL2,2,Microglia,Immune,"Microglia, activated",
+MGL3,2,Microglia,Immune,"Microglia, activated",
+PVM2,2,Perivascular macrophages,Immune,"Perivascular macrophages, activated",
+PVM1,2,Perivascular macrophages,Immune,Perivascular macrophages,
+SCHW,2,Schwann cells,PeripheralGlia,Schwann cells,
+SATG2,2,Satellite glia,PeripheralGlia,Satellite glia,
+SATG1,2,Satellite glia,PeripheralGlia,"Satellite glia, proliferating",
+ACBG,2,Astrocytes,Astrocytes,Bergmann glia,
+ACOB,2,Astrocytes,Astrocytes,Olfactory astrocytes,
+ACTE1,2,Astrocytes,Astrocytes,"Telencephalon astrocytes, Gfap-high",
+ACTE2,2,Astrocytes,Astrocytes,"Telencephalon astrocytes, Gfap-low",
+ACNT1,2,Astrocytes,Astrocytes,"Non-telencephalon astrocytes, Gfap-low",
+ACNT2,2,Astrocytes,Astrocytes,"Non-telencephalon astrocytes, Gfap-high",
+ACMB,2,Astrocytes,Astrocytes,Dorsal midbrain Myoc-expressing astrocyte-like,
+EPEN,2,Ependymal cells,Ependymal,Ependymal cells,
+EPSC,2,Ependymal cells,Ependymal,"Ependymal cells, spinal cord",
+CHOR,2,Choroid epithelial cells,Ependymal,Chorid plexus epithelial cells,
+SYNOR3,2,Sympathetic noradrenergic neurons,Neurons,"Noradrenergic neurons, sympathetic",Noradrenaline
+SYNOR2,2,Sympathetic noradrenergic neurons,Neurons,"Noradrenergic neurons, sympathetic",Noradrenaline
+SYNOR1,2,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
+SYNOR4,2,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
+SYNOR5,2,Sympathetic noradrenergic neurons,Neurons,Noradrenergic erector muscle neurons,Noradrenaline
+SYCHO2,2,Sympathetic cholinergic neurons,Neurons,"Cholinergic neurons, sympathetic","Acetylcholine, Noradrenaline"
+SYCHO1,2,Sympathetic cholinergic neurons,Neurons,"Cholinergic neurons, sympathetic","Acetylcholine, Noradrenaline"
+PSPEP1,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergicv (PEP2), DRG","Glutamate (VGLUT2), Nitric oxide"
+PSPEP3,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1..4), DRG",Glutamate (VGLUT2)
+PSPEP2,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.3), DRG","Glutamate (VGLUT2),Acetylcholine, Nitric oxide"
+PSPEP4,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.1), DRG",Glutamate (VGLUT2)
+PSPEP5,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (PEP1.2), DRG",Glutamate (VGLUT2)
+PSPEP6,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
+PSPEP7,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
+PSPEP8,2,Peripheral sensory peptidergic neurons,Neurons,"Peptidergic (TrpM8), DRG",Glutamate (VGLUT2)
+PSNF2,2,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF4/5), DRG","Glutamate (VGLUT1,VGLUT2)"
+PSNF3,2,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF2/3), DRG","Glutamate (VGLUT1,VGLUT2)"
+PSNF1,2,Peripheral sensory neurofilament neurons,Neurons,"Neurofilament (NF1), DRG","Glutamate (VGLUT1,VGLUT2)"
+PSNP1,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (TH), DRG","Glutamate (VGLUT2,VGLUT3)"
+PSNP3,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP1.2), DRG",Glutamate (VGLUT2)
+PSNP2,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP1.1), DRG",Glutamate (VGLUT2)
+PSNP5,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP2.2), DRG",Glutamate (VGLUT2)
+PSNP4,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP2.1), DRG",Glutamate (VGLUT2)
+PSNP6,2,Peripheral sensory non-peptidergic neurons,Neurons,"Non-peptidergic (NP3), DRG",Glutamate (VGLUT2)
+Enteric neurons,1,,Neurons,,
+Enteric glia,1,,PeripheralGlia,,
+Oligodendrocytes,1,,Oligos,,
+Cholinergic and monoaminergic neurons,1,,Neurons,,
+Telencephalon projecting excitatory neurons,1,,Neurons,,
+Telencephalon inhibitory interneurons,1,,Neurons,,
+Olfactory inhibitory neurons,1,,Neurons,,
+Peptidergic neurons,1,,Neurons,,
+Di- and mesencephalon excitatory neurons,1,,Neurons,,
+Glutamatergic neuroblasts,1,,Neurons,,
+Hindbrain neurons,1,,Neurons,,
+Spinal cord excitatory neurons,1,,Neurons,,
+Telencephalon projecting inhibitory neurons,1,,Neurons,,
+Olfactory ensheathing cells,1,,Astrocytes,,
+Non-glutamatergic neuroblasts,1,,Neurons,,
+Dentate gyrus radial glia-like cells,1,,Astrocytes,,
+Subventricular zone radial glia-like cells,1,,Astrocytes,,
+Oligodendrocyte precursor cells,1,,Oligos,,
+Ependymal cells,1,,Ependymal,,
+Subcommissural organ hypendymal cells,1,,Ependymal,,
+Dentate gyrus granule neurons,1,,Neurons,,
+Cerebellum neurons,1,,Neurons,,
+Di- and mesencephalon inhibitory neurons,1,,Neurons,,
+Spinal cord inhibitory neurons,1,,Neurons,,
+Vascular and leptomeningeal cells,1,,Vascular,,
+Vascular smooth muscle cells,1,,Vascular,,
+Pericytes,1,,Vascular,,
+Vascular endothelial cells,1,,Vascular,,
+Microglia,1,,Immune,,
+Perivascular macrophages,1,,Immune,,
+Schwann cells,1,,PeripheralGlia,,
+Satellite glia,1,,PeripheralGlia,,
+Astrocytes,1,,Astrocytes,,
+Choroid epithelial cells,1,,Ependymal,,
+Sympathetic noradrenergic neurons,1,,Neurons,,
+Sympathetic cholinergic neurons,1,,Neurons,,
+Peripheral sensory peptidergic neurons,1,,Neurons,,
+Peripheral sensory neurofilament neurons,1,,Neurons,,
+Peripheral sensory non-peptidergic neurons,1,,Neurons,,
