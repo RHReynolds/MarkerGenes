@@ -14,12 +14,12 @@
 #' @param ctdSpecies Either 'mouse' or 'human' depending on the ctd datasets
 #'   being used. Species must be the same across all input ctds.
 #'
-#' @return Outputs a list, with each individual element containing a data frame
-#'   with mean expression and specificity per gene from each study.
+#' @return Outputs a dataframe, with mean expression and specificity per gene
+#'   from each study.
 #' @export
 #'
 
-query_gene_ctd <- function(genes, ... , celltypeLevel = c("1", "2"), genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse", "human", "both")) {
+query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2), genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse", "human")) {
 
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
@@ -32,7 +32,7 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c("1", "2"), genelistSpe
   ctd_list <- setNames(list(...), argument_names)
 
   # Comment out when exporting package
-  source("/home/rreynolds/projects/MarkerGenes/R/functions/conversion_functions.R")
+  source("/home/rreynolds/projects/MarkerGenes/R/conversion_functions.R")
 
   # Check genelist and ctd species are the same. If not convert genes to same species as ctd.
   if (genelistSpecies == "human" & ctdSpecies == "mouse" |
@@ -59,20 +59,20 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c("1", "2"), genelistSpe
     # Join both filtered tibbles
     joint_table <- filtered_specificity %>%
       inner_join(filtered_mean_exp, by = c("Gene", "CellType")) %>%
+      dplyr::mutate(Study = names(ctd_list[i])) %>%
+      dplyr::select(Study, everything()) %>%
       arrange(Gene, desc(Specificity))
 
     # Add tibble to list
     if (i == 1) {
-      master_list <- list(joint_table)
-      list_names <- names(ctd_list[i])
+      master_df <- joint_table
     } else {
-      master_list <- c(master_list, list(joint_table))
-      list_names <- c(list_names, names(ctd_list[i]))
+      master_df <- master_df %>%
+        bind_rows(joint_table)
     }
 
   }
 
-  names(master_list) <- list_names
-  return(master_list)
+  return(master_df)
 
 }
