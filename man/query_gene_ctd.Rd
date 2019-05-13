@@ -4,9 +4,9 @@
 \alias{query_gene_ctd}
 \title{Query genes in specificity matrices.}
 \usage{
-query_gene_ctd(genes, ..., celltypeLevel = c("1", "2"),
+query_gene_ctd(genes, ..., celltypeLevel = c(1, 2),
   genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse",
-  "human", "both"))
+  "human"))
 }
 \arguments{
 \item{genes}{Query genes as a vector.}
@@ -25,8 +25,8 @@ HGNC symbols are used.}
 being used. Species must be the same across all input ctds.}
 }
 \value{
-Outputs a list, with each individual element containing a data frame
-  with mean expression and specificity per gene from each study.
+Outputs a dataframe, with mean expression and specificity per gene
+  from each study.
 }
 \description{
 Allows user to query a vector of genes in a celltype_data file with mean
