@@ -19,7 +19,9 @@
 #' @export
 #'
 
-query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2), genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse", "human")) {
+query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
+                           genelistSpecies = c("mouse", "human"),
+                           ctdSpecies = c("mouse", "human")) {
 
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
@@ -60,7 +62,8 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2), genelistSpecies
     joint_table <- filtered_specificity %>%
       inner_join(filtered_mean_exp, by = c("Gene", "CellType")) %>%
       dplyr::mutate(Study = names(ctd_list[i])) %>%
-      dplyr::select(Study, everything()) %>%
+      dplyr::mutate(Study_species = ctdSpecies) %>%
+      dplyr::select(Study, Study_species, everything()) %>%
       arrange(Gene, desc(Specificity))
 
     # Add tibble to list
