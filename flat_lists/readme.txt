@@ -9,6 +9,6 @@
 
 Following files downloaded 29/04/2019
 
-	Zeisel2015_TableS1_MarkerGenes.xlsx <- Marker genes derived from Zeisel 2015 Table S1. Marker genes derived by enrichment analyses. Enrichment in one cell type calculated by comparing expression in each of nine major classes individually against basal expression given by linear regression. Authors only retained genes that were enriched with 99.9% posterior probability in investigated class and not enriched in any other class. 
+	Zeisel2015_TableS1_MarkerGenes.txt <- Marker genes derived from Zeisel 2015 Table S1. Marker genes derived by enrichment analyses. Enrichment in one cell type calculated by comparing expression in each of nine major classes individually against basal expression given by linear regression. Authors only retained genes that were enriched with 99.9% posterior probability in investigated class and not enriched in any other class. 
 
 	
