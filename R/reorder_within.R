@@ -14,6 +14,7 @@
 #' ordering. By default, mean.
 #' @param sep Separator to distinguish the two. You may want to set this manually
 #' if ___ can exist within one of your labels.
+#' @param desc Set to TRUE if you wish to have the columns in descending order.
 #' @param ... In \code{reorder_within} arguments passed on to \code{\link{reorder}}.
 #' In the scale functions, extra arguments passed on to
 #' \code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.
@@ -41,9 +42,9 @@
 #'   facet_wrap(~ metric, scales = "free_x")
 #'
 #' @export
-reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
+reorder_within <- function(x, by, within, fun = mean, sep = "___", desc = FALSE, ...) {
   new_x <- paste(x, within, sep = sep)
-  stats::reorder(new_x, by, FUN = function(x) fun(x, na.rm=T))
+  forcats::fct_reorder(new_x, by, .fun = fun, .desc = desc, na.rm = T)
 }
 
 
