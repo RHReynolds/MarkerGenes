@@ -18,6 +18,20 @@
 #' @export
 
 run_ewce_controlled <- function(list_of_genes, ..., reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human")) {
+
+  # EWCE package necessary to run. Check if installed, and if not, install.
+  if(require(EWCE)){
+    print("EWCE is loaded correctly")
+  } else {
+    print("trying to install EWCE")
+    install.packages("EWCE")
+    if(require(EWCE)){
+      print("EWCE installed and loaded")
+    } else {
+      stop("could not install EWCE")
+    }
+  }
+
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
   argument_names <- as.list(match.call()) %>%
