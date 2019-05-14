@@ -38,6 +38,9 @@ convert_between_species <-function(genes, genelistSpecies = c("mouse", "human"),
 
   load("/home/rreynolds/projects/MarkerGenes/misc_data/mouse_to_human_orthologs.rda")
 
+  # # For package
+  # mouse_to_human_orthologs <- MarkerGenes::mouse_to_human_orthologs
+
   ## Filter for only one to one orthologs
   one2one <- mouse_to_human_orthologs %>%
     filter(mmusculus_homolog_orthology_type == "ortholog_one2one")
@@ -87,6 +90,9 @@ convert_between_species <-function(genes, genelistSpecies = c("mouse", "human"),
 convert_between_ensembl_and_symbols <- function(genes, genelistSpecies = c("mouse", "human")){
 
   load("/home/rreynolds/projects/MarkerGenes/misc_data/mouse_to_human_orthologs.rda")
+
+  # # For package
+  # mouse_to_human_orthologs <- MarkerGenes::mouse_to_human_orthologs
 
   # # Test code
   # genes <- c("ENSMUSG00000065298", mouse_to_human_orthologs[1:10,] %>% .[["ensembl_gene_id"]])

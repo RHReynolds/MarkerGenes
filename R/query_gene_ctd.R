@@ -34,12 +34,13 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
   ctd_list <- setNames(list(...), argument_names)
 
   # Comment out when exporting package
+
   source("/home/rreynolds/projects/MarkerGenes/R/conversion_functions.R")
 
   # Check genelist and ctd species are the same. If not convert genes to same species as ctd.
   if (genelistSpecies == "human" & ctdSpecies == "mouse" |
       genelistSpecies == "mouse" & ctdSpecies == "human") {
-    genes <- convert_between_species(genes, genelistSpecies, ctdSpecies)
+    genes <- MarkerGenes::convert_between_species(genes, genelistSpecies, ctdSpecies)
   }
 
   # Genes now converted, and can perform query.
