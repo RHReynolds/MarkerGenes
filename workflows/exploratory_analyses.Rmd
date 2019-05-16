@@ -1,0 +1,242 @@
+---
+title: "Exploratory analyses"
+author: "Regina H. Reynolds"
+date: "5/2/2019"
+output: 
+  html_document:
+    theme: paper
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+
+library(DT)
+library(EWCE)
+library(ggplot2)
+library(tidyverse)
+library(stringr)
+
+devtools::load_all(path = "/home/rreynolds/projects/MarkerGenes/")
+
+load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/AIBS2019.rda")
+load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Human.rda")
+load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Mouse.rda")
+load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Skene2018.rda")
+
+# Load list, gather and remove NAs.
+Zeisel2015 <- read_delim("/home/rreynolds/projects/MarkerGenes/flat_lists/Zeisel2015_TableS1_MarkerGenes.txt", delim = "\t") %>% 
+  gather(key = "CellType", value = "Gene") %>% 
+  na.omit()
+
+# To save repeatedly querying biomaRt we have a stored dataset containing all the human 
+# orthologs of MGI genes, mouse_to_human_homologs. 
+data("mouse_to_human_homologs")
+m2h = unique(mouse_to_human_homologs[,c("HGNC.symbol","MGI.symbol")])
+
+knitr::opts_chunk$set(echo = F, message= F, warning = F)
+
+```
+
+# Background
+
+## Aim
+- The overarching idea of this project is to develop a marker gene resource open to other researchers.
+- Currently, this has been broken down into the following proposed workflow.
+
+```{r workflow, echo=FALSE, out.width='100%', fig.pos='H'}
+
+knitr::include_graphics("/home/rreynolds/projects/MarkerGenes/workflows/figures/20190429_CurationWorkflow.png")
+
+```
+
+- However, before setting upon this bigger idea we should start simple and assess the extent to which proposed marker gene lists vary between studies. That is, how robust are marker genes across studies? 
+
+# Curating the datasets
+## Descriptions for metadata columns
+```{r metadata columns, echo=FALSE, out.width='100%', fig.pos='H'}
+
+readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "ColumnDescriptions") %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap')
+
+```
+
+## Dataset metadata
+```{r metadata, echo=FALSE, out.width='100%', fig.pos='H'}
+
+readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
+  arrange(desc(list_or_SI_matrix), resource_name) %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap')
+
+```
+
+- The majority of specificity matrices were downloaded from Skene 2018, but also generated two matrices from:
+    - Zeisel et al. 2018 (see: `/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R`)
+    - Allen Brain Atlas 2019 (see: `/home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2019_GeneratingSImatrix.R`). Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
+    
+
+# Exploring the issue
+
+## Distribution of specificity values across studies
+- A commonly used marker gene list is from the mouse single cell study, Zeisel 2015. If we were to query this list of these genes across different studies with specificity matrices, how much can we expect specificity values to vary?
+
+```{r Zeisel2015 cell types, echo = T}
+
+# What cell types are there in Zeisel 2015?
+Zeisel2015 %>% .[["CellType"]] %>% unique()
+
+```
+
+### Astrocytes
+- As an example, chose to look at astrocytes, given that these are known to vary considerably between mouse and human: https://www.ncbi.nlm.nih.gov/pubmed/26687838 
+- But what are "fair" comparisons?
+    - Bear in mind, Zeisel 2015 was:
+        - A single cell study
+        - Of the somatosensory cortex and CA1 hippocampus
+        - In mouse
+    - For "fair" comparisons, want to keep as many of the above variables constant.
+- Comparisons made:
+    - Skene2018: includes cortical as well as hippocampal regions and is a single cell study of the mouse brain.
+    - Habib2017_DroNc_Mouse: single nuclear study of PFC and hippocampus, therefore allows some comparison of single cell vs. single nuclear.
+    - Habib2017_DroNc_Human: no human specificity matrices are single cell, therefore used Habib as this includes PFC and hippocampus.
+    - AIBS2019: human and single nuclear. While this is middle temporal gyrus (i.e. temporal cortex), still cortical and considered the "gold standard".
+
+```{r Zeisel2015 astrocyte numbers, echo=TRUE}
+
+# How many genes in Zeisel2015 astrocyte list?
+Zeisel2015 %>% filter(CellType == "Astrocyte") %>% .[["Gene"]] %>% unique() %>% length()
+
+```
+
+```{r Zeisel2015 plot, echo = FALSE,  fig.height = 10, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Zeisel 2015 across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
+
+# Query across mouse and specificity matrices separately and combine dataframes.
+source("/home/rreynolds/projects/MarkerGenes/R/query_gene_ctd.R")
+Zeisel_SI <- query_gene_ctd(genes = Zeisel2015 %>%
+                              filter(CellType == "Astrocyte") %>% 
+                              .[["Gene"]], 
+                            ctd_allKI, ctd_DRONC_mouse,
+                            celltypeLevel = 1,
+                            genelistSpecies = "mouse",
+                            ctdSpecies = "mouse") %>% 
+  dplyr::mutate(Species = "mouse") %>% 
+  bind_rows(query_gene_ctd(genes = Zeisel2015 %>%
+                             filter(CellType == "Astrocyte") %>% 
+                             .[["Gene"]], 
+                           ctd_DRONC_human, ctd_AIBS2019,
+                           celltypeLevel = 1,
+                           genelistSpecies = "mouse",
+                           ctdSpecies = "human") %>% 
+              dplyr::mutate(Species = "human"))
+
+# Summarise spread of SI across level 1 cell types from each study
+source("/home/rreynolds/projects/MarkerGenes/R/summarise_specificity_plot.R")
+summarise_specificity_plot(Zeisel_SI %>% 
+                             dplyr::mutate(flag = ifelse(CellType == "ASC" & Study == "ctd_DRONC_human", T, F)),
+                           fill.variable = "flag")
+
+
+```
+
+- For the most part, astrocyte marker genes have the highest specificity values within the corresponding astrocyte cell type in each study. The exception, as highlighted by the ```flag``` variable, is ASC in the human DRONC study. 
+- The distribution of specificity values for the Zeisel2015 astrocyte marker genes across different astrocytes in each study is variable, with the median varying across each study (see table below), as is the separation of the distribution from other cell types in these studies. 
+```{r Zeisel2015 astro medians, echo = FALSE}
+
+Zeisel_SI %>% group_by(Study, CellType) %>% summarise(Median = median(Specificity)) %>% filter(str_detect(CellType, "stro") | str_detect(CellType, "ASC"))
+
+```
+
+## EWCE using all Zeisel marker gene lists
+- Hard to discern how robust these profiles would be, without some testing. Therefore try running EWCE (https://www.frontiersin.org/articles/10.3389/fnins.2016.00016/full) to see whether the marker gene lists have higher expression than would be expected by chance in the relevant cell types.
+
+```{r run ewce all, echo = TRUE}
+
+# source("/home/rreynolds/projects/MarkerGenes/R/run_ewce.R")
+# # Run only once.
+# # Convert to lists and convert to human genes
+# list_of_genes <- setNames(Zeisel2015 %>% 
+#                             group_split(CellType) %>% 
+#                             lapply(., function(x) x %>% .[["Gene"]]) %>% 
+#                             lapply(., function(x) x %>% convert_between_species(., genelistSpecies = "mouse", ctdSpecies = "human")),
+#                           Zeisel2015 %>% 
+#                             .[["CellType"]] %>% 
+#                             unique() %>% 
+#                             sort())
+# 
+# # Running EWCE only in level 1 cell types
+# results <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+#                                genelistSpecies = "human", sctSpecies = "mouse",
+#                                ctd_allKI, ctd_DRONC_mouse) %>% 
+#   dplyr::mutate(Species = "mouse") %>% 
+#   bind_rows(run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+#                                genelistSpecies = "human", sctSpecies = "human",
+#                                ctd_DRONC_human, ctd_AIBS2019) %>% 
+#   dplyr::mutate(Species = "human"))
+# 
+# write_csv(results, path = "/home/rreynolds/projects/MarkerGenes/results/20190515_EWCE_Zeisel2015_10000bootstrap.csv")
+
+# Add some form of multiple test correction
+results <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190515_EWCE_Zeisel2015_10000bootstrap.csv") %>% 
+  dplyr::mutate(FDR = p.adjust(p, method = "BH"))
+
+```
+
+- Only ran EWCE using level 1 cell type annotations in each of the studies with provided specificity matrices. Used the same studies used in the prior section investigating distributions of specificity values within the astrocyte marker list from Zeisel 2015.
+- Results below have been multiple test corrected and filtered for those with FDR < 0.05.
+
+```{r show results of ewce, echo = FALSE}
+
+# Show only significant results
+results %>% 
+  dplyr::select(CellType, p, FDR, everything (), -annotLevel) %>% 
+  filter(FDR < 0.05) %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap')
+
+```
+
+```{r ewce plot, echo = FALSE, fig.height = 24, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Results of EWCE were filtered for only those cell types wherein the provided Zeisel cell type markers (as detailed in the in the first label of each plot) had an FDR < 0.05. Labels found on top of each plot refer to (from top to bottom): 1) the cell type within the Zeisel 2015 marker lists, 2) the species of cell type data in which the Zeisel marker list was tested and 3) the name of the study which provided the basis of the cell type data. Standard deviations from the mean is a measure of the distance between expression in the target list from the mean level of expression the bootstrapped sample. Within each plot, cell types are ordered by standard deviations from the mean.*"}
+
+# Plot only significant results i.e. those where Zeisel marker genes are more highly expressed in one cell type than you would expect by chance
+ggplot(results %>% 
+         dplyr::select(CellType, p, FDR, everything (), -annotLevel) %>% 
+         filter(FDR < 0.05), aes(x =  MarkerGenes::reorder_within(x = CellType,
+                                                                  by = sd_from_mean,
+                                                                  within = GeneSet,
+                                                                  fun = median,
+                                                                  desc = TRUE),
+                                 y = sd_from_mean)) +
+  geom_col() +
+  MarkerGenes::scale_x_reordered() +
+  facet_wrap(vars(GeneSet, Species, Study), scales = "free_x") +
+  labs(x = "Cell type", y = "Standard deviations from the mean", title = "") +
+  theme_bw() +
+  theme(axis.text.y = element_text(size = 6),
+        axis.text.x = element_text(size = 6, angle = 45, vjust = 1, hjust = 1),
+        axis.title = element_text(size = 10, face = "bold"),
+        strip.text = element_text(size = 8, face = "bold"),
+        legend.position = "none",
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        plot.margin = unit(c(t = -1, r = 0.5, b = 0.5, l = 0.5), "lines"))
+
+
+```
+
+### Summary of results
+- For almost all of the Zeisel 2015 cell type markers, except microglial markers, they were found to have higher expression than would be expected by chance in more than one cell type. However, looking at the "top"" cell type identified (i.e. the cell type wherein the highest standard deviations from the mean was measured), there is very good concordance between the cell type label within the Zeisel 2015 lists and the cell type in each study wherein it was found to have higher expression than expected by chance. 
+- Thus, these appear to be relatively robust marker lists, at least in terms of identifying major divisions. 
+
+## Next
+- Distribution of specificity indices change across studies? Correlation of specificity indices between cell types?
+- Fisher's exact across different cell types. Or could use gene overlap package and determine jaccard indices between flat lists.
+
+
