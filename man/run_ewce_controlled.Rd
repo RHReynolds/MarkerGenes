@@ -4,7 +4,7 @@
 \alias{run_ewce_controlled}
 \title{Run EWCE with control for GC content and transcript length.}
 \usage{
-run_ewce_controlled(list_of_genes, ..., celltypeLevel = c(1, "both"),
+run_ewce_controlled(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
   reps, genelistSpecies = c("human"), sctSpecies = c("mouse", "human"))
 }
 \arguments{
@@ -14,8 +14,8 @@ run_ewce_controlled(list_of_genes, ..., celltypeLevel = c(1, "both"),
 using \code{generate.celltype.data} from the EWCE package, and contains
 mean expression and specificity matrices from a scRNAseq study.}
 
-\item{celltypeLevel}{Choose whether to run only with level 1 cell types or
-both. 1 for only level 1, or "both" for both.}
+\item{celltypeLevel}{Choose whether to run only with level 1 cell types,
+level 2 cell types or both. 1 for only level 1, or "both" for both.}
 
 \item{reps}{Number of repeats that should be performed in bootstrapping.}
 
