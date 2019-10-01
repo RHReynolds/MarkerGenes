@@ -8,7 +8,8 @@ run_ewce_controlled(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
   reps, genelistSpecies = c("human"), sctSpecies = c("mouse", "human"))
 }
 \arguments{
-\item{list_of_genes}{List with gene lists.}
+\item{list_of_genes}{Named list containing vectors with gene IDs
+corresponding to each gene list to be tested.}
 
 \item{...}{Names of input ctds. An individual ctd, should have been generated
 using \code{generate.celltype.data} from the EWCE package, and contains
@@ -31,5 +32,5 @@ A dataframe of EWCE results for each of the gene lists in each study.
 }
 \description{
 Perform EWCE bootstrapping across several gene lists in more than one
-specificity matrix.
+specificity matrix (aka. ctd).
 }

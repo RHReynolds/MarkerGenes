@@ -1,9 +1,10 @@
 #' Run EWCE with control for GC content and transcript length.
 #'
 #' Perform EWCE bootstrapping across several gene lists in more than one
-#' specificity matrix.
+#' specificity matrix (aka. ctd).
 #'
-#' @param list_of_genes List with gene lists.
+#' @param list_of_genes Named list containing vectors with gene IDs
+#'   corresponding to each gene list to be tested.
 #' @param ... Names of input ctds. An individual ctd, should have been generated
 #'   using \code{generate.celltype.data} from the EWCE package, and contains
 #'   mean expression and specificity matrices from a scRNAseq study.
@@ -118,10 +119,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
 
         hits = list_of_genes[[i]] %>% unique()
 
-        # The next step is to determine the most suitable background set. The experimental methods used to find these gene are all genome wide,
-        # so there is no restriction imposed as a result of that. Thus our initial background set is the set of all mouse/human genes.
-        # Not all human genes have mouse orthologs however, so we need to drop all genes from the target and background set
-        # which do not have mouse orthologs.
+        # Background set
         bg = unique(c(hits, m2h$HGNC.symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
@@ -169,10 +167,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
 
         hits = list_of_genes[[i]] %>% unique()
 
-        # The next step is to determine the most suitable background set. The experimental methods used to find these gene are all genome wide,
-        # so there is no restriction imposed as a result of that. Thus our initial background set is the set of all mouse/human genes.
-        # Not all human genes have mouse orthologs however, so we need to drop all genes from the target and background set
-        # which do not have mouse orthologs.
+        # Background set
         bg = unique(c(hits, m2h$HGNC.symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
