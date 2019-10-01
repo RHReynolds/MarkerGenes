@@ -17,6 +17,11 @@
 #'   being used. Species must be the same across all input ctds.
 #'
 #' @return A dataframe of EWCE results for each of the gene lists in each study.
+#'
+#' @example run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+#'   genelistSpecies = "human", sctSpecies = "human", ctd_DRONC_human,
+#'   ctd_AIBS2019)
+#'
 #' @export
 
 run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "both"), reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human")) {
@@ -26,7 +31,8 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
     print("EWCE is loaded correctly")
   } else {
     print("trying to install EWCE")
-    install.packages("EWCE")
+    library(devtools)
+    install_github("nathanskene/ewce")
     if(require(EWCE)){
       print("EWCE installed and loaded")
     } else {
