@@ -826,3 +826,9 @@ ggarrange(a, b,
 # Open questions
 - How would marker lists perform across disease states or varying age groups? 
 - How do these lists perform using other methods e.g. MetaNeighbor (https://www.nature.com/articles/s41467-018-03282-0)?
+
+# Session info
+```{r}
+sessionInfo()
+```
+
