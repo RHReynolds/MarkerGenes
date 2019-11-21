@@ -51,12 +51,7 @@ knitr::opts_chunk$set(echo = F, message= F, warning = F)
 # Background
 
 ## Aim
-- The overarching idea of this project is to develop a marker gene resource open to other researchers.
-- Currently, this has been broken down into the following proposed workflow.
-
-![](https://www.lucidchart.com/publicSegments/view/604c2abf-e233-42ca-88bd-e72b4b0e35de/image.png){width=150%}
-
-- However, before setting upon this bigger idea we should start simple and assess the extent to which proposed marker gene lists vary between studies. That is, how robust are marker genes across studies? 
+- Develop a small brain-relevant marker gene resource for internal use.
 
 # Curating the datasets
 ## Descriptions for metadata columns
