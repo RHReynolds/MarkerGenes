@@ -23,7 +23,7 @@ library(tidyverse)
 library(stringr)
 devtools::load_all(path = "/home/rreynolds/projects/MarkerGenes/")
 
-load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/AIBS2019.rda")
+load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/AIBS2018_MTG.rda")
 load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Human.rda")
 load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Mouse.rda")
 load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Skene2018.rda")
@@ -77,7 +77,7 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 
 - The majority of specificity matrices were downloaded from Skene 2018, but also generated two matrices from:
     - Zeisel et al. 2018 (see: `/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R`)
-    - Allen Brain Atlas 2019 (see: `/home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2019_GeneratingSImatrix.R`). Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
+    - Allen Brain Atlas 2019 (see: `/home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R`). Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
     
 
 # Exploring the issue with Zeisel 2015
@@ -106,7 +106,7 @@ Zeisel2015 %>%
     - Skene2018: includes cortical as well as hippocampal regions and is a single cell study of the mouse brain.
     - Habib2017_DroNc_Mouse: single nuclear study of PFC and hippocampus, therefore allows some comparison of single cell vs. single nuclear.
     - Habib2017_DroNc_Human: no human specificity matrices are single cell, therefore used Habib as this includes PFC and hippocampus.
-    - AIBS2019: human and single nuclear. While this is middle temporal gyrus (i.e. temporal cortex), still cortical and considered the "gold standard".
+    - AIBS2018: human and single nuclear. While this is middle temporal gyrus (i.e. temporal cortex), still cortical and considered the "gold standard".
 
 ```{r Zeisel2015 astrocyte numbers, echo=TRUE}
 
@@ -130,7 +130,7 @@ Zeisel_SI <- query_gene_ctd(genes = Zeisel2015 %>%
   bind_rows(query_gene_ctd(genes = Zeisel2015 %>%
                              filter(CellType == "Astrocyte") %>% 
                              .[["Gene"]], 
-                           ctd_DRONC_human, ctd_AIBS2019,
+                           ctd_DRONC_human, ctd_AIBS2018,
                            celltypeLevel = 1,
                            genelistSpecies = "mouse",
                            ctdSpecies = "human") %>% 
@@ -179,7 +179,7 @@ Zeisel_results <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel
   dplyr::mutate(Species = "mouse") %>%
   bind_rows(run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
                                genelistSpecies = "human", sctSpecies = "human",
-                               ctd_DRONC_human, ctd_AIBS2019) %>%
+                               ctd_DRONC_human, ctd_AIBS2018) %>%
   dplyr::mutate(Species = "human"))
 
 write_csv(Zeisel_results, path = "/home/rreynolds/projects/MarkerGenes/results/20190515_EWCE_Zeisel2015_10000bootstrap.csv")
@@ -346,7 +346,7 @@ Wang_SI <- query_gene_ctd(genes = Wang2018 %>%
   bind_rows(query_gene_ctd(genes = Wang2018 %>%
                              filter(combined == "TPM:Adult-Astro") %>% 
                              .[["Gene"]], 
-                           ctd_DRONC_human, ctd_AIBS2019,
+                           ctd_DRONC_human, ctd_AIBS2018,
                            celltypeLevel = 1,
                            genelistSpecies = "human",
                            ctdSpecies = "human") %>% 
@@ -363,7 +363,7 @@ Wang_SI <- query_gene_ctd(genes = Wang2018 %>%
               bind_rows(query_gene_ctd(genes = Wang2018 %>%
                                          filter(combined == "UMI:Astro") %>% 
                                          .[["Gene"]], 
-                                       ctd_DRONC_human, ctd_AIBS2019,
+                                       ctd_DRONC_human, ctd_AIBS2018,
                                        celltypeLevel = 1,
                                        genelistSpecies = "human",
                                        ctdSpecies = "human") %>% 
@@ -419,7 +419,7 @@ list_of_genes <- setNames(Wang2018 %>%
 # Running EWCE only in level 1 cell types and in human studies
 Wang_results_human <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
                                genelistSpecies = "human", sctSpecies = "human",
-                               ctd_DRONC_human, ctd_AIBS2019) %>%
+                               ctd_DRONC_human, ctd_AIBS2018) %>%
   dplyr::mutate(Species = "human")
 
 write_csv(Wang_results_human, path = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_human_10000bootstrap.csv")
@@ -685,16 +685,16 @@ ggarrange(a, b,
 ```
 
 #### Summary of UMI results
-- The majority of UMI markers are significantly enriched in more than one cell type, but typically show a preference for one cell type over the other. E.g. The Ex and In sub-categories are found signficantly enriched within both the glutamatergic and GABAergic classes from the AIBS2019 study, but preferentially enrich in the class you would expect (i.e. Ex in glutamatergic and In in GABAergic).
+- The majority of UMI markers are significantly enriched in more than one cell type, but typically show a preference for one cell type over the other. E.g. The Ex and In sub-categories are found signficantly enriched within both the glutamatergic and GABAergic classes from the AIBS2018 study, but preferentially enrich in the class you would expect (i.e. Ex in glutamatergic and In in GABAergic).
 
 ### Overall conclusions
 - It is clear that there is some balance between the size of the marker list and the number of cell types it will be found enriched within. In general, UMI marker lists (range: 64-305) were larger than the TPM marker lists (range: 6-83), and also tended to be significantly enriched within multiple cell types (typically with a clear preference for one, as based on the sd from the mean).
 - The fold difference between top 2 cell types was typically larger when using UMI marker lists, as compared to TPM lists, indicating that UMI lists are more robust than TPM lists. This probably reflects list size more than anything.
 - Question is whether if using UMI marker list also allows distinction using level 2 cell types?
 
-## EWCE: UMI Wang marker lists and AIBS2019 level 2 cell types
+## EWCE: UMI Wang marker lists and AIBS2018 level 2 cell types
 - Decided to focus only on UMI markers, given that they might contain a sufficient number of genes to provide some robust distinction.
-- Furthermore, focussed on the AIBS2019 study as there are 75 different level 2 cell types, as opposed to only 15 in the DRONC study, so there is a real opportunity to put the lists to the test in distinguishing between level 2 cell types.
+- Furthermore, focussed on the AIBS2018 study as there are 75 different level 2 cell types, as opposed to only 15 in the DRONC study, so there is a real opportunity to put the lists to the test in distinguishing between level 2 cell types.
 
 ```{r run ewce UMI Wang level 2, echo = TRUE, eval = FALSE}
 
@@ -711,18 +711,18 @@ list_of_genes <- setNames(Wang2018 %>%
                             sort())
 
 
-# Running EWCE only in level 2 cell types and in AIBS2019
+# Running EWCE only in level 2 cell types and in AIBS2018
 Wang_results_UMI <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 2,
                                genelistSpecies = "human", sctSpecies = "human",
-                               ctd_AIBS2019)
-write_csv(Wang_results_UMI, path = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2019_10000bootstrap.csv")
+                               ctd_AIBS2018)
+write_csv(Wang_results_UMI, path = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv")
 
 ```
 
 ```{r UMI results, echo = TRUE}
 
 # Apply multiple test correction
-Wang_results_UMI <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2019_10000bootstrap.csv") %>% 
+Wang_results_UMI <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv") %>% 
   dplyr::mutate(FDR = p.adjust(p, method = "BH"))
 
 ```
@@ -815,7 +815,7 @@ ggarrange(a, b,
 - Both the Zeisel 2015 and the UMI markers from Wang 2018 are robust across level 1 cell types. In other words, they can identify and distinguish between the broader classes of cell type. 
 - Species-matched lists appear to perform better as based on the followed observations:
     1. For those Zeisel marker lists found to be enriched in more than one cell type, the fold difference between sd from the mean for the top two cell types was higher in mouse single-cell studies, as compared to human studies.
-    2. A comparison of the median fold difference of the mouse-derived Zeisel and human-derived UMI marker in the AIBS2019  study (using only level 1 cell types) found the median fold difference to be higher when using the species-matched list (UMI, median = 3.77; Zeisel, median = 2.92).
+    2. A comparison of the median fold difference of the mouse-derived Zeisel and human-derived UMI marker in the AIBS2018  study (using only level 1 cell types) found the median fold difference to be higher when using the species-matched list (UMI, median = 3.77; Zeisel, median = 2.92).
 - In terms of distinguishing level 2 cell types, the UMI marker list did not prove particularly well suited. Each individual UMI marker list was often found enriched in a number of related level 2 cell types, with little to distinguish between the enrichments. 
 
 # Open questions
