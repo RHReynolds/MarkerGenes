@@ -1,6 +1,6 @@
 #' Summarised specificity plot
 #'
-#' This function visually summarises the specificity values outputted by
+#' This function visually summarises the mean specificity values outputted by
 #' \code{query_gene_ctd}, across each ctd study.
 #'
 #' @param filtered_specificity A dataframe that contains the columns 'CellType',
@@ -10,8 +10,8 @@
 #' @param flag.variable Default is NULL. Fill this with a column name within
 #'   your dataframe if you wish to colour by certain groups within your table.
 #'
-#' @return Boxplot of specificity values of queried gene list across cell types
-#'   in each study.
+#' @return Boxplot of mean specificity values of queried gene list across cell
+#'   types in each study.
 #' @export
 #'
 
