@@ -10,8 +10,7 @@ Function was forked from personal R package of David Robinson, "drlib":
 \url{https://github.com/dgrtwo/drlib}
 }
 \usage{
-reorder_within(x, by, within, fun = mean, sep = "___", desc = FALSE,
-  ...)
+reorder_within(x, by, within, fun = mean, sep = "___", desc = FALSE, ...)
 
 scale_x_reordered(..., sep = "___")
 

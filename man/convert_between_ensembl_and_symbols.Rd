@@ -5,8 +5,10 @@
 \title{Convert ensembl IDs for human/mouse to HGNC symbols/MGI symbols,
 respectively.}
 \usage{
-convert_between_ensembl_and_symbols(genes, genelistSpecies = c("mouse",
-  "human"))
+convert_between_ensembl_and_symbols(
+  genes,
+  genelistSpecies = c("mouse", "human")
+)
 }
 \arguments{
 \item{genes}{Query genes as a vector of ensembl IDs.}

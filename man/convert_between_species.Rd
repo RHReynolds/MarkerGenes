@@ -4,8 +4,11 @@
 \alias{convert_between_species}
 \title{Convert a gene list for \code{query_gene_ctd} to correct species.}
 \usage{
-convert_between_species(genes, genelistSpecies = c("mouse", "human"),
-  ctdSpecies = c("mouse", "human"))
+convert_between_species(
+  genes,
+  genelistSpecies = c("mouse", "human"),
+  ctdSpecies = c("mouse", "human")
+)
 }
 \arguments{
 \item{genes}{Query genes as a vector of MGI or HGNC symbols.}

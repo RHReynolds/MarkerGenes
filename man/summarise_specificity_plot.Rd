@@ -16,10 +16,10 @@ just contain aforementioned.}
 your dataframe if you wish to colour by certain groups within your table.}
 }
 \value{
-Boxplot of specificity values of queried gene list across cell types
-  in each study.
+Boxplot of mean specificity values of queried gene list across cell
+  types in each study.
 }
 \description{
-This function visually summarises the specificity values outputted by
+This function visually summarises the mean specificity values outputted by
 \code{query_gene_ctd}, across each ctd study.
 }

@@ -4,9 +4,14 @@
 \alias{query_gene_ctd}
 \title{Query genes in specificity matrices.}
 \usage{
-query_gene_ctd(genes, ..., celltypeLevel = c(1, 2),
-  genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse",
-  "human"))
+query_gene_ctd(
+  genes,
+  ...,
+  celltypeLevel = c(1, 2),
+  median_included = FALSE,
+  genelistSpecies = c("mouse", "human"),
+  ctdSpecies = c("mouse", "human")
+)
 }
 \arguments{
 \item{genes}{Query genes as a vector.}
@@ -17,6 +22,10 @@ mean expression and specificity matrices from a scRNAseq study.}
 
 \item{celltypeLevel}{Either 1 or 2, depending on whether user wants to query
 level 1 or 2 cell types.}
+
+\item{median_included}{logical. If from newer version of EWCE ctd may include
+median expression and specificity. Setting to TRUE will include these in
+the final table.}
 
 \item{genelistSpecies}{Either 'mouse' or 'human' depending on whether MGI or
 HGNC symbols are used.}

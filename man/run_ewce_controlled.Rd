@@ -4,8 +4,14 @@
 \alias{run_ewce_controlled}
 \title{Run EWCE with control for GC content and transcript length.}
 \usage{
-run_ewce_controlled(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
-  reps, genelistSpecies = c("human"), sctSpecies = c("mouse", "human"))
+run_ewce_controlled(
+  list_of_genes,
+  ...,
+  celltypeLevel = c(1, 2, "both"),
+  reps,
+  genelistSpecies = c("human"),
+  sctSpecies = c("mouse", "human")
+)
 }
 \arguments{
 \item{list_of_genes}{Named list containing vectors with gene IDs
