@@ -16,6 +16,10 @@
 #'   human ENSEMBL.
 #' @param sctSpecies Either 'mouse' or 'human' depending on the ctd datasets
 #'   being used. Species must be the same across all input ctds.
+#' @param mouse_to_human Default is to use the default dataframe supplied by
+#'   within MarkerGenes packages, which contains all Human->Mouse orthologs for
+#'   all human genes. If user wishes to supply their own dataframe, must contain
+#'   the columns, 'hgnc_symbol' and 'MGI_symbol'.
 #'
 #' @return A dataframe of EWCE results for each of the gene lists in each study.
 #'
@@ -25,7 +29,10 @@
 #'
 #' @export
 
-run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "both"), reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human")) {
+run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
+                                reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human"),
+                                mouse_to_human = NULL) {
+
 
   # EWCE package necessary to run. Check if installed, and if not, install.
   if(require(EWCE)){
@@ -41,10 +48,13 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
     }
   }
 
+  # Load tidyverse
+  library(tidyverse)
+
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
   argument_names <- as.list(match.call()) %>%
-    within(., rm(list_of_genes, celltypeLevel, reps, genelistSpecies, sctSpecies))
+    within(., rm(list_of_genes, celltypeLevel, reps, genelistSpecies, sctSpecies, mouse_to_human))
   argument_names <- argument_names[-1] %>%
     as.character()
 
@@ -56,6 +66,21 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
   set.seed(1234)
   reps = reps # <- For publishable analysis use >10000. In Skene et al. 2016, 100,000 used.
 
+  # Loading mouse to human orthologs
+  if(is.null(mouse_to_human)){
+    data("mouse_to_human_orthologs", package = "MarkerGenes")
+    ## Filter for only one to one orthologs
+    m2h <- mouse_to_human_orthologs %>%
+      dplyr::filter(mmusculus_homolog_orthology_type == "ortholog_one2one") %>%
+      dplyr::select(hgnc_symbol, mmusculus_homolog_associated_gene_name) %>%
+      dplyr::rename(MGI_symbol = mmusculus_homolog_associated_gene_name) %>%
+      dplyr::filter(hgnc_symbol != "") %>%
+      dplyr::distinct(hgnc_symbol, MGI_symbol)
+  } else{
+    m2h <- mouse_to_human
+  }
+
+  # Currently a loop, but need to parallelise at some point
   if(celltypeLevel == 1){
 
     for (i in seq_along(list_of_genes)) {
@@ -72,7 +97,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         # so there is no restriction imposed as a result of that. Thus our initial background set is the set of all mouse/human genes.
         # Not all human genes have mouse orthologs however, so we need to drop all genes from the target and background set
         # which do not have mouse orthologs.
-        bg = unique(c(hits, m2h$HGNC.symbol))
+        bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
         cont_results = bootstrap.enrichment.test(
@@ -120,7 +145,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         hits = list_of_genes[[i]] %>% unique()
 
         # Background set
-        bg = unique(c(hits, m2h$HGNC.symbol))
+        bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
         cont_results = bootstrap.enrichment.test(
@@ -168,7 +193,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         hits = list_of_genes[[i]] %>% unique()
 
         # Background set
-        bg = unique(c(hits, m2h$HGNC.symbol))
+        bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
         cont_results = bootstrap.enrichment.test(

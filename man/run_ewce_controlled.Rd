@@ -10,7 +10,8 @@ run_ewce_controlled(
   celltypeLevel = c(1, 2, "both"),
   reps,
   genelistSpecies = c("human"),
-  sctSpecies = c("mouse", "human")
+  sctSpecies = c("mouse", "human"),
+  mouse_to_human = NULL
 )
 }
 \arguments{
@@ -32,6 +33,11 @@ human ENSEMBL.}
 
 \item{sctSpecies}{Either 'mouse' or 'human' depending on the ctd datasets
 being used. Species must be the same across all input ctds.}
+
+\item{mouse_to_human}{Default is to use the default dataframe supplied by
+within MarkerGenes packages, which contains all Human->Mouse orthologs for
+all human genes. If user wishes to supply their own dataframe, must contain
+the columns, 'hgnc_symbol' and 'MGI_symbol'.}
 }
 \value{
 A dataframe of EWCE results for each of the gene lists in each study.
