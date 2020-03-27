@@ -23,7 +23,7 @@ Resource that contains:
 - Also contains a number of functions that:
     - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.html](workflows/query_gene_ctd_tutorial.html)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
     - Run EWCE with multiple gene lists as input and multiple specificity matrices derived from the same organism ([`run_ewce()`](R/run_ewce.R)).
-    
+
 ## Specificity matrices <a name="matrices"></a>
 - Specificity of a gene represents the proportion of the total expression of a gene found in one cell type as compared to that in all cell types (i.e., the mean expression in one cell type divided by the mean expression in all cell types). If the expression of a gene is shared between two or more cell types, it will get a lower specificity measure.
 - For a description of how it's calculated, please refer to [Skene et al. 2016](https://www.frontiersin.org/articles/10.3389/fnins.2016.00016/full)
