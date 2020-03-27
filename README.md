@@ -21,7 +21,7 @@ Resource that contains:
     - [Specificity matrices.](specificity_matrices/)
 - For metadata on the available lists/matrices, please refer to:  [MarkerLists.html](workflows/MarkerLists.html).
 - Also contains a number of functions that:
-    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
+    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.html](workflows/query_gene_ctd_tutorial.html)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
     - Run EWCE with multiple gene lists as input and multiple specificity matrices derived from the same organism ([`run_ewce()`](R/run_ewce.R)).
     
 ## Specificity matrices <a name="matrices"></a>

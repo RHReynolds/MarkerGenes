@@ -1,9 +1,9 @@
 ---
 title: "Exploratory analyses"
 author: "Regina H. Reynolds"
-date: "5/2/2019"
 output: 
   html_document:
+    code_folding: hide
     theme: paper
     highlight: kate
     df_print: paged
@@ -23,19 +23,19 @@ library(tidyverse)
 library(stringr)
 devtools::load_all(path = "/home/rreynolds/projects/MarkerGenes/")
 
-load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/AIBS2018_MTG.rda")
-load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Human.rda")
-load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Habib2017_DroNc_Mouse.rda")
-load("/home/rreynolds/projects/MarkerGenes/specificity_matrices/Skene2018.rda")
+load("../specificity_matrices/AIBS2018_MTG.rda")
+load("../specificity_matrices/Habib2017_DroNc_Human.rda")
+load("../specificity_matrices/Habib2017_DroNc_Mouse.rda")
+load("../specificity_matrices/Skene2018.rda")
 
 # Load list, gather and remove NAs.
-Zeisel2015 <- read_delim("/home/rreynolds/projects/MarkerGenes/flat_lists/Zeisel2015_TableS1_MarkerGenes.txt", delim = "\t") %>% 
+Zeisel2015 <- read_delim("../flat_lists/Zeisel2015_TableS1_MarkerGenes.txt", delim = "\t") %>% 
   gather(key = "CellType", value = "Gene") %>% 
   na.omit()
 
-Wang2018 <- read_excel(path = "/home/rreynolds/projects/MarkerGenes/flat_lists/DER-19_Single_cell_markergenes_TPM.xlsx") %>% 
+Wang2018 <- read_excel(path = "../flat_lists/DER-19_Single_cell_markergenes_TPM.xlsx") %>% 
   dplyr::mutate(Technology = "TPM") %>% 
-  bind_rows(read_excel(path = "/home/rreynolds/projects/MarkerGenes/flat_lists/DER-21_Single_cell_markergenes_UMI.xlsx") %>% 
+  bind_rows(read_excel(path = "../flat_lists/DER-21_Single_cell_markergenes_UMI.xlsx") %>% 
               dplyr::mutate(Technology = "UMI")) %>% 
   tidyr::unite(combined, c(Technology, CellType), sep = ":", remove = FALSE)
 
@@ -55,9 +55,9 @@ knitr::opts_chunk$set(echo = F, message= F, warning = F)
 
 # Curating the datasets
 ## Descriptions for metadata columns
-```{r metadata columns, echo=FALSE, out.width='100%', fig.pos='H'}
+```{r metadata columns, out.width='100%', fig.pos='H'}
 
-readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "ColumnDescriptions") %>% 
+readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "ColumnDescriptions") %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
@@ -65,10 +65,10 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 ```
 
 ## Dataset metadata
-```{r metadata, echo=FALSE, out.width='100%', fig.pos='H'}
+```{r metadata, out.width='100%', fig.pos='H'}
 
-readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
-  arrange(desc(list_or_SI_matrix), resource_name) %>% 
+readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
+  dplyr::arrange(desc(list_or_SI_matrix), resource_name) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
@@ -77,7 +77,7 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 
 - The majority of specificity matrices were downloaded from Skene 2018, but also generated two matrices from:
     - Zeisel et al. 2018 (see: `/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R`)
-    - Allen Brain Atlas 2019 (see: `/home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R`). Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
+    - Allen Brain Atlas 2019 (see: `../misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R`). Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
     
 
 # Exploring the issue with Zeisel 2015
@@ -85,12 +85,12 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 ## Distribution of specificity values across studies
 - A commonly used marker gene list is from the mouse single cell study, Zeisel 2015. If we were to query this list of these genes across different studies with specificity matrices, how much can we expect specificity values to vary?
 
-```{r Zeisel2015 cell types, echo = T}
+```{r Zeisel2015 cell types, echo = T, class.source='fold-show'}
 
 # What cell types are there in Zeisel 2015 and how many genes per cell type?
 Zeisel2015 %>% 
   dplyr::group_by(CellType) %>% 
-  tally()
+  dplyr::tally()
 
 ```
 
@@ -108,81 +108,84 @@ Zeisel2015 %>%
     - Habib2017_DroNc_Human: no human specificity matrices are single cell, therefore used Habib as this includes PFC and hippocampus.
     - AIBS2018: human and single nuclear. While this is middle temporal gyrus (i.e. temporal cortex), still cortical and considered the "gold standard".
 
-```{r Zeisel2015 astrocyte numbers, echo=TRUE}
+```{r Zeisel2015 astrocyte numbers, echo = T, class.source='fold-show'}
 
 # How many genes in Zeisel2015 astrocyte list?
 Zeisel2015 %>% filter(CellType == "Astrocyte") %>% .[["Gene"]] %>% unique() %>% length()
 
 ```
 
-```{r Zeisel2015 plot, echo = FALSE,  fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Zeisel 2015 across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
+```{r Zeisel2015 plot, echo = T, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Zeisel 2015 across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
 
 # Query across mouse and specificity matrices separately and combine dataframes.
-source("/home/rreynolds/projects/MarkerGenes/R/query_gene_ctd.R")
-Zeisel_SI <- query_gene_ctd(genes = Zeisel2015 %>%
-                              filter(CellType == "Astrocyte") %>% 
-                              .[["Gene"]], 
-                            ctd_allKI, ctd_DRONC_mouse,
-                            celltypeLevel = 1,
-                            genelistSpecies = "mouse",
-                            ctdSpecies = "mouse") %>% 
+Zeisel_SI <- 
+  MarkerGenes::query_gene_ctd(genes = Zeisel2015 %>%
+                                filter(CellType == "Astrocyte") %>% 
+                                .[["Gene"]], 
+                              ctd_allKI, ctd_DRONC_mouse,
+                              celltypeLevel = 1,
+                              genelistSpecies = "mouse",
+                              ctdSpecies = "mouse") %>% 
   dplyr::mutate(Species = "mouse") %>% 
-  bind_rows(query_gene_ctd(genes = Zeisel2015 %>%
-                             filter(CellType == "Astrocyte") %>% 
-                             .[["Gene"]], 
-                           ctd_DRONC_human, ctd_AIBS2018,
-                           celltypeLevel = 1,
-                           genelistSpecies = "mouse",
-                           ctdSpecies = "human") %>% 
+  bind_rows(MarkerGenes::query_gene_ctd(genes = Zeisel2015 %>%
+                                          filter(CellType == "Astrocyte") %>% 
+                                          .[["Gene"]], 
+                                        ctd_DRONC_human, ctd_AIBS2018,
+                                        celltypeLevel = 1,
+                                        genelistSpecies = "mouse",
+                                        ctdSpecies = "human") %>% 
               dplyr::mutate(Species = "human")) %>% 
   dplyr::mutate(Study = str_replace(Study, "ctd_", ""),
                 Study = str_replace(Study, "allKI", "Skene2018"))
 
 # Summarise spread of SI across level 1 cell types from each study
-source("/home/rreynolds/projects/MarkerGenes/R/summarise_specificity_plot.R")
-summarise_specificity_plot(Zeisel_SI %>% 
-                             dplyr::mutate(flag = ifelse(CellType == "ASC" & Study == "DRONC_human", T, F)),
-                           fill.variable = "flag")
+MarkerGenes::summarise_specificity_plot(Zeisel_SI %>% 
+                                          dplyr::mutate(flag = ifelse(CellType == "ASC" & Study == "DRONC_human", T, F)),
+                                        fill.variable = "flag")
 
 
 ```
 
 - For the most part, astrocyte marker genes have the highest specificity values within the corresponding astrocyte cell type in each study. The exception, as highlighted by the ```flag``` variable, is ASC in the human DRONC study. 
 - The distribution of specificity values for the Zeisel2015 astrocyte marker genes across different astrocytes in each study is variable, with the median varying across each study (see table below), as is the separation of the distribution from other cell types in these studies. 
-```{r Zeisel2015 astro medians, echo = FALSE}
+```{r Zeisel2015 astro medians}
 
-Zeisel_SI %>% group_by(Study, CellType) %>% summarise(Median = median(Specificity)) %>% filter(str_detect(CellType, "stro") | str_detect(CellType, "ASC"))
+Zeisel_SI %>% 
+  dplyr::group_by(Study, CellType) %>% 
+  dplyr::summarise(Median = median(Specificity)) %>% 
+  dplyr::filter(str_detect(CellType, "stro") | str_detect(CellType, "ASC"))
 
 ```
 
 ## EWCE: Zeisel marker gene lists and level 1 cell types
 - Hard to discern how robust these profiles would be, without some testing. Therefore try running EWCE (https://www.frontiersin.org/articles/10.3389/fnins.2016.00016/full) to see whether the marker gene lists have higher expression than would be expected by chance in the relevant cell types.
 
-```{r Zeisel ewce all, echo = TRUE, eval = FALSE}
+```{r Zeisel ewce all, echo = T, eval = FALSE, class.source = "fold-show"}
 
-source("/home/rreynolds/projects/MarkerGenes/R/run_ewce.R")
 # Run only once.
 # Convert to lists and convert to human genes
-list_of_genes <- setNames(Zeisel2015 %>%
-                            group_split(CellType) %>%
-                            lapply(., function(x) x %>% .[["Gene"]]) %>%
-                            lapply(., function(x) x %>% convert_between_species(., genelistSpecies = "mouse", ctdSpecies = "human")),
-                          Zeisel2015 %>%
-                            .[["CellType"]] %>%
-                            unique() %>%
-                            sort())
+list_of_genes <- 
+  setNames(Zeisel2015 %>%
+             group_split(CellType) %>%
+             lapply(., function(x) x %>% .[["Gene"]]) %>%
+             lapply(., function(x) x %>% convert_between_species(., genelistSpecies = "mouse", ctdSpecies = "human")),
+           Zeisel2015 %>%
+             .[["CellType"]] %>%
+             unique() %>%
+             sort())
 
 # Running EWCE only in level 1 cell types
-Zeisel_results <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
-                               genelistSpecies = "human", sctSpecies = "mouse",
-                               ctd_allKI, ctd_DRONC_mouse) %>%
+Zeisel_results <- 
+  MarkerGenes::run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+                                   genelistSpecies = "human", sctSpecies = "mouse",
+                                   ctd_allKI, ctd_DRONC_mouse) %>%
   dplyr::mutate(Species = "mouse") %>%
-  bind_rows(run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
-                               genelistSpecies = "human", sctSpecies = "human",
-                               ctd_DRONC_human, ctd_AIBS2018) %>%
-  dplyr::mutate(Species = "human"))
+  bind_rows(MarkerGenes::run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+                                             genelistSpecies = "human", sctSpecies = "human",
+                                             ctd_DRONC_human, ctd_AIBS2018) %>%
+              dplyr::mutate(Species = "human"))
 
-write_csv(Zeisel_results, path = "/home/rreynolds/projects/MarkerGenes/results/20190515_EWCE_Zeisel2015_10000bootstrap.csv")
+write_csv(Zeisel_results, path = "../results/20190515_EWCE_Zeisel2015_10000bootstrap.csv")
 
 ```
 
@@ -192,10 +195,11 @@ write_csv(Zeisel_results, path = "/home/rreynolds/projects/MarkerGenes/results/2
     2. Plotting the number of significantly enriched cell types for each of the Zeisel cell type marker lists in each single cell study used.
     3. Plotting the fold difference in the standard deviations from the mean between the top 2 enriched cell types. Standard deviations from the mean is a measure of the distance between expression in the target list from the mean level of expression the bootstrapped sample.
 
-```{r Zeisel tally, echo = FALSE}
+```{r Zeisel tally}
 
 # Add some form of multiple test correction
-Zeisel_results <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190515_EWCE_Zeisel2015_10000bootstrap.csv") %>% 
+Zeisel_results <- 
+  read_csv(file = "../results/20190515_EWCE_Zeisel2015_10000bootstrap.csv") %>% 
   dplyr::mutate(FDR = p.adjust(p, method = "BH"),
                 Study = str_replace(Study, "ctd_", ""),
                 Study = str_replace(Study, "allKI", "Skene2018"))
@@ -203,8 +207,8 @@ Zeisel_results <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/
 # tally significantly enriched cell types per marker list
 cell_tally <- Zeisel_results %>% 
   dplyr::filter(FDR < 0.05) %>% 
-  group_by(GeneSet, Study) %>% 
-  tally()
+  dplyr::group_by(GeneSet, Study) %>% 
+  dplyr::tally()
 
 Zeisel_results %>% 
   tidyr::unite(combined, c(GeneSet, Study), sep = ":", remove = FALSE) %>% 
@@ -214,10 +218,10 @@ Zeisel_results %>%
                                    .[["combined"]])) %>% 
   dplyr::filter(FDR < 0.05) %>% 
   dplyr::mutate(MarkerList = GeneSet) %>% 
-  group_by(MarkerList, Study) %>% 
-  top_n(., n = 2, sd_from_mean) %>% 
+  dplyr::group_by(MarkerList, Study) %>% 
+  dplyr::top_n(., n = 2, sd_from_mean) %>% 
   # Add those results where only 1 significant cell type found
-  bind_rows(Zeisel_results %>% 
+  dplyr::bind_rows(Zeisel_results %>% 
               tidyr::unite(combined, c(GeneSet, Study), sep = ":", remove = FALSE) %>% 
               dplyr::filter(combined %in% c(cell_tally %>% 
                                                tidyr::unite(combined, c(GeneSet, Study), sep = ":", remove = FALSE) %>% 
@@ -227,7 +231,7 @@ Zeisel_results %>%
               dplyr::mutate(MarkerList = GeneSet) %>% 
               group_by(MarkerList, Study) %>% 
               top_n(., n = 1, sd_from_mean)) %>% 
-  arrange(Study, MarkerList, desc(sd_from_mean)) %>% 
+  dplyr::arrange(Study, MarkerList, desc(sd_from_mean)) %>% 
   dplyr::select(MarkerList, Study, CellType, sd_from_mean, FDR) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
@@ -235,7 +239,7 @@ Zeisel_results %>%
 
 ```
 
-```{r Zeisel ewce tally plot, echo = FALSE, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Zeisel marker lists. b) Plot for those Zeisel marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
+```{r Zeisel ewce tally plot, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Zeisel marker lists. b) Plot for those Zeisel marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
 
 # plot for number of significantly enriched cell types by marker list
 a <- ggplot(cell_tally, aes(x = MarkerGenes::reorder_within(x = GeneSet,
@@ -266,13 +270,13 @@ fold_diff_cells <- Zeisel_results %>%
                                    dplyr::filter(n < 2) %>% 
                                    .[["combined"]])) %>% 
   dplyr::filter(FDR < 0.05) %>% 
-  group_by(GeneSet, Study) %>% 
-  top_n(., n = 2, sd_from_mean) %>% 
+  dplyr::group_by(GeneSet, Study) %>% 
+  dplyr::top_n(., n = 2, sd_from_mean) %>% 
   dplyr::mutate(Rank = str_c("top_", rank(-sd_from_mean))) %>% 
   dplyr::select(GeneSet, sd_from_mean, Rank) %>% 
   tidyr::spread(key = Rank, value = sd_from_mean) %>% 
   dplyr::mutate(fold_diff = top_1/top_2) %>% 
-  inner_join(cell_tally)
+  dplyr::inner_join(cell_tally)
 
 # plot for fold change difference between first and second enriched cell type
 b <- ggplot(fold_diff_cells, aes(x = MarkerGenes::reorder_within(x = GeneSet,
@@ -314,12 +318,12 @@ ggarrange(a, b,
 	  - UMI: Marker genes merged from PsychENCODE and Lake 2018.
 - In the original paper, a comparison of gene expression profiles based on marker genes of TPM and UMI datasets showed that these were very similar. Would expect this to be reflected in EWCE results.
 
-```{r Wang tally, echo = F, warning = F}
+```{r Wang tally}
 
 # What cell types are present within these flat lists and how many genes are in each list?
 Wang2018 %>% 
-  group_by(combined) %>% 
-  tally()
+  dplyr::group_by(combined) %>% 
+  dplyr::tally()
 
 ```
 
@@ -332,61 +336,65 @@ Wang2018 %>%
 - Comparisons made across the same human studies as before (i.e. human DRONC study and AIBS 2019), which include cortical tissues (as in Wang2018).
 
 #### TPM
-```{r Wang2018 TPM plot, echo = FALSE,  fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Wang 2018 TPM across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
+```{r Wang2018 TPM plot, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Wang 2018 TPM across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
 
 # Query across mouse and specificity matrices separately and combine dataframes.
-Wang_SI <- query_gene_ctd(genes = Wang2018 %>%
-                            filter(combined == "TPM:Adult-Astro") %>% 
-                            .[["Gene"]], 
-                          ctd_allKI, ctd_DRONC_mouse,
-                          celltypeLevel = 1,
-                          genelistSpecies = "human",
-                          ctdSpecies = "mouse") %>% 
+Wang_SI <-  
+  MarkerGenes::query_gene_ctd(genes = Wang2018 %>%
+                                filter(combined == "TPM:Adult-Astro") %>% 
+                                .[["Gene"]], 
+                              ctd_allKI, ctd_DRONC_mouse,
+                              celltypeLevel = 1,
+                              genelistSpecies = "human",
+                              ctdSpecies = "mouse") %>% 
   dplyr::mutate(Species = "mouse") %>% 
-  bind_rows(query_gene_ctd(genes = Wang2018 %>%
-                             filter(combined == "TPM:Adult-Astro") %>% 
-                             .[["Gene"]], 
-                           ctd_DRONC_human, ctd_AIBS2018,
-                           celltypeLevel = 1,
-                           genelistSpecies = "human",
-                           ctdSpecies = "human") %>% 
-              dplyr::mutate(Species = "human")) %>% 
+  dplyr::bind_rows(MarkerGenes::query_gene_ctd(genes = Wang2018 %>%
+                                                 dplyr::filter(combined == "TPM:Adult-Astro") %>% 
+                                                 .[["Gene"]], 
+                                               ctd_DRONC_human, ctd_AIBS2018,
+                                               celltypeLevel = 1,
+                                               genelistSpecies = "human",
+                                               ctdSpecies = "human") %>% 
+                     dplyr::mutate(Species = "human")) %>% 
   dplyr::mutate(Technology = "TPM") %>% 
-  bind_rows(query_gene_ctd(genes = Wang2018 %>%
-                             filter(combined == "UMI:Astro") %>% 
-                             .[["Gene"]], 
-                           ctd_allKI, ctd_DRONC_mouse,
-                           celltypeLevel = 1,
-                           genelistSpecies = "human",
-                           ctdSpecies = "mouse") %>% 
-              dplyr::mutate(Species = "mouse") %>% 
-              bind_rows(query_gene_ctd(genes = Wang2018 %>%
-                                         filter(combined == "UMI:Astro") %>% 
-                                         .[["Gene"]], 
-                                       ctd_DRONC_human, ctd_AIBS2018,
-                                       celltypeLevel = 1,
-                                       genelistSpecies = "human",
-                                       ctdSpecies = "human") %>% 
-                          dplyr::mutate(Species = "human")) %>% 
-              dplyr::mutate(Technology = "UMI"))
+  dplyr::bind_rows(MarkerGenes::query_gene_ctd(genes = Wang2018 %>%
+                                                 dplyr::filter(combined == "UMI:Astro") %>% 
+                                                 .[["Gene"]], 
+                                               ctd_allKI, ctd_DRONC_mouse,
+                                               celltypeLevel = 1,
+                                               genelistSpecies = "human",
+                                               ctdSpecies = "mouse") %>% 
+                     dplyr::mutate(Species = "mouse") %>% 
+                     dplyr::bind_rows(MarkerGenes::query_gene_ctd(genes = Wang2018 %>%
+                                                                    dplyr::filter(combined == "UMI:Astro") %>% 
+                                                                    .[["Gene"]], 
+                                                                  ctd_DRONC_human, ctd_AIBS2018,
+                                                                  celltypeLevel = 1,
+                                                                  genelistSpecies = "human",
+                                                                  ctdSpecies = "human") %>% 
+                                        dplyr::mutate(Species = "human")) %>% 
+                     dplyr::mutate(Technology = "UMI"))
 
 # Summarise spread of SI across level 1 cell types from each study
-summarise_specificity_plot(Wang_SI %>% dplyr::filter(Technology == "TPM"))
+MarkerGenes::summarise_specificity_plot(Wang_SI %>% dplyr::filter(Technology == "TPM"))
 
 ```
 
 #### UMI
-```{r Wang2018 UMI plot, echo = FALSE,  fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Wang 2018 UMI across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
+```{r Wang2018 UMI plot, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *Displays specificity values of astrocyte marker genes derived from Wang 2018 UMI across different cell types within various single-cell/nuclei studies. Within each study, cell types have been ordered by the median specificity.*"}
 
 # Summarise spread of SI across level 1 cell types from each study
-summarise_specificity_plot(Wang_SI %>% dplyr::filter(Technology == "UMI"))
+MarkerGenes::summarise_specificity_plot(Wang_SI %>% dplyr::filter(Technology == "UMI"))
 
 ```
 
 #### Medians
-```{r Wang2018 astro medians, echo = FALSE}
+```{r Wang2018 astro medians}
 
-Wang_SI %>% group_by(Technology, Study, CellType) %>% summarise(Median = median(Specificity)) %>% filter(str_detect(CellType, "stro") | str_detect(CellType, "ASC"))
+Wang_SI %>% 
+  dplyr::group_by(Technology, Study, CellType) %>% 
+  dplyr::summarise(Median = median(Specificity)) %>% 
+  dplyr::filter(str_detect(CellType, "stro") | str_detect(CellType, "ASC"))
 
 ```
 - TPM-derived astrocyte markers had a much higher median across all studies compared to both UMI-derived astrocyte markers and Zeisel 2015 astrocyte markers. UMI-derived astrocyte markers had a higher median than Zeisel astrocyte markers in both human studies, but a lower median than Zeisel astrocyte markers in mouse studies. 
@@ -395,13 +403,13 @@ Wang_SI %>% group_by(Technology, Study, CellType) %>% summarise(Median = median(
 - Only ran EWCE using level 1 cell type annotations in each of the studies with provided specificity matrices. Used only human studies from prior section investigating distributions of specificity values.
 - Results were multiple test corrected and filtered for those with FDR < 0.05.
 
-```{r run ewce all Wang, echo = TRUE, eval = FALSE}
+```{r run ewce all Wang, echo = T, eval = F, class.source = "fold-show"}
 
 # Run only once.
 # OBS. EWCE only works if more than four genes provided. Any lists smaller than 4?
 Wang2018 %>% 
-  group_by(combined) %>% 
-  tally() %>% 
+  dplyr::group_by(combined) %>% 
+  dplyr::tally() %>% 
   dplyr::filter(n < 4)
 
 # Remove lists with fewer genes than required
@@ -417,32 +425,33 @@ list_of_genes <- setNames(Wang2018 %>%
 
 
 # Running EWCE only in level 1 cell types and in human studies
-Wang_results_human <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
-                               genelistSpecies = "human", sctSpecies = "human",
-                               ctd_DRONC_human, ctd_AIBS2018) %>%
+Wang_results_human <- 
+  MarkerGenes::run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
+                                   genelistSpecies = "human", sctSpecies = "human",
+                                   ctd_DRONC_human, ctd_AIBS2018) %>%
   dplyr::mutate(Species = "human")
 
-write_csv(Wang_results_human, path = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_human_10000bootstrap.csv")
+write_csv(Wang_results_human, path = "../results/20190523_EWCE_Wang2018_human_10000bootstrap.csv")
 
 ```
 
-```{r Wang FDR, echo = FALSE, results = 'hide'}
+```{r Wang FDR, results = 'hide'}
 
 # Add some form of multiple test correction
-Wang_results_human <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_human_10000bootstrap.csv") %>% 
+Wang_results_human <- read_csv(file = "../results/20190523_EWCE_Wang2018_human_10000bootstrap.csv") %>% 
   dplyr::mutate(FDR = p.adjust(p, method = "BH"),
                 Study = str_replace(Study, "ctd_", ""))
 
 ```
 
 ### TPM
-```{r TPM tally, echo = FALSE}
+```{r TPM tally}
 
 # tally significantly enriched cell types per marker list
 cell_tally <- Wang_results_human %>% 
   dplyr::filter(FDR < 0.05 & str_detect(GeneSet, "TPM:")) %>% 
-  group_by(GeneSet, Study) %>% 
-  tally()
+  dplyr::group_by(GeneSet, Study) %>% 
+  dplyr::tally()
 
 Wang_results_human %>% 
   dplyr::filter(FDR < 0.05 & str_detect(GeneSet, "TPM:")) %>% 
@@ -453,10 +462,10 @@ Wang_results_human %>%
                                    .[["combined"]])) %>% 
   dplyr::filter(FDR < 0.05) %>% 
   dplyr::mutate(MarkerList = GeneSet) %>% 
-  group_by(MarkerList, Study) %>% 
-  top_n(., n = 2, sd_from_mean) %>% 
+  dplyr::group_by(MarkerList, Study) %>% 
+  dplyr::top_n(., n = 2, sd_from_mean) %>% 
   # Add those results where only 1 significant cell type found
-  bind_rows(Wang_results_human %>% 
+  dplyr::bind_rows(Wang_results_human %>% 
               dplyr::filter(FDR < 0.05 & str_detect(GeneSet, "TPM:")) %>% 
               tidyr::unite(combined, c(GeneSet, Study), sep = ":", remove = FALSE) %>% 
               dplyr::filter(combined %in% c(cell_tally %>% 
@@ -468,7 +477,7 @@ Wang_results_human %>%
               group_by(MarkerList, Study) %>% 
               top_n(., n = 1, sd_from_mean)) %>% 
   dplyr::select(MarkerList, Study, CellType, sd_from_mean, FDR) %>%
-  arrange(Study, MarkerList, desc(sd_from_mean)) %>% 
+  dplyr::arrange(Study, MarkerList, desc(sd_from_mean)) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
@@ -476,7 +485,7 @@ Wang_results_human %>%
 ```
 
 
-```{r ewce plot wang TPM, echo = FALSE, fig.height = 6, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Wang 2018 TPM marker lists. b) Plot for those TPM marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
+```{r ewce plot wang TPM, fig.height = 6, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Wang 2018 TPM marker lists. b) Plot for those TPM marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
 
 # plot for number of significantly enriched cell types by marker list
 a <- ggplot(cell_tally, aes(x = MarkerGenes::reorder_within(x = GeneSet,
@@ -546,7 +555,7 @@ ggarrange(a, b,
 #### Summary of TPM results
 - Firstly, worth noting that some of the marker lists do not identify a significantly enriched cell type in the study, and therefore are not displayed on the plot. This includes:  
 
-```{r non-significant marker lists, echo= FALSE}
+```{r non-significant marker lists}
 
 non_sig <- Wang_results_human %>% 
   dplyr::select(CellType, p, FDR, everything (), -annotLevel) %>% 
@@ -578,7 +587,7 @@ non_sig[c(non_sig %in% sig) == FALSE] %>%
     - Dev-quiescent in OPCs, although this perhaps makes sense in that these are the only "progenitor"-like cells in the single-cell studies, thus their transcriptional profiles may match up better with a quiescent developmental cell type.
 
 ### UMI
-```{r UMI tally, echo = FALSE}
+```{r UMI tally}
 
 # tally significantly enriched cell types per marker list
 cell_tally <- Wang_results_human %>% 
@@ -617,7 +626,7 @@ Wang_results_human %>%
 
 ```
 
-```{r ewce plot wang UMI, echo = FALSE, fig.height = 6, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Wang 2018 UMI marker lists. b) Plot for those UMI marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
+```{r ewce plot wang UMI, fig.height = 6, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the Wang 2018 UMI marker lists. b) Plot for those UMI marker gene lists with more than one significant enriched cell type displaying fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1. In both a and b, marker lists are orderd within each study by the number of significantly enriched cell types.*"}
 
 # plot for number of significantly enriched cell types by marker list
 a <- ggplot(cell_tally, aes(x = MarkerGenes::reorder_within(x = GeneSet,
@@ -696,7 +705,7 @@ ggarrange(a, b,
 - Decided to focus only on UMI markers, given that they might contain a sufficient number of genes to provide some robust distinction.
 - Furthermore, focussed on the AIBS2018 study as there are 75 different level 2 cell types, as opposed to only 15 in the DRONC study, so there is a real opportunity to put the lists to the test in distinguishing between level 2 cell types.
 
-```{r run ewce UMI Wang level 2, echo = TRUE, eval = FALSE}
+```{r run ewce UMI Wang level 2, echo = T, eval = F, class.source = "fold-show"}
 
 # Run only once.
 # Remove lists with fewer genes than required
@@ -715,14 +724,14 @@ list_of_genes <- setNames(Wang2018 %>%
 Wang_results_UMI <- run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 2,
                                genelistSpecies = "human", sctSpecies = "human",
                                ctd_AIBS2018)
-write_csv(Wang_results_UMI, path = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv")
+write_csv(Wang_results_UMI, path = "../results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv")
 
 ```
 
-```{r UMI results, echo = TRUE}
+```{r UMI results, echo = T}
 
 # Apply multiple test correction
-Wang_results_UMI <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv") %>% 
+Wang_results_UMI <- read_csv(file = "../results/20190523_EWCE_Wang2018_UMI_AIBS2018_10000bootstrap.csv") %>% 
   dplyr::mutate(FDR = p.adjust(p, method = "BH"))
 
 ```
@@ -731,7 +740,7 @@ Wang_results_UMI <- read_csv(file = "/home/rreynolds/projects/MarkerGenes/result
 - The issue at this level of cell types is the number of significant enrichments found (`r Wang_results_UMI %>% dplyr::filter(FDR < 0.05) %>% nrow()`) across the `r Wang_results_UMI %>% .[["GeneSet"]] %>% unique() %>% length()` UMI marker lists.
 - Looking at the top 2 enriched cell types for each list, they appear to match the cell type implied by the marker list.
 
-```{r top 2 UMI, echo = F}
+```{r top 2 UMI}
 
 # tally significantly enriched cell types per marker list
 cell_tally <- Wang_results_UMI %>% 
@@ -757,7 +766,7 @@ Wang_results_UMI %>%
 
 - Notably, the number of cell types within which the marker lists are enriched is quite high for most marker lists (especially neuronal marker lists), and the fold difference in sd from the mean (which was used to rank cell types in previous plots) between the first and second enriched cell type is not large (see below). For those marker lists with many significantly enriched cell types, the fold difference between the top 2 cell types is often < 2, implying that the ability to distinguish between the two based on the provided marker list is minimal.
 
-```{r ewce plot wang UMI level 2 tally, echo = FALSE, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the UMI marker lists. b) Plot displaying the fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1.*"}
+```{r ewce plot wang UMI level 2 tally, fig.height = 8, out.width='100%', fig.pos='H', fig.cap = "***Figure:*** *a) Plot displaying the number of significantly enriched cell types found using each of the UMI marker lists. b) Plot displaying the fold difference between the standard deviations from the mean of the top enriched cell type (as ranked by the standard deviations from the mean) divided by the standard deviations from the mean of the second enriched cell type. Dashed line indicates a fold difference of 1.*"}
 
 # plot for number of significantly enriched cell types by marker list
 a <- ggplot(cell_tally, aes(x =  forcats::fct_reorder(GeneSet, n, .desc = T, na.rm = T),

@@ -1,0 +1,92 @@
+---
+title: "Querying genes across specificity matrices"
+author: "Regina H. Reynolds"
+output: 
+  html_document:
+    code_folding: hide
+    theme: paper
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+
+library(DT)
+library(readxl)
+library(EWCE)
+library(ggplot2)
+library(ggpubr)
+library(tidyverse)
+library(stringr)
+devtools::load_all(path = "/home/rreynolds/projects/MarkerGenes/")
+
+theme_rhr <-  theme_bw(base_family = "Helvetica") + 
+  theme(panel.grid.major.x = element_blank(),
+        legend.position = "right",
+        strip.text = element_text(size = 7),
+        axis.text.x = element_text(size = 7, angle = 90, hjust = 1, vjust = 0.5),
+        axis.text.y = element_text(size = 7),
+        axis.title.y = element_text(vjust = 0.6),
+        axis.title = element_text(size = 10),
+        panel.spacing = unit(0.1, "lines"))
+
+knitr::opts_chunk$set(echo = T, message= F, warning = F)
+```
+
+# Aim
+- Quick tutorial of `MarkerGenes::query_gene_ctd()` function, which allows users to query a gene or several genes within several specificity matrices.
+
+# Mock example
+- We will use the human gene, SNCA, as our mock example.
+- We are only interested in SNCA's specificity in human datasets, thus we will query the following datasets:
+```{r, class.source = "fold-show"}
+
+readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
+  dplyr::filter(species == "human", list_or_SI_matrix == "SI_matrix") %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap')
+
+```
+
+- As AIBS2018_MTG is the more up to data of the AIBS datasets, we will use this, together with Habib2017_DroNc_Human. In addition, we will be using some of our own in-house single-nuclear RNA-sequencing from the anterior cingulate cortex of control individuals (n = 7).
+    - It is worth noting that there are key differences in methodology between the AIBS dataset and the two remaining (i.e. Habib and our own in-house snRNA). While both sequence single nuclei, AIBS uses the SMART-Seq v4 kit, which permits sequence of full-length transcripts, while Habib and our in-house data use a 3'-tagging technology i.e. not full-length transcripts sequenced. This may have an impact on gene specificity.
+- Let's go ahead and load in these specificity matrices and query them for SNCA specificity.
+- As we are only interested in SNCA's specificity in overarching cell types, let's limit this search to level 1 cell types.
+```{r, class.source = "fold-show", fig.cap = "Plot of SNCA specificity value across three single-nuclear RNA-seq datasets. exPFC=glutamatergic neurons from the PFC, exCA1/3=pyramidal neurons from the Hip CA region, GABA=GABAergic interneurons, exDG=granule neurons from the Hip dentate gyrus region, ASC=astrocytes, NSC=neuronal stem cells, MG=microglia, ODC=oligodendrocytes, OPC=oligodendrocyte precursor cells, NSC=neuronal stem cells, SMC=smooth muscle cells, END= endothelial cells."}
+
+# Load specificity matrices
+load("../specificity_matrices/AIBS2018_MTG.rda")
+load("../specificity_matrices/Habib2017_DroNc_Human.rda")
+ctd_in_house_snRNA <- readRDS("/home/rreynolds/projects/Aim2_PDsequencing_wd/results/snRNA/specificity_matrices/2020_March/ctd_Control.rds")
+
+specificity <- 
+  MarkerGenes::query_gene_ctd(genes = c("SNCA"),
+                              ctd_AIBS2018, ctd_DRONC_human, ctd_in_house_snRNA,
+                              celltypeLevel = 1, 
+                              median_included = F,
+                              genelistSpecies = "human", 
+                              ctdSpecies = "human")
+
+# Plot
+specificity %>% 
+  ggplot(aes(x = MarkerGenes::reorder_within(x = CellType, 
+                                             by = Specificity, 
+                                             within = Study, 
+                                             fun = median, 
+                                             desc = T), 
+             y = Specificity)) + 
+  geom_col() +
+  MarkerGenes::scale_x_reordered() +
+  facet_wrap(~ Study, scales = "free_x") + 
+  labs(x = "CellType") +
+  theme_rhr
+
+```
+- For all three datasets, SNCA appears to have its highest specificity in some form of excitatory neuron. 
+- Thereafter, the ordering of cell types is a little more ambiguous, and changes slightly dependent on the dataset. 
+
+
