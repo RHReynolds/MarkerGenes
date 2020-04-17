@@ -8,7 +8,7 @@ library(data.table)
 # Note their MTG release is dated slightly differently i.e. June 2018, as opposed to the other two brain regions which are dated October 2018
 
 #---Preparing file for SI calculation-----------------------------------------------------------------------------------------------------####
-# gene_rows <- read_delim(file = "/home/rreynolds//human_MTG_2018-06-14_genes-rows.txt", delim = ",")
+# gene_rows <- read_delim(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_genes-rows.txt", delim = ",")
 # # sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns.csv")
 # sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns_level1added.csv")
 #
@@ -67,29 +67,29 @@ library(data.table)
 #
 # # Create list with metadat and matrix.
 # # To use with EWCE, must ensure matrix is named 'exp' and metadat is 'annot'.
-# AIBS2019 <- list(exp, metadat)
-# names(AIBS2019) <- c("exp", "annot")
+# AIBS2018 <- list(exp, metadat)
+# names(AIBS2018) <- c("exp", "annot")
 #
-# save(AIBS2019,file="/home/rreynolds/data/scRNAseq_AIBS/MTG/AIBS2019_DataForEWCE.Rda")
+# save(AIBS2018,file="/home/rreynolds/data/scRNAseq_AIBS/MTG/AIBS2018_DataForEWCE.Rda")
 
 #---EWCE: Calculating specificity matrices-----------------------------------------------------------------------------------------------####
 # Sourced using:
-# nohup Rscript /home/rreynolds/projects/MarkerGenes/R/20190501_AIBS2019_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_AIBS2019.log&
+# nohup Rscript /home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_AIBS2018.log&
 # Drop genes which do not show significant evidence of varying between level 2 celltypes (based on ANOVA)
 Sys.time()
-load("/home/rreynolds/data/scRNAseq_AIBS/MTG/AIBS2019_DataForEWCE.Rda")
+load("/home/rreynolds/data/scRNAseq_AIBS/MTG/AIBS2018_DataForEWCE.Rda")
 print("Data loaded.")
 
-exp_DROPPED = drop.uninformative.genes(exp=AIBS2019$exp,level2annot = AIBS2019$annot$level2class)
+exp_DROPPED = drop.uninformative.genes(exp=AIBS2018$exp,level2annot = AIBS2018$annot$level2class)
 print("Uninformative genes now removed.")
 
-annotLevels = list(level1class=AIBS2019$annot$level1class,level2class=AIBS2019$annot$level2class)
+annotLevels = list(level1class=AIBS2018$annot$level1class,level2class=AIBS2018$annot$level2class)
 print("Annotation levels assigned.")
 
 # Remove unneccessary files
-rm(AIBS2019)
-print("AIBS2019 file now removed.")
+rm(AIBS2018)
+print("AIBS2018 file now removed.")
 
 # Calculate cell type averages and specificity for each gene
-fNames_AIBS2019 = generate.celltype.data(exp=exp_DROPPED,annotLevels=annotLevels,groupName="AIBS2019")
+fNames_AIBS2018 = generate.celltype.data(exp=exp_DROPPED,annotLevels=annotLevels,groupName="AIBS2018")
 print("Cell type averages and specificity calculated.")

@@ -62,6 +62,7 @@ readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "Data") %
 load("../specificity_matrices/AIBS2018_MTG.rda")
 load("../specificity_matrices/Habib2017_DroNc_Human.rda")
 ctd_in_house_snRNA <- readRDS("/home/rreynolds/projects/Aim2_PDsequencing_wd/results/snRNA/specificity_matrices/2020_March/ctd_Control.rds")
+load("../specificity_matrices/Agarwal2020_SNIG.rda")
 
 specificity <- 
   MarkerGenes::query_gene_ctd(genes = c("SNCA"),

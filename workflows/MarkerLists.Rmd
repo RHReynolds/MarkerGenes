@@ -46,8 +46,9 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 
 ```
 
-- The majority of specificity matrices were downloaded from Skene 2018, but also generated two matrices from:
-    - Zeisel et al. 2018 (see: `/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R`)
-    - Allen Brain Atlas 2018 **(only MTG)** (see: `/home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R`). 
+- The majority of specificity matrices were downloaded from Skene 2018, but also generated matrices from:
+    - Zeisel et al. 2018 (see: `r  xfun::embed_file(path = "/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R", name = "Zeisel2018_CNSClusters_FormattingDataForEWCE.R", text = "Zeisel2018_CNSClusters_FormattingDataForEWCE.R")`)
+    - Allen Brain Atlas 2018 **(only MTG)** (see: [20190501_AIBS2018_GeneratingSImatrix.R](../misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R)). 
         - Release is dated June 2018 (although only available on their website from around Spring 2019). At the time, only middle temporal gyrus (MTG) was available. As of Oct/November 2019, AIBS released all their single-nucleus RNA-seq expression, which also includes anterior cingulate cortex and primary visual cortex.
         - Used gene-level (exonic) read count values. While intronic values were available, reckoned that these would tag pre-mRNA.
+    - [Agarwal 2020](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140231) - currently unpublished. See: [20200331_SNIG_GeneratingSImatrix.R](../misc_scripts/20200331_SNIG_GeneratingSImatrix.R)
