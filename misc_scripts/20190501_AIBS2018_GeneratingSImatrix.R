@@ -8,17 +8,17 @@ library(data.table)
 # Note their MTG release is dated slightly differently i.e. June 2018, as opposed to the other two brain regions which are dated October 2018
 
 #---Preparing file for SI calculation-----------------------------------------------------------------------------------------------------####
-# gene_rows <- read_delim(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_genes-rows.txt", delim = ",")
-# # sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns.csv")
-# sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns_level1added.csv")
-#
-# # Only use exons, on account of introns likely reflecting levels of pre-mRNA.
-# exons <- fread(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_exon-matrix.csv")
-# # introns <- fread(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_intron-matrix.csv")
+
+# # This section of code was run separately from the next section "EWCE: Calculating specificity matrices", which was sourced.
+# # This is why this section is commented out.
 #
 # # EWCE requires:
 # # 1. Matrix with data, with rows as genes and columns as cells.
 # # 2. Annotation dataframe with a minimum of cell_id, level1class and level2class.
+#
+# #---Preparing sample columns file------
+# # sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns.csv")
+#
 #
 # # # Currently 4 classes: Glutamatergic, GABAergic, non-neuronal, no class
 # # # Remove no class from metadata.
@@ -33,6 +33,14 @@ library(data.table)
 # #          level1 = str_replace(level1, "Non-neuronal:Micro.*", "Microglia"),
 # #          level1 = str_replace(level1, "Non-neuronal:Endo.*", "Endothelial cell"))
 # # write_csv(sample_columns, path = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns_level1added.csv")
+#
+# gene_rows <- read_delim(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_genes-rows.txt", delim = ",")
+# sample_columns <- read_csv(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_samples-columns_level1added.csv")
+#
+# #---Preparing expr matrix-----
+# # Only use exons, on account of introns likely reflecting levels of pre-mRNA.
+# exons <- fread(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_exon-matrix.csv")
+# # introns <- fread(file = "/home/rreynolds/data/scRNAseq_AIBS/MTG/human_MTG_2018-06-14_intron-matrix.csv")
 #
 # # Generate annotation dataframe
 # metadat <- sample_columns %>%

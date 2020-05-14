@@ -68,7 +68,7 @@ readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "ColumnDe
 ```{r metadata, out.width='100%', fig.pos='H'}
 
 readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
-  dplyr::arrange(desc(list_or_SI_matrix), resource_name) %>% 
+  dplyr::arrange(desc(data_type), resource_name) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
