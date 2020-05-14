@@ -2,12 +2,13 @@ Package: MarkerGenes
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Regina",
+           family = "H. Reynolds",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "regina.reynolds.16@ucl.ac.uk",
+           comment = structure("0000-0001-6470-7919", .Names = "ORCID"))
+Description: Resource that contains a number of brain-relevant cell-type markers, including measures of cell-type specificity, in addition to a number of functions that allow users to query cell-type specificity and run expression-weighted enrichment (EWCE) with multiple gene lists.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
