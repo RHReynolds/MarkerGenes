@@ -313,7 +313,7 @@ div.tocify {
 
 
 <blockquote>
-<p>Code to generate this is originally from the paper <a href="https://www.nature.com/articles/s41588-020-0610-9">Bryois et al.</a>, available at: <a href="https://github.com/jbryois/scRNA_disease/blob/master/Code_Paper/Code_GTEx/get_GTEx_input.md" class="uri">https://github.com/jbryois/scRNA_disease/blob/master/Code_Paper/Code_GTEx/get_GTEx_input.md</a>. The original code has been modified below to: (1) Include all genes, as opposed to including only protein-coding genes; (2) not to add gene co-ordinates; (3) to make some column names more human-readable i.e. in the modified code below, what was “Lvl5” (“SMTSD” in GTEx) is now referred to as “Tissue”, and what was “Tissue” (“SMTS” in GTEx) is referred to as “Organ”.</p>
+<p>Code to generate this is originally from the paper <a href="https://www.nature.com/articles/s41588-020-0610-9">Bryois et al.</a>, available at: <a href="https://github.com/jbryois/scRNA_disease/blob/master/Code_Paper/Code_GTEx/get_GTEx_input.md" class="uri">https://github.com/jbryois/scRNA_disease/blob/master/Code_Paper/Code_GTEx/get_GTEx_input.md</a>. The original code has been modified below to: (1) Include all genes, as opposed to including only protein-coding genes; (2) remove brain cortex and brain cerebellum to reduce redundancy; (3) not to add gene co-ordinates; (3) to make some column names more human-readable i.e. in the modified code below, what was “Lvl5” (“SMTSD” in GTEx) is now referred to as “Tissue”, and what was “Tissue” (“SMTS” in GTEx) is referred to as “Organ”.</p>
 </blockquote>
 <div id="load-data" class="section level1">
 <h1><span class="header-section-number">1</span> Load Data</h1>
@@ -342,10 +342,12 @@ exp &lt;-<span class="st"> </span>
 exp &lt;-<span class="st"> </span>
 <span class="st">  </span>exp <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">inner_join</span>(tissues)</code></pre></div>
-<p>We then drop tissues with less than 100 samples, testis (gene expression outlier), non natural tissues (e.g. EBV-transformed lymphocytes and cultured fibroblasts) and then take the average expression for the different tissues that belong to the same organ.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">exp_per_organ &lt;-<span class="st"> </span>
+<p>We then drop tissues with: - Less than 100 samples - Testis (gene expression outlier) - Non natural tissues (e.g. EBV-transformed lymphocytes and cultured fibroblasts) - Brain cortex and Brain cerebellum (using instead the more specific anterior cingulate cortex, frontal cortex and cerebellar hemisphere) to reduce redundancy across brain regions. We then take the average expression for the different tissues that belong to the same organ.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tissues_to_exclude &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Testis&quot;</span>, <span class="st">&quot;Brain - Cerebellum&quot;</span>, <span class="st">&quot;Brain - Cortex&quot;</span>, <span class="st">&quot;Cells - EBV-transformed lymphocytes&quot;</span>, <span class="st">&quot;Cells - Cultured fibroblasts&quot;</span>)
+
+exp_per_organ &lt;-<span class="st"> </span>
 <span class="st">  </span>exp <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(drop <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Nsample <span class="op">&gt;=</span><span class="st"> </span><span class="dv">100</span>, <span class="op">!</span>Tissue <span class="op">%in%</span><span class="st"> </span>tissues_to_exclude) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(Organ,gene_id,Description) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">mean_expr =</span> <span class="kw">mean</span>(Expr))</code></pre></div>
 <p>Spread the data.</p>
@@ -401,7 +403,7 @@ exp_tissue &lt;-<span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">specificity=</span> mean_expr<span class="op">/</span><span class="kw">sum</span>(mean_expr)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">ungroup</span>()
 
-<span class="kw">saveRDS</span>(exp_tissue, <span class="st">&quot;../specificity_matrices/GTEx_v8.Rds&quot;</span>)</code></pre></div>
+<span class="kw">saveRDS</span>(exp_tissue, <span class="st">&quot;../specificity_df/GTEx_v8.Rds&quot;</span>)</code></pre></div>
 </div>
 
 
