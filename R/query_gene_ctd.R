@@ -16,6 +16,7 @@
 #'   HGNC symbols are used.
 #' @param ctdSpecies Either 'mouse' or 'human' depending on the ctd datasets
 #'   being used. Species must be the same across all input ctds.
+#' @importFrom stats median setNames
 #'
 #' @return Outputs a dataframe, with mean expression and specificity per gene
 #'   from each study.

@@ -15,6 +15,7 @@ output:
 ```{r setup, include=FALSE}
 
 library(DT)
+library(here)
 library(readxl)
 library(EWCE)
 library(ggplot2)
@@ -44,8 +45,8 @@ knitr::opts_chunk$set(echo = T, message= F, warning = F)
 - We are only interested in SNCA's specificity in human datasets, thus we will query the following datasets:
 ```{r, class.source = "fold-show"}
 
-readxl::read_excel(path = "../metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
-  dplyr::filter(species == "human", list_or_SI_matrix == "SI_matrix") %>% 
+readxl::read_excel(path = here::here("metadata", "dataset_metadata.xlsx"), sheet = "Data") %>% 
+  dplyr::filter(species == "human", data_type == "SI_matrix") %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')

@@ -7,7 +7,7 @@
 #'   'Specificity', and 'Study', as typically outputted by
 #'   \code{query_gene_ctd}. Dataframe can contain additional columns, but must
 #'   just contain aforementioned.
-#' @param flag.variable Default is NULL. Fill this with a column name within
+#' @param fill.variable Default is NULL. Fill this with a column name within
 #'   your dataframe if you wish to colour by certain groups within your table.
 #'
 #' @return Boxplot of mean specificity values of queried gene list across cell

@@ -11,9 +11,14 @@ Description: Resource that contains a number of brain-relevant cell-type markers
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Imports: 
     dplyr,
     tidyr,
     stringr,
-    ggplot2
+    ggplot2,
+    magrittr,
+    EWCE,
+    forcats
+Depends: 
+    R (>= 3.5.0)

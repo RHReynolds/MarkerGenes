@@ -22,34 +22,11 @@
 #'   the columns, 'hgnc_symbol' and 'MGI_symbol'.
 #'
 #' @return A dataframe of EWCE results for each of the gene lists in each study.
-#'
-#' @example run_ewce_controlled(list_of_genes, reps = 10000, celltypeLevel = 1,
-#'   genelistSpecies = "human", sctSpecies = "human", ctd_DRONC_human,
-#'   ctd_AIBS2019)
-#'
 #' @export
 
 run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
                                 reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human"),
                                 mouse_to_human = NULL) {
-
-
-  # EWCE package necessary to run. Check if installed, and if not, install.
-  if(require(EWCE)){
-    print("EWCE is loaded correctly")
-  } else {
-    print("trying to install EWCE")
-    library(devtools)
-    install_github("nathanskene/ewce")
-    if(require(EWCE)){
-      print("EWCE installed and loaded")
-    } else {
-      stop("could not install EWCE")
-    }
-  }
-
-  # Load tidyverse
-  library(tidyverse)
 
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
@@ -68,7 +45,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
 
   # Loading mouse to human orthologs
   if(is.null(mouse_to_human)){
-    data("mouse_to_human_orthologs", package = "MarkerGenes")
+    data("mouse_to_human_orthologs", package = "MarkerGenes", envir = environment())
     ## Filter for only one to one orthologs
     m2h <- mouse_to_human_orthologs %>%
       dplyr::filter(mmusculus_homolog_orthology_type == "ortholog_one2one") %>%
@@ -100,7 +77,8 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
-        cont_results = bootstrap.enrichment.test(
+        cont_results =
+          EWCE::bootstrap.enrichment.test(
           sct_data = ctd_list[[j]],
           hits = hits,
           bg = bg,
@@ -117,7 +95,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
                           Study = ctd_name %>% str_replace(., "ctd_", ""))
         } else{
           Master_df <- Master_df %>%
-            bind_rows(
+            dplyr::bind_rows(
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
@@ -148,7 +126,8 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
-        cont_results = bootstrap.enrichment.test(
+        cont_results =
+          EWCE::bootstrap.enrichment.test(
           sct_data = ctd_list[[j]],
           hits = hits,
           bg = bg,
@@ -165,7 +144,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
                           Study = ctd_name %>% str_replace(., "ctd_", ""))
         } else{
           Master_df <- Master_df %>%
-            bind_rows(
+            dplyr::bind_rows(
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
@@ -196,7 +175,8 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         bg = unique(c(hits, m2h$hgnc_symbol))
 
         # Level 1 cell types: Bootstrap significance testing controlling for transcript length and GC content
-        cont_results = bootstrap.enrichment.test(
+        cont_results =
+          EWCE::bootstrap.enrichment.test(
           sct_data = ctd_list[[j]],
           hits = hits,
           bg = bg,
@@ -208,7 +188,8 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         )
 
         # Level 2 cell types: Bootstrap significance testing controlling for transcript length and GC content
-        cont_results_level2 = bootstrap.enrichment.test(
+        cont_results_level2 =
+          EWCE::bootstrap.enrichment.test(
           sct_data = ctd_list[[j]],
           hits = hits,
           bg = bg,
@@ -224,7 +205,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
           Master_df <- cont_results$results %>%
             dplyr::mutate(GeneSet = list_name,
                           Study = ctd_name %>% str_replace(., "ctd_", "")) %>%
-            bind_rows(
+            dplyr::bind_rows(
               cont_results_level2$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
@@ -233,14 +214,14 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
             )
         } else{
           Master_df <- Master_df %>%
-            bind_rows(
+            dplyr::bind_rows(
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
                   Study = ctd_name %>% str_replace(., "ctd_", "")
                 )
             ) %>%
-            bind_rows(
+            dplyr::bind_rows(
               cont_results_level2$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,

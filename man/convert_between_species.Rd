@@ -27,8 +27,3 @@ A vector with the converted genes.
 Allows user to convert between species dependent on species in the query gene
 vector and the ctd matrices of interest.
 }
-\examples{
-genes <- convert_between_species(genes = c("CSF1R", "GFAP"), genelistSpecies
-  = "human", ctdSpecies = "mouse")
-
-}

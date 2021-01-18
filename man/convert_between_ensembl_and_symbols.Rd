@@ -22,8 +22,3 @@ Returns a vector of gene symbols, either HGNC or MGI depending on
 \description{
 Allows user to convert ensembl IDs to symbols for human or mouse.
 }
-\examples{
-genes <- convert_between_ensembl_and_symbols(genes = c("ENSG00000198888",
-  "ENSG00000198712"), genelistSpecies = "human")
-
-}

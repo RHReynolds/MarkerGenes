@@ -11,16 +11,12 @@
 #'   species?
 #'
 #' @return A vector with the converted genes.
-#' @examples
-#' genes <- convert_between_species(genes = c("CSF1R", "GFAP"), genelistSpecies
-#'   = "human", ctdSpecies = "mouse")
-#'
 #' @export
 #'
 
 convert_between_species <-function(genes, genelistSpecies = c("mouse", "human"), ctdSpecies = c("mouse", "human")) {
 
-  data("mouse_to_human_orthologs", package = "MarkerGenes")
+  data("mouse_to_human_orthologs", package = "MarkerGenes", envir = environment())
 
   ## Filter for only one to one orthologs
   one2one <- mouse_to_human_orthologs %>%
@@ -29,14 +25,14 @@ convert_between_species <-function(genes, genelistSpecies = c("mouse", "human"),
   # If gene lists and ctd are from different species then convert the gene list species to match the species of the ctd
   if (genelistSpecies == "human" & ctdSpecies == "mouse") {
     genes <- one2one %>%
-      filter(hgnc_symbol %in% genes) %>%
+      dplyr::filter(hgnc_symbol %in% genes) %>%
       .[["mmusculus_homolog_associated_gene_name"]]
 
   }
 
   if (genelistSpecies == "mouse" & ctdSpecies == "human") {
     genes <- one2one %>%
-      filter(mmusculus_homolog_associated_gene_name %in% genes) %>%
+      dplyr::filter(mmusculus_homolog_associated_gene_name %in% genes) %>%
       .[["hgnc_symbol"]]
 
   }
@@ -60,44 +56,36 @@ convert_between_species <-function(genes, genelistSpecies = c("mouse", "human"),
 #'
 #' @return Returns a vector of gene symbols, either HGNC or MGI depending on
 #'   selected species.
-#'
-#' @examples
-#' genes <- convert_between_ensembl_and_symbols(genes = c("ENSG00000198888",
-#'   "ENSG00000198712"), genelistSpecies = "human")
-#'
 #' @export
 #'
 
 convert_between_ensembl_and_symbols <- function(genes, genelistSpecies = c("mouse", "human")){
 
-  load("/home/rreynolds/projects/MarkerGenes/misc_data/mouse_to_human_orthologs.rda")
-
-  # # For package
-  # mouse_to_human_orthologs <- MarkerGenes::mouse_to_human_orthologs
+  data("mouse_to_human_orthologs", package = "MarkerGenes", envir = environment())
 
   # # Test code
   # genes <- c("ENSMUSG00000065298", mouse_to_human_orthologs[1:10,] %>% .[["ensembl_gene_id"]])
 
   if (genelistSpecies == "mouse") {
     # Check that inputted ensembl IDs are from mouse
-    if (any(str_detect(genes, "ENSMUSG") == FALSE)) {
+    if (any(stringr::str_detect(genes, "ENSMUSG") == FALSE)) {
       stop("Somes genes in the inputted vector do not not contain 'ENSMUSG' prefix. Are you sure all inputted gene IDs are from mouse? Or that correct species selected?")
     }
 
     genes <- mouse_to_human_orthologs %>%
-      filter(mmusculus_homolog_ensembl_gene %in% genes) %>%
+      dplyr::filter(mmusculus_homolog_ensembl_gene %in% genes) %>%
       .[["mmusculus_homolog_associated_gene_name"]]
 
   }
 
   if (genelistSpecies == "human") {
     # Check that inputted ensembl IDs are from human
-    if (any(str_detect(genes, "ENSG") == FALSE)) {
+    if (any(stringr::str_detect(genes, "ENSG") == FALSE)) {
       stop("Somes genes in the inputted vector do not not contain 'ENSG' prefix. Are you sure all inputted gene IDs are from human? Or that correct species selected?")
     }
 
     genes <- mouse_to_human_orthologs %>%
-      filter(ensembl_gene_id %in% genes) %>%
+      dplyr::filter(ensembl_gene_id %in% genes) %>%
       .[["hgnc_symbol"]]
 
   }
