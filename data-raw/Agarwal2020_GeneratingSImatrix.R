@@ -8,7 +8,7 @@ library(data.table)
 
 # 2020/03/31 - Files used in this script can be downloaded from: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140231
 # Script sourced using:
-# nohup Rscript /home/rreynolds/projects/MarkerGenes/misc_scripts/20200331_SNIG_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_SNIG2020.log&
+# nohup Rscript /home/rreynolds/projects/MarkerGenes/data-raw/Agarwal2020_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_SNIG2020.log&
 
 #---Preparing file for SI calculation-----------------------------------------------------------------------------------------------------####
 

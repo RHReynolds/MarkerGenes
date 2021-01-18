@@ -4,33 +4,22 @@
 \name{mouse_to_human_orthologs}
 \alias{mouse_to_human_orthologs}
 \title{Table of Human-->Mouse orthologs for all human genes}
-\format{An object of class \code{data.frame} with 25410 rows and 7 columns.}
-\source{
-The code to prepare the .Rda file file from the marker file is:
-\code{
-# Get all ensembl IDs, with corresponding HGNC_symbol and entrez ID. Using latest (GRCh38.p12).
-library(biomaRt)
-human <- useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
-hgnc_symbols <- getBM(attributes=c("hgnc_symbol","ensembl_gene_id","entrezgene"), mart=human)
-
-# 02/05/2019 - Downloaded and formatted list of homologues from ensembl BioMart, using query below.
-# Query can be updated and saved at any time. Just remember to update download date.
-# Used Ensembl Genes 96, Human genes (GRCh38.p12)
-# Added HGNC_symbols.
-mouse_to_human_orthologs <- getBM(attributes=c("ensembl_gene_id","mmusculus_homolog_ensembl_gene","mmusculus_homolog_associated_gene_name",
-                                               "mmusculus_homolog_orthology_type", "mmusculus_homolog_orthology_confidence"),
-                                  filters = c("with_mmusculus_homolog"), values = TRUE, mart = human) %>%
-  left_join(hgnc_symbols, by = c("ensembl_gene_id" = "ensembl_gene_id")) %>%
-  dplyr::select(ensembl_gene_id, hgnc_symbol, entrezgene, everything())
-save(mouse_to_human_orthologs, file = "~/data/mouse_to_human_orthologs.rda")
+\format{
+A data frame with nine variables:
+\describe{
+\item{\code{ensembl_gene_id}}{Human ensembl id}
+\item{\code{hgnc_symbol}}{HGNC symbol}
+\item{\code{entrezgene}}{Human NCBI gene ID}
+\item{\code{mmusculus_homolog_ensembl_gene}}{Mouse ensembl id}
+\item{\code{mmusculus_homolog_associated_gene_name}}{Mouse gene symbol}
+\item{\code{mmusculus_homolog_orthology_type}}{The ortholog type (one2one, one2many, many2many)}
+\item{\code{mmusculus_homolog_orthology_confidence}}{Orthology confidence}
 }
 }
 \usage{
 mouse_to_human_orthologs
 }
 \description{
-A dataset containing mouse orthologs of human genes. Columns include: ensembl
-IDs, entrez IDs, and symbols in both species; the ortholog type (one2one,
-one2many, many2many); and the orthology confidence.
+A dataset containing mouse orthologs of human genes.
 }
 \keyword{datasets}

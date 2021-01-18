@@ -13,6 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 
+library(here)
 library(tidyverse)
 
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
@@ -27,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 The GTEx data (Version 8) was downloaded from [here](https://gtexportal.org)
 
 ```{r,message=FALSE}
-file <- "../data/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz"
+file <- here::here("inst", "extdata", "GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_median_tpm.gct.gz")
 exp <- 
   read_tsv(file, skip=2) %>% 
   dplyr::rename(gene_id = Name)
@@ -40,10 +41,11 @@ The gtex_v8_tissues.tsv contains the tissues to keep (N>100), as well as info ab
 
 ```{r}
 tissues <-
-  read_delim("../misc_data/gtex_v8_tissues.tsv", delim = " ") %>% 
+  read_delim(here::here("inst", "extdata", "gtex_v8_tissues.tsv"), delim = " ") %>% 
   dplyr::rename(Tissue = SMTSD, Organ = SMTS) %>% 
   dplyr::mutate(Organ = case_when(str_detect("Brain", Organ) ~ Tissue,
                                     TRUE ~ Organ))
+
 
 ```
 
@@ -85,8 +87,8 @@ Spread the data.
 ```{r}
 exp <- 
   exp_per_organ %>% 
-  spread(Organ, mean_expr) %>% 
-  ungroup()
+  tidyr::spread(Organ, mean_expr) %>% 
+  dplyr::ungroup()
 
 ```
 

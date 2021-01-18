@@ -4,8 +4,8 @@ library(EWCE)
 library(limma)
 library(data.table)
 
-# 2019/01/07 - Files used in this script can be downloaded from https://portal.brain-map.org/atlases-and-data/rnaseq as part of their October 2018 release
-# Note their MTG release is dated slightly differently i.e. June 2018, as opposed to the other two brain regions which are dated October 2018
+# 2019/01/07 - Files used in this script can be downloaded from https://portal.brain-map.org/atlases-and-data/rnaseq/human-mtg-smart-seq
+# Part of their October 2018 MTG-only release
 
 #---Preparing file for SI calculation-----------------------------------------------------------------------------------------------------####
 
@@ -82,7 +82,7 @@ library(data.table)
 
 #---EWCE: Calculating specificity matrices-----------------------------------------------------------------------------------------------####
 # Sourced using:
-# nohup Rscript /home/rreynolds/projects/MarkerGenes/misc_scripts/20190501_AIBS2018_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_AIBS2018.log&
+# nohup Rscript /home/rreynolds/projects/MarkerGenes/data-raw/AIBS2018_GeneratingSImatrix.R &>/home/rreynolds/projects/MarkerGenes/nohup_logs/EWCE_AIBS2018.log&
 # Drop genes which do not show significant evidence of varying between level 2 celltypes (based on ANOVA)
 Sys.time()
 load("/home/rreynolds/data/scRNAseq_AIBS/MTG/AIBS2018_DataForEWCE.Rda")
