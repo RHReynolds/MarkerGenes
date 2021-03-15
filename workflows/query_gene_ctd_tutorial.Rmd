@@ -17,12 +17,12 @@ output:
 library(DT)
 library(here)
 library(readxl)
-library(EWCE)
 library(ggplot2)
 library(ggpubr)
 library(tidyverse)
 library(stringr)
-devtools::load_all(path = "/home/rreynolds/projects/MarkerGenes/")
+devtools::load_all(path = "/home/rreynolds/packages/EWCE/")
+devtools::load_all(path = here::here())
 
 theme_rhr <-  theme_bw(base_family = "Helvetica") + 
   theme(panel.grid.major.x = element_blank(),
