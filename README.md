@@ -21,6 +21,8 @@ library(devtools)
 install_github("RHReynolds/MarkerGenes")
 ```
 
+In addition, to access the various datasets, please clone the repository.
+
 ## Brief description <a name="description"></a>
 Resource that contains:
 - A number of brain-relevant cell-type markers in the form of:
