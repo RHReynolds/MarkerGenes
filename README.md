@@ -29,7 +29,7 @@ Resource that contains:
     - [Dataframe of specificity values.](specificity_df/)
 - For metadata on the available lists/matrices, please refer to:  [dataset_metadata.html](metadata/dataset_metadata.html).
 - Also contains a number of functions that:
-    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.html](workflows/query_gene_ctd_tutorial.html)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
+    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.Rmd](workflows/query_gene_ctd_tutorial.Rmd)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
     - Run EWCE with multiple gene lists as input and multiple specificity matrices derived from the same organism ([`run_ewce()`](R/run_ewce.R)).
 
 ## Specificity <a name="specificity"></a>
