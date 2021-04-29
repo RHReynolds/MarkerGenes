@@ -12,8 +12,8 @@ Marker gene resource for cell-type labelling.
 2. [Brief description](#description)
 3. [Specificity matrices](#specificity)
 
-## Installing the package <a name="install"></a>
-To use, install from github. This can be done using the following lines of code:
+## Using the package <a name="install"></a>
+To use functions within the package, install from github. This can be done using the following lines of code:
 
 ``` r
 install.packages("devtools")
@@ -21,7 +21,7 @@ library(devtools)
 install_github("RHReynolds/MarkerGenes")
 ```
 
-In addition, to access the various datasets, please clone the repository.
+To access the various datasets, please clone the repository to your local directory.
 
 ## Brief description <a name="description"></a>
 Resource that contains:
