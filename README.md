@@ -5,10 +5,10 @@ dormant](https://img.shields.io/badge/lifecycle-dormant-blue.svg)](https://www.t
 
 <!-- badges: end -->
 
-# MarkerGenes
-Marker gene resource for cell-type labelling.
+# Background
+This repository contains gene cell-type/tissue specificity matrices, which can be used to determine the specificity of a gene to a particular cell type or tissue.
 
-1. [Installing the package](#install)
+1. [Using the package](#install)
 2. [Brief description](#description)
 3. [Specificity matrices](#specificity)
 
