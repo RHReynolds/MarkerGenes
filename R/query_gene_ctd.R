@@ -16,7 +16,10 @@
 #'   HGNC symbols are used.
 #' @param ctdSpecies Either 'mouse' or 'human' depending on the ctd datasets
 #'   being used. Species must be the same across all input ctds.
+#'
 #' @importFrom stats median setNames
+#' @importFrom tidyselect everything
+#' @importFrom tibble as_tibble
 #'
 #' @return Outputs a dataframe, with mean expression and specificity per gene
 #'   from each study.
@@ -53,13 +56,13 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
 
     # Filter specificity by gene list
     filtered_specificity <- ctd[[celltypeLevel]]$specificity %>%
-      as_tibble(., rownames = "Gene") %>%
+      tibble::as_tibble(., rownames = "Gene") %>%
       dplyr::filter(Gene %in% genes) %>%
       tidyr::gather(key = "CellType", value = "Specificity",-Gene)
 
     # Filter mean expression by gene list
     filtered_mean_exp <- ctd[[celltypeLevel]]$mean_exp %>%
-      as_tibble(., rownames = "Gene") %>%
+      tibble::as_tibble(., rownames = "Gene") %>%
       dplyr::filter(Gene %in% genes) %>%
       tidyr::gather(key = "CellType", value = "Mean_Expression",-Gene)
 
@@ -67,13 +70,13 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
 
       # Filter median specificity by gene list
       filtered_median_specificity <- ctd[[celltypeLevel]]$median_specificity %>%
-        as_tibble(., rownames = "Gene") %>%
+        tibble::as_tibble(., rownames = "Gene") %>%
         dplyr::filter(Gene %in% genes) %>%
         tidyr::gather(key = "CellType", value = "Median_Specificity",-Gene)
 
       # Filter median expression by gene list
       filtered_median_exp <- ctd[[celltypeLevel]]$median_exp %>%
-        as_tibble(., rownames = "Gene") %>%
+        tibble::as_tibble(., rownames = "Gene") %>%
         dplyr::filter(Gene %in% genes) %>%
         tidyr::gather(key = "CellType", value = "Median_Expression",-Gene)
 
@@ -83,7 +86,7 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
         dplyr::inner_join(filtered_median_exp, by = c("Gene", "CellType")) %>%
         dplyr::mutate(Study = names(ctd_list[i])) %>%
         dplyr::mutate(Study_species = ctdSpecies) %>%
-        dplyr::select(Study, Study_species, everything()) %>%
+        dplyr::select(Study, Study_species, tidyselect::everything()) %>%
         dplyr::arrange(Gene, desc(Specificity))
 
     } else{
@@ -93,7 +96,7 @@ query_gene_ctd <- function(genes, ... , celltypeLevel = c(1, 2),
       dplyr::inner_join(filtered_mean_exp, by = c("Gene", "CellType")) %>%
       dplyr::mutate(Study = names(ctd_list[i])) %>%
       dplyr::mutate(Study_species = ctdSpecies) %>%
-      dplyr::select(Study, Study_species, everything()) %>%
+      dplyr::select(Study, Study_species, tidyselect::everything()) %>%
       dplyr::arrange(Gene, desc(Specificity))
 
     }

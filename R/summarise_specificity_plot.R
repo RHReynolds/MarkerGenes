@@ -18,54 +18,68 @@
 summarise_specificity_plot <- function(filtered_specificity, fill.variable = NULL){
 
   if(is.null(fill.variable)){
-    plot <- ggplot(data = filtered_specificity, aes(x = MarkerGenes::reorder_within(x = CellType,
-                                                                                    by = Specificity,
-                                                                                    within = Study,
-                                                                                    fun = median,
-                                                                                    desc = TRUE),
-                                                    y = Specificity)
-    ) +
-      geom_boxplot() +
+    plot <-
+      ggplot2::ggplot(
+        filtered_specificity,
+        ggplot2::aes(
+          x = MarkerGenes::reorder_within(x = CellType,
+                                          by = Specificity,
+                                          within = Study,
+                                          fun = median,
+                                          desc = TRUE),
+          y = Specificity
+        )
+      ) +
+      ggplot2::geom_boxplot() +
       MarkerGenes::scale_x_reordered() +
-      facet_wrap(vars(Species, Study), scales = "free_x") +
-      labs(x = "Cell type", y = "Specificity", title = "") +
-      scale_y_continuous(limits = c(0,1)) +
-      theme_bw() +
-      theme(axis.text.y = element_text(size = 6),
-            axis.text.x = element_text(size = 6, angle = 45, vjust = 1, hjust = 1),
-            axis.title = element_text(size = 6, face = "bold"),
-            strip.text = element_text(size = 6, face = "bold"),
-            legend.position = "none",
-            panel.grid.major.x = element_blank(),
-            panel.grid.minor.x = element_blank(),
-            plot.margin = unit(c(t = -1, r = 0.5, b = 0.5, l = 0.5), "lines")
+      ggplot2::facet_wrap(ggplot2::vars(Species, Study), scales = "free_x") +
+      ggplot2::labs(x = "Cell type", y = "Specificity", title = "") +
+      ggplot2::scale_y_continuous(limits = c(0,1)) +
+      ggplot2::theme_bw() +
+      ggplot2::theme(
+        axis.text.y = ggplot2::element_text(size = 6),
+        axis.text.x = ggplot2::element_text(size = 6, angle = 45, vjust = 1, hjust = 1),
+        axis.title = ggplot2::element_text(size = 6, face = "bold"),
+        strip.text = ggplot2::element_text(size = 6, face = "bold"),
+        legend.position = "none",
+        panel.grid.major.x = ggplot2::element_blank(),
+        panel.grid.minor.x = ggplot2::element_blank(),
+        plot.margin = ggplot2::unit(c(t = -1, r = 0.5, b = 0.5, l = 0.5), "lines")
       )
+
   } else{
-  plot <- ggplot(data = filtered_specificity, aes(x = MarkerGenes::reorder_within(x = CellType,
-                                                                                  by = Specificity,
-                                                                                  within = Study,
-                                                                                  fun = median,
-                                                                                  desc = TRUE),
-                                                  y = Specificity,
-                                                  fill = filtered_specificity %>% .[[fill.variable]])
-  ) +
-    geom_boxplot() +
-    MarkerGenes::scale_x_reordered() +
-    facet_wrap(vars(Species, Study), scales = "free_x") +
-    labs(x = "Cell type", y = "Specificity", title = "", fill = fill.variable) +
-    scale_y_continuous(limits = c(0,1)) +
-    theme_bw() +
-    theme(axis.text.y = element_text(size = 6),
-          axis.text.x = element_text(size = 6, angle = 45, vjust = 1, hjust = 1),
-          axis.title = element_text(size = 10, face = "bold"),
-          strip.text = element_text(size = 8, face = "bold"),
-          legend.position = "top",
-          legend.text = element_text(size = 6),
-          legend.key.size = unit(1,"line"),
-          panel.grid.major.x = element_blank(),
-          panel.grid.minor.x = element_blank(),
-          plot.margin = unit(c(t = -1, r = 0.5, b = 0.5, l = 0.5), "lines")
-    )
+
+    plot <-
+      ggplot2::ggplot(
+        filtered_specificity,
+        ggplot2::aes(
+          x = MarkerGenes::reorder_within(x = CellType,
+                                          by = Specificity,
+                                          within = Study,
+                                          fun = median,
+                                          desc = TRUE),
+          y = Specificity,
+          fill = filtered_specificity %>% .[[fill.variable]]
+        )
+      ) +
+      ggplot2::geom_boxplot() +
+      MarkerGenes::scale_x_reordered() +
+      ggplot2::facet_wrap(ggplot2::vars(Species, Study), scales = "free_x") +
+      ggplot2::labs(x = "Cell type", y = "Specificity", title = "", fill = fill.variable) +
+      ggplot2::scale_y_continuous(limits = c(0,1)) +
+      ggplot2::theme_bw() +
+      ggplot2::theme(
+        axis.text.y = ggplot2::element_text(size = 6),
+        axis.text.x = ggplot2::element_text(size = 6, angle = 45, vjust = 1, hjust = 1),
+        axis.title = ggplot2::element_text(size = 10, face = "bold"),
+        strip.text = ggplot2::element_text(size = 8, face = "bold"),
+        legend.position = "top",
+        legend.text = ggplot2::element_text(size = 6),
+        legend.key.size = ggplot2::unit(1,"line"),
+        panel.grid.major.x = ggplot2::element_blank(),
+        panel.grid.minor.x = ggplot2::element_blank(),
+        plot.margin = ggplot2::unit(c(t = -1, r = 0.5, b = 0.5, l = 0.5), "lines")
+      )
 
   }
 
