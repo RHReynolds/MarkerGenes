@@ -14,12 +14,9 @@ output:
 ```{r setup, include=FALSE}
 
 library(DT)
+library(here)
 library(readxl)
-library(EWCE)
-library(ggplot2)
-library(ggpubr)
 library(tidyverse)
-library(stringr)
 
 ```
 
@@ -27,7 +24,10 @@ library(stringr)
 # Descriptions for metadata columns
 ```{r metadata columns, echo=FALSE, out.width='100%', fig.pos='H'}
 
-readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "ColumnDescriptions") %>% 
+readxl::read_excel(
+  path = here::here("metadata", "dataset_metadata.xlsx"), 
+  sheet = "ColumnDescriptions"
+  ) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
@@ -37,8 +37,11 @@ readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset
 # Dataset metadata
 ```{r metadata, echo=FALSE, out.width='100%', fig.pos='H'}
 
-readxl::read_excel(path = "/home/rreynolds/projects/MarkerGenes/metadata/dataset_metadata.xlsx", sheet = "Data") %>% 
-  arrange(desc(data_type), resource_name) %>% 
+readxl::read_excel(
+  path = here::here("metadata", "dataset_metadata.xlsx"), 
+  sheet = "Data"
+  ) %>% 
+  dplyr::arrange(desc(data_type), resource_name) %>% 
   DT::datatable(rownames = FALSE,
                 options = list(scrollX = TRUE),
                 class = 'white-space: nowrap')
