@@ -33,7 +33,7 @@ The code in this repository is released under an MIT license. This repository is
 
 ## Citation
 
-If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset\_metadata.html](#TODO).
+If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset\_metadata.html](https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html).
 
 Below is the citation output from using `citation('MarkerGenes')` in R. Please run this yourself to check for any updates on how to cite **MarkerGenes**.
 

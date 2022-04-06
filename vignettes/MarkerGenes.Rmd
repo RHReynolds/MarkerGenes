@@ -37,11 +37,11 @@ Resource that contains data related to:
 - Gene specificity to cell type/tissues in the form of:  
     - [Specificity matrices.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/)
     - [Dataframe of specificity values.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df/)
-- For metadata on the available lists/matrices, please refer to: [dataset metadata](#TODO).
+- For metadata on the available lists/matrices, please refer to: [dataset metadata](https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html).
 
 Resouce also contains a number of functions that:
 
-- Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [tutorial](#TODO)) 
+- Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [tutorial](https://rhreynolds.github.io/MarkerGenes/articles/articles/query_gene_ctd_tutorial.html)) 
 - Summarise the output of `query_gene_ctd()` using ([`summarise_specificity_plot()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R)).
 
 ## What is gene specificity?
@@ -64,7 +64,7 @@ Resouce also contains a number of functions that:
 
 # Citation
 
-If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset metadata](#TODO).
+If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset metadata](https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html).
 
 MarkerGenes can be cited using:
 
