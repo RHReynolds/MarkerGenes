@@ -41,7 +41,7 @@ Please note that there is no plan to ever submit this code to `CRAN` or `Biocond
 
 ## Usage
 
-For details, please refer to the vignette.
+For details, please refer to the [vignette](https://rhreynolds.github.io/MarkerGenes/articles/MarkerGenes.html).
 
 # License
 
@@ -53,8 +53,8 @@ If you use any specificity matrices from this repository, please make sure you c
 
 Below is the citation output from using `citation('MarkerGenes')` in R. Please run this yourself to check for any updates on how to cite __MarkerGenes__.
 
-```{r 'citation', eval = requireNamespace('MarkerGenes')}
-print(citation("MarkerGenes"), bibtex = TRUE)
+```{r citation, eval = TRUE}
+utils::citation("MarkerGenes")
 ```
 
 # Code contents

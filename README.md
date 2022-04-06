@@ -25,7 +25,7 @@ Please note that there is no plan to ever submit this code to `CRAN` or `Biocond
 
 ## Usage
 
-For details, please refer to the vignette.
+For details, please refer to the [vignette](https://rhreynolds.github.io/MarkerGenes/articles/MarkerGenes.html).
 
 # License
 
@@ -38,7 +38,7 @@ If you use any specificity matrices from this repository, please make sure you c
 Below is the citation output from using `citation('MarkerGenes')` in R. Please run this yourself to check for any updates on how to cite **MarkerGenes**.
 
 ``` r
-print(citation("MarkerGenes"), bibtex = TRUE)
+utils::citation("MarkerGenes")
 #> 
 #> Reynolds RH (2022). _MarkerGenes_.
 #> https://github.com/RHReynolds/MarkerGenes - R package version 0.99.0,
