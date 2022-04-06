@@ -1,7 +1,9 @@
-#' Run EWCE with control for GC content and transcript length.
+#' Deprecated function: Run EWCE with control for GC content and transcript length.
 #'
-#' Perform EWCE bootstrapping across several gene lists in more than one
-#' specificity matrix (aka. ctd).
+#' This function is deprecated on account of major changes to EWCE (see EWCE
+#' news: \url{https://nathanskene.github.io/EWCE/news/index.html}). Perform EWCE
+#' bootstrapping across several gene lists in more than one specificity matrix
+#' (aka. ctd).
 #'
 #' @param list_of_genes Named list containing vectors with gene IDs
 #'   corresponding to each gene list to be tested.
@@ -22,11 +24,20 @@
 #'   the columns, 'hgnc_symbol' and 'MGI_symbol'.
 #'
 #' @return A dataframe of EWCE results for each of the gene lists in each study.
-#' @export
+#'
+#' @importFrom lifecycle deprecate_warn
+#'
+#' @keywords internal
+#' @rdname deprecated
 
 run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "both"),
                                 reps, genelistSpecies = c("human"),sctSpecies = c("mouse", "human"),
                                 mouse_to_human = NULL) {
+
+  lifecycle::deprecate_warn(
+    when = "0.0.0.9000",
+    what = "run_ewce_controlled()"
+    )
 
   # Extract names of ctd inputs to name elements of list
   # Need to remove first unnamed argument, which is the function name, and named arguments.
@@ -66,7 +77,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
       for (j in seq_along(ctd_list)) {
         ctd_name <- names(ctd_list)[j]
 
-        print(str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
+        print(stringr::str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
 
         hits = list_of_genes[[i]] %>% unique()
 
@@ -92,14 +103,14 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         if (i == 1 & j == 1) {
           Master_df <- cont_results$results %>%
             dplyr::mutate(GeneSet = list_name,
-                          Study = ctd_name %>% str_replace(., "ctd_", ""))
+                          Study = ctd_name %>% stringr::str_replace(., "ctd_", ""))
         } else{
           Master_df <- Master_df %>%
             dplyr::bind_rows(
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
-                  Study = ctd_name %>% str_replace(., "ctd_", "")
+                  Study = ctd_name %>% stringr::str_replace(., "ctd_", "")
                 )
             )
         }
@@ -118,7 +129,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
       for (j in seq_along(ctd_list)) {
         ctd_name <- names(ctd_list)[j]
 
-        print(str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
+        print(stringr::str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
 
         hits = list_of_genes[[i]] %>% unique()
 
@@ -141,14 +152,14 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         if (i == 1 & j == 1) {
           Master_df <- cont_results$results %>%
             dplyr::mutate(GeneSet = list_name,
-                          Study = ctd_name %>% str_replace(., "ctd_", ""))
+                          Study = ctd_name %>% stringr::str_replace(., "ctd_", ""))
         } else{
           Master_df <- Master_df %>%
             dplyr::bind_rows(
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
-                  Study = ctd_name %>% str_replace(., "ctd_", "")
+                  Study = ctd_name %>% stringr::str_replace(., "ctd_", "")
                 )
             )
         }
@@ -167,7 +178,7 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
       for (j in seq_along(ctd_list)) {
         ctd_name <- names(ctd_list)[j]
 
-        print(str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
+        print(stringr::str_c("Performing EWCE analysis for: ", list_name, " in ", ctd_name))
 
         hits = list_of_genes[[i]] %>% unique()
 
@@ -204,12 +215,12 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
         if (i == 1 & j == 1) {
           Master_df <- cont_results$results %>%
             dplyr::mutate(GeneSet = list_name,
-                          Study = ctd_name %>% str_replace(., "ctd_", "")) %>%
+                          Study = ctd_name %>% stringr::str_replace(., "ctd_", "")) %>%
             dplyr::bind_rows(
               cont_results_level2$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
-                  Study = ctd_name %>% str_replace(., "ctd_", "")
+                  Study = ctd_name %>% stringr::str_replace(., "ctd_", "")
                 )
             )
         } else{
@@ -218,14 +229,14 @@ run_ewce_controlled <- function(list_of_genes, ..., celltypeLevel = c(1, 2, "bot
               cont_results$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
-                  Study = ctd_name %>% str_replace(., "ctd_", "")
+                  Study = ctd_name %>% stringr::str_replace(., "ctd_", "")
                 )
             ) %>%
             dplyr::bind_rows(
               cont_results_level2$results %>%
                 dplyr::mutate(
                   GeneSet = list_name,
-                  Study = ctd_name %>% str_replace(., "ctd_", "")
+                  Study = ctd_name %>% stringr::str_replace(., "ctd_", "")
                 )
             )
 
