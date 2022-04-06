@@ -5,21 +5,23 @@ dormant](https://img.shields.io/badge/lifecycle-dormant-blue.svg)](https://www.t
 
 <!-- badges: end -->
 
-# MarkerGenes
-Marker gene resource for cell-type labelling.
+# Background
+This repository contains gene cell-type/tissue specificity matrices, which can be used to determine the specificity of a gene to a particular cell type or tissue.
 
-1. [Installing the package](#install)
+1. [Using the package](#install)
 2. [Brief description](#description)
 3. [Specificity matrices](#specificity)
 
-## Installing the package <a name="install"></a>
-To use, install from github. This can be done using the following lines of code:
+## Using the package <a name="install"></a>
+To use functions within the package, install from github. This can be done using the following lines of code:
 
 ``` r
 install.packages("devtools")
 library(devtools)
 install_github("RHReynolds/MarkerGenes")
 ```
+
+To access the various datasets, please clone the repository to your local directory.
 
 ## Brief description <a name="description"></a>
 Resource that contains:
@@ -29,7 +31,7 @@ Resource that contains:
     - [Dataframe of specificity values.](specificity_df/)
 - For metadata on the available lists/matrices, please refer to:  [dataset_metadata.html](metadata/dataset_metadata.html).
 - Also contains a number of functions that:
-    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.html](workflows/query_gene_ctd_tutorial.html)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
+    - Allow users to query specificity matrices ([`query_gene_ctd()`](R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.Rmd](workflows/query_gene_ctd_tutorial.Rmd)) and summarise the output of this ([`summarise_specificity_plot()`](R/summarise_specificity_plot.R)).
     - Run EWCE with multiple gene lists as input and multiple specificity matrices derived from the same organism ([`run_ewce()`](R/run_ewce.R)).
 
 ## Specificity <a name="specificity"></a>
