@@ -1,6 +1,6 @@
 Package: MarkerGenes
 Title: Gene specificity measures
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: 
     person(given = "Regina",
            family = "H. Reynolds",
