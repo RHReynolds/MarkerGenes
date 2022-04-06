@@ -8,7 +8,7 @@ Authors@R:
            email = "regina.reynolds.16@ucl.ac.uk",
            comment = structure("0000-0001-6470-7919", .Names = "ORCID"))
 Description: Resource that contains measures of cell-type specificity, in addition to a number of functions that allow users to query cell-type specificity.
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
