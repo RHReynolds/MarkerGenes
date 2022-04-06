@@ -1,3 +1,7 @@
+# rutils 0.99.1
+
+* Update documentation and added doi.
+
 # rutils 0.99.0
 
 NEW FEATURES
