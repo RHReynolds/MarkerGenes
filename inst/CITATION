@@ -1,0 +1,19 @@
+pkgVer <- function(pkg) {
+    if (!exists("meta") || is.null(meta)) meta <- packageDescription(pkg)
+    ver <- meta$Version
+    paste0('https://github.com/RHReynolds/', pkg, ' - R package version ', ver)
+}
+
+c(
+
+    bibentry(bibtype="manual",
+        title = "MarkerGenes",
+        author = personList(
+            as.person("Regina H. Reynolds")
+        ),
+        year = format(Sys.Date(), "%Y"),
+        url = "https://github.com/RHReynolds/MarkerGenes",
+        note = pkgVer('MarkerGenes'),
+        doi = ''
+    )
+)
