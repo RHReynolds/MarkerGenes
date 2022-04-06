@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2020 Regina H. Reynolds
+Copyright (c) 2022 Regina H. Reynolds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

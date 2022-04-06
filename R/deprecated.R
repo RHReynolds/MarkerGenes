@@ -1,9 +1,12 @@
-#' Deprecated function: Run EWCE with control for GC content and transcript length.
+#' Deprecated function: Run EWCE with control for GC content and transcript
+#' length.
 #'
 #' This function is deprecated on account of major changes to EWCE (see EWCE
-#' news: \url{https://nathanskene.github.io/EWCE/news/index.html}). Perform EWCE
-#' bootstrapping across several gene lists in more than one specificity matrix
-#' (aka. ctd).
+#' news: \url{https://nathanskene.github.io/EWCE/news/index.html}), which also
+#' include development of
+#' [MultiEWCE](\url{https://github.com/neurogenomics/MultiEWCE/}), which permits
+#' running multiple gene lists in parallel. Perform EWCE bootstrapping across
+#' several gene lists in more than one specificity matrix (aka. ctd).
 #'
 #' @param list_of_genes Named list containing vectors with gene IDs
 #'   corresponding to each gene list to be tested.

@@ -2,7 +2,8 @@
 % Please edit documentation in R/deprecated.R
 \name{run_ewce_controlled}
 \alias{run_ewce_controlled}
-\title{Deprecated function: Run EWCE with control for GC content and transcript length.}
+\title{Deprecated function: Run EWCE with control for GC content and transcript
+length.}
 \usage{
 run_ewce_controlled(
   list_of_genes,
@@ -44,8 +45,10 @@ A dataframe of EWCE results for each of the gene lists in each study.
 }
 \description{
 This function is deprecated on account of major changes to EWCE (see EWCE
-news: \url{https://nathanskene.github.io/EWCE/news/index.html}). Perform EWCE
-bootstrapping across several gene lists in more than one specificity matrix
-(aka. ctd).
+news: \url{https://nathanskene.github.io/EWCE/news/index.html}), which also
+include development of
+[MultiEWCE](\url{https://github.com/neurogenomics/MultiEWCE/}), which permits
+running multiple gene lists in parallel. Perform EWCE bootstrapping across
+several gene lists in more than one specificity matrix (aka. ctd).
 }
 \keyword{internal}

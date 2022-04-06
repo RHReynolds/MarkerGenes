@@ -14,17 +14,17 @@ library(data.table)
 
 #---Load in mapping of nuclei to cell type--------------------
 
-cell_ids <- setNames(c(list(read_delim("/home/rreynolds/data/snRNAseq_SNIG/metadata_SNatlas.txt", delim = "\t") %>%
+cell_ids <- setNames(c(list(read_delim("/home/rreynolds/data/gse140231/metadata/metadata_SNatlas.txt", delim = "\t") %>%
                               dplyr::rename(level_2 = level2class_new, level1 = level1_class)),
-                       list(read_delim("/home/rreynolds/data/snRNAseq_SNIG/metadata_CORTEXatlas.txt", delim = "\t") %>%
+                       list(read_delim("/home/rreynolds/data/gse140231/metadata/metadata_CORTEXatlas.txt", delim = "\t") %>%
                               dplyr::mutate(level1 = str_replace_all(level1, " ", "_")))),
                      c("SNIG", "CRTX"))
 
 #---Prepare file dataframe------------------------------------
 # Files named such that each set of barcodes, genes and matrix can be identified either by unique "GSM" tag or Sample_*
 # Post-mortem individuals (total of 5) identified by C*/N*, with tissue denoted by C (cortex) and N (substantia nigra)
-sample_df <- data.frame(file_path = list.files("/home/rreynolds/data/snRNAseq_SNIG/GSE140231_RAW/", full.names = T),
-           file_name = list.files("/home/rreynolds/data/snRNAseq_SNIG/GSE140231_RAW/") %>%
+sample_df <- data.frame(file_path = list.files("/home/rreynolds/data/gse140231/GSE140231_RAW/", full.names = T),
+           file_name = list.files("/home/rreynolds/data/gse140231/GSE140231_RAW/") %>%
              str_replace(., "\\..*", "")
            ) %>%
   tidyr::separate(file_name, into = c("gsm_id", "sample", "sample_id", "tissue_individual", "file_type")) %>%
@@ -202,14 +202,14 @@ CRTX <- setNames(list(mtx_CRTX, cell_ids$CRTX),
 SNIG <- setNames(list(mtx_SNIG, cell_ids$SNIG),
                  c("exp", "annot"))
 
-saveRDS(CRTX, file="/home/rreynolds/data/snRNAseq_SNIG/EWCE_data/CRTX_DataForEWCE.Rds")
-saveRDS(SNIG, file="/home/rreynolds/data/snRNAseq_SNIG/EWCE_data/SNIG_DataForEWCE.Rds")
+saveRDS(CRTX, file="/home/rreynolds/data/gse140231/ewce_data/CRTX_DataForEWCE.Rds")
+saveRDS(SNIG, file="/home/rreynolds/data/gse140231/ewce_data/SNIG_DataForEWCE.Rds")
 
 #---EWCE: Calculating specificity matrices-----------------------------------------------------------------------------------------------####
 
 Sys.time()
-EWCE_data <- setNames(c(list(readRDS("/home/rreynolds/data/snRNAseq_SNIG/EWCE_data/CRTX_DataForEWCE.Rds")),
-                        list(readRDS("/home/rreynolds/data/snRNAseq_SNIG/EWCE_data/SNIG_DataForEWCE.Rds"))),
+EWCE_data <- setNames(c(list(readRDS("/home/rreynolds/data/gse140231/ewce_data/CRTX_DataForEWCE.Rds")),
+                        list(readRDS("/home/rreynolds/data/gse140231/ewce_data/SNIG_DataForEWCE.Rds"))),
                       c("CRTX", "SNIG"))
 print("Data loaded.")
 

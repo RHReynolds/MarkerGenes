@@ -32,15 +32,17 @@ knitr::opts_chunk$set(
 
 ## Brief description
 Resource that contains data related to:
-- Brain-relevant cell-type markers in the form of [flat lists of genes.](https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists).
+
+- Brain-relevant cell-type markers in the form of [flat lists of genes](https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists).
 - Gene specificity to cell type/tissues in the form of:  
     - [Specificity matrices.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/)
     - [Dataframe of specificity values.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df/)
-- For metadata on the available lists/matrices, please refer to: [dataset_metadata.html](docs/dataset_metadata.html).
+- For metadata on the available lists/matrices, please refer to: [dataset metadata](#TODO).
 
 Resouce also contains a number of functions that:
-    - Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [query_gene_ctd_tutorial.Rmd](docs/query_gene_ctd_tutorial.html)) 
-    - Summarise the output of `query_gene_ctd()` using ([`summarise_specificity_plot()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R)).
+
+- Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [tutorial](#TODO)) 
+- Summarise the output of `query_gene_ctd()` using ([`summarise_specificity_plot()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R)).
 
 ## What is gene specificity?
 - Specificity of a gene represents the proportion of the total expression of a gene found in one cell type as compared to that in all cell types (i.e., the mean expression in one cell type divided by the mean expression in all cell types). If the expression of a gene is shared between two or more cell types, it will get a lower specificity measure.
@@ -53,16 +55,16 @@ Resouce also contains a number of functions that:
     - Level 1 cell types – broad cell type categories e.g. astrocyte, glutamatergic neuron, etc.
     - Level 2 cell types – subtypes of the broader cell type categories
 - With each of the two lists there are three additional lists, which typically have the same name.
-     - annot: a character vector that provides the level 1 or level 2 cell type assigned to each single cell, which was used in the calculation
-     - mean_exp: a matrix of mean expression for all genes (rows) across each cell type (columns)
-     - specificity: a matrix of the specificity values for all genes (rows) across each cell type (columns)
+     - `annot`: a character vector that provides the level 1 or level 2 cell type assigned to each single cell, which was used in the calculation
+     - `mean_exp`: a matrix of mean expression for all genes (rows) across each cell type (columns)
+     - `specificity`: a matrix of the specificity values for all genes (rows) across each cell type (columns)
      
 ### Structure of a specificity dataframe
 - Dataframe of gene, tissue/cell-type, mean_expression, and specificity. 
 
 # Citation
 
-If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset_metadata.html](docs/dataset_metadata.html).
+If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset metadata](#TODO).
 
 MarkerGenes can be cited using:
 

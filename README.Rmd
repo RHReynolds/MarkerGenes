@@ -45,11 +45,11 @@ For details, please refer to the vignette.
 
 # License
 
-The code in this repository is released under an MIT license. This repository is distributed in the hope that it will be useful to the wider community, but without any warranty of any kind. Please see the [LICENSE](LICENSE) file for more details.
+The code in this repository is released under an MIT license. This repository is distributed in the hope that it will be useful to the wider community, but without any warranty of any kind. Please see the [LICENSE](https://github.com/RHReynolds/MarkerGenes/tree/master/LICENSE.md) for more details.
 
 ## Citation
 
-If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset_metadata.html](docs/dataset_metadata.html) 
+If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: [dataset_metadata.html](#TODO). 
 
 Below is the citation output from using `citation('MarkerGenes')` in R. Please run this yourself to check for any updates on how to cite __MarkerGenes__.
 
@@ -57,4 +57,23 @@ Below is the citation output from using `citation('MarkerGenes')` in R. Please r
 print(citation("MarkerGenes"), bibtex = TRUE)
 ```
 
+# Code contents
 
+Within this repository you will find:
+
+| Directory | Description |
+| --------- | --------------------------------------------------------------------------- |
+| [data](https://github.com/RHReynolds/MarkerGenes/tree/master/data) | Package data. |
+| [data-raw](https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw) | Scripts related to generation of data available in repository |
+| [docs](https://github.com/RHReynolds/MarkerGenes/tree/master/docs) | Source files for repository website |
+| [flat_lists](https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists) | Marker genes from various sources, as described in folder readme.txt |
+| [inst](https://github.com/RHReynolds/MarkerGenes/tree/master/inst) | External data used in [data-raw](https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw) |
+| [man](https://github.com/RHReynolds/MarkerGenes/tree/master/man) | Function documentation |
+| [metadata](https://github.com/RHReynolds/MarkerGenes/tree/master/metadata) | Metadata related to specificity matrices/dataframes |
+| [nohup_logs](https://github.com/RHReynolds/MarkerGenes/tree/master/nohup_logs) | For any scripts that were run outside of an `.Rmd` (e.g. scripts from the [data-raw](https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw) directory), a log file was recorded and can be accessed here |
+| [R](https://github.com/RHReynolds/MarkerGenes/tree/master/R)| Repository functions |
+| [results](https://github.com/RHReynolds/MarkerGenes/tree/master/results) | Results relating to .Rmds in [workflows](https://github.com/RHReynolds/MarkerGenes/tree/master/workflows) |
+| [specificity_df](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df) | Folder of specificity dataframes |
+| [specificity_matrices](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices) | Folder of specificity matrices |
+| [vignettes](https://github.com/RHReynolds/MarkerGenes/tree/master/vignettes) | Repository vignette |
+| [workflows](https://github.com/RHReynolds/MarkerGenes/tree/master/workflows) | Miscellaneous .Rmds |
