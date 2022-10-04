@@ -1,0 +1,252 @@
+---
+title: "Generating cell-type dataset for AIBS 2019"
+author: 
+- name: "Regina H. Reynolds"
+  affiliation: UCL
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  bookdown::html_document2:
+    figure_caption: yes
+    code_folding: hide
+    theme: paper
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+```{r setup, include = FALSE}
+
+library(ggplot2) # For plotting
+library(tidyverse) # For tidy manipulation of data
+library(stringr) # For string manipulation
+
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+
+# Set defaults for ggplots 
+theme_rhr <- 
+  ggplot2::theme_set(
+  ggplot2::theme_bw(base_family = "Helvetica",
+           base_size = 10) + 
+  ggplot2::theme(panel.grid.major.x = element_blank(),
+        legend.position = "top",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        axis.title.y = element_text(vjust = 0.6),
+        panel.spacing = unit(0.1, "lines"))
+)
+
+```
+
+> Aim: generate cell-type dataset for AIBS 2018
+<br><br>
+
+# Methods {.tabset}
+
+## Expression-weighted cell-type enrichment
+Specificity values for expression-weighted cell-type enrichment (EWCE) (https://www.bioconductor.org/packages/release/bioc/html/EWCE.html; PMID: [26858593](https://pubmed.ncbi.nlm.nih.gov/26858593/)) analyses were calculated from the Allen Institute for Brain Science (AIBS) study of 49,495 single-nucleus transcriptomes across multiple human cortical areas (Dataset: Allen Institute for Brain Science (2021). Allen Cell Types Database -- Human Multiple Cortical Areas [dataset]. Available from celltypes.brain-map.org/rnaseq.) 
+
+Specificity values were generated using gene-level exonic and intronic reads. Nuclei from all sampled brain regions were used, which included: the middle temporal gyrus (MTG); anterior cingulate cortex (ACC; also known as the ventral division of medial prefrontal cortex, A24); primary visual cortex (V1C); primary motor cortex (M1C); primary somatosensory cortex (S1C) and primary auditory cortex (A1C). Nuclei were annotated to cell types at two levels, each corresponding to increasingly refined cell-type/-subtype annotations. These cell type labels were derived from the accompanying metadata. Level 1 cell types included 7 types of glutamatergic neuron classified by their projection properties, 5 types of GABAergic neuron classified by marker genes and finally 5 non-neuronal cell types. As the number of nuclei labelled as endothelial cells (n = 70), pericytes (n = 32) and VLMC (n = 11) was low, these were merged into the level 1 cell type, "vascular cell". Level 2 cell types represented the 120 clusters originally identified in the dataset. For a description of how clustering was performed, please refer to: https://portal.brain-map.org/atlases-and-data/rnaseq/protocols-human-cortex. 
+
+Nuclei that were labelled as "outlier calls" in the accompanying metadata (n = 1985) were removed from the analysis. In addition, the following filtering steps were applied to genes: (i) removal of any genes symbols from the gene-cell matrix that were not official HGNC symbols using `EWCE::fix_bad_hgnc_symbols()` (n = 30792 genes were retained); (ii) removal of genes not expressed across any cell types (n = 1263); and (iii) removal of genes that were not significantly differentially expressed across level 2 cell types (n = 6304). Steps (ii) and (iii) were achieved using `EWCE::drop_uninformative_genes()`. The default LIMMA method was used together with an adjusted p-value threshold for differential expression of p < 1e-5. The filtered matrix was then run through `EWCE::generate_celltype_data()` to generate specificity values.
+
+# Supplementary code {.tabset}
+
+Following section includes any intermediary code used in this `.Rmd`.
+
+## File paths for `.rmd`
+
+```{r}
+# File paths
+args <-
+  list(
+    data_dir = file.path("/home/rreynolds/data/scRNAseq_AIBS/multiple_cortical_smartseq")
+  )
+
+args <- 
+  c(
+    args,
+    list(
+      path_to_ctd = file.path(args$data_dir, "ctd_aibsMultipleCrtxSmrtSeq.rda"),
+      path_to_metadata = file.path(args$data_dir, "metadata.csv")
+    )
+  )
+
+```
+
+## Set up `ewce` docker image
+
+We used the `ewce` docker image ([neurogenomicslab/ewce](https://hub.docker.com/r/neurogenomicslab/ewce)), which also includes RStudio.
+
+This first requires that we download the docker image.
+
+```{bash pull-ewce-docker, eval = F}
+docker pull neurogenomicslab/ewce:1.5.2
+```
+
+Next, we can run an R Studio server instance on rocker-based image, using [docker_run_rserver()](https://rytenlab.github.io/rockup/reference/docker_run_rserver.html) and the following [guide](https://rytenlab.github.io/rockup/articles/rockup.html), both developed by David Zhang.
+
+```{r setup-ewce-rocker, eval = F}
+
+rockup::docker_run_rserver(
+  image = "neurogenomicslab/ewce:1.5.2",
+  port = 8992,
+  password = "bioc",
+  name = "rhr_ewce",
+  detach = TRUE,
+  rm = FALSE,
+  volumes = c(
+    "/home/rreynolds/misc_projects/sonia-missplicing/",
+    "/home/rreynolds/data"
+  ),
+  permissions = "match",
+  USERID = 1003,
+  GROUPID = 1004,
+  verbose = TRUE,
+  return_flags = FALSE
+)
+
+```
+
+Finally, we can access the R Studio server process by mapping the localhost of our local machine to the port on the remote server presenting R Studio server (specified above as 8992). Simply replace the `user` and `ip` values with the appropriate username and IP address for the remote server used.
+
+```{bash ssh-ewce-rocker, eval = F}
+ssh -X -N -f -L localhost:8992:localhost:8992 user@ip
+```
+
+## Generating cell-type dataset for AIBS 2018, multiple cortical areas
+
+```{r load-metadata, results = F}
+
+metadata <- 
+  readr::read_csv(args$path_to_metadata)
+
+```
+
+- Data was downloaded from: https://portal.brain-map.org/atlases-and-data/rnaseq/human-multiple-cortical-areas-smart-seq
+- Matrices with exon and intron counts were used.
+- Used all brain regions sampled, which included:
+    - Middle temporal gyrus (MTG)
+    - Anterior cingulate cortex (ACC; also known as the ventral division of medial prefrontal cortex, A24)
+    - Primary visual cortex (V1C)
+    - Primary motor cortex (M1C) - upper (ul) and lower (lm) limb regions
+    - Primary somatosensory cortex (S1C) - upper (ul) and lower (lm) regions
+    - Primary auditory cortex (A1C) 
+- Generating cell type annotations
+    - Level 1: Allen Brain Atlas provided a class and subclass label. Class had only 3 levels (GABAergic, glutamatergic and non-neuronal), thus instead the subclass label, which subdivided glutamatergic neurons into `r metadata %>% dplyr::filter(class_label == "Glutamatergic") %>% dplyr::distinct(subclass_label) %>% nrow()` subtypes, GABAergic neurons into `r metadata %>% dplyr::filter(class_label == "GABAergic") %>% dplyr::distinct(subclass_label) %>% nrow()` subtypes, and non-neuronal cell types into `r metadata %>% dplyr::filter(class_label == "Non-neuronal") %>% dplyr::distinct(subclass_label) %>% dplyr::pull(subclass_label) %>% sort() %>% stringr::str_c(collapse = ", ")`. As the number of endothelial cells (n = `r metadata %>% dplyr::filter(subclass_label == "Endothelial") %>% nrow()`), pericytes (n = `r metadata %>% dplyr::filter(subclass_label == "Pericyte") %>% nrow()`) and VLMC (n = `r metadata %>% dplyr::filter(subclass_label == "VLMC") %>% nrow()`) nuclei was low, these were merged into the class "vascular cell".
+    - Level 2: used the original clusters defined by the Allen Brain Atlas
+- `r metadata$outlier_call %>% sum()` nuclei were labelled as "outlier calls". These were removed during generation of the celltype dataset.
+- Used `EWCE::fix_bad_hgnc_symbols()` to remove any symbols from the gene-cell matrix that were not official HGNC symbols. 30792 genes were retained.
+- Used `EWCE::drop_uninformative_genes()`, which removes "uninformatic genes" to reduce compute time in susbequent steps. The following steps were performed:
+  - Drop non-expressed genes (n = 1263): removes genes that are not expressed across any cell types 
+  - Drop non-differentially expressed genes (n = 6304): removes genes that are not significantly differentially expressed across level 2 cell types. Default LIMMA used with adjusted p-value threshold of 1e-05. 
+- Finally, used `EWCE::generate_celltype_data()` to generate the celltype dataset.
+
+```{bash, eval = F}
+nohup Rscript \
+/home/rreynolds/misc_projects/sonia-missplicing/scripts/02a_generate_aibs_ctd.R \
+&>/home/rreynolds/misc_projects/sonia-missplicing/logs/02a_generate_aibs_ctd.log&
+
+```
+
+## Loading results
+```{r load-results}
+ctd <- EWCE::load_rdata(args$path_to_ctd)
+
+annotation <-
+  metadata %>% 
+  dplyr::filter(outlier_call == FALSE) %>% 
+  dplyr::mutate(
+    level1class = 
+      dplyr::case_when(
+        class_label == "Non-neuronal" & 
+          subclass_label %in% c("Oligodendrocyte", "OPC", "Astrocyte", "Microglia") ~ subclass_label,
+        class_label == "Non-neuronal" & 
+          subclass_label %in% c("Endothelial", "Pericyte", "VLMC") ~ "Vascular_cells",
+        TRUE ~ stringr::str_c(
+          class_label, 
+          "_", 
+          EWCE::fix_celltype_names(subclass_label)
+        )
+      ),
+    level2class =
+      cluster_label %>% 
+      EWCE::fix_celltype_names()
+  )
+
+```
+
+
+# Results 
+
+## Description of celltype data {.tabset}
+
+### Text
+
+- Level 1 cell types: `r annotation$level1class %>% unique() %>% length()` different level 1 cell types, with the smallest being vascular cells and the largest being glutamatergic intratelencephalic (IT) neurons (Figure \@ref(fig:plot-celltype-n)).
+- Level 2 cell types: `r annotation$level2class %>% unique() %>% length()` different level 2 cell types. Noteworthy that `r annotation %>% dplyr::count(level2class) %>% dplyr::filter(n < 100) %>% nrow()` level 2 cells types were defined by < 100 nuclei.
+
+### Tables
+Table of level 1 and level 2 cell types.
+
+```{r celltypes}
+annotation %>% 
+  dplyr::distinct(level1class, level2class) %>%
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap') 
+  
+```
+
+Level 2 cell types in descending order of number of nuclei.
+
+```{r celltype-n-table}
+annotation %>% 
+  dplyr::count(level1class, level2class) %>%
+  dplyr::arrange(-n) %>% 
+  DT::datatable(rownames = FALSE,
+                options = list(scrollX = TRUE),
+                class = 'white-space: nowrap') 
+  
+```
+
+### Figures
+```{r plot-celltype-n, fig.cap = "Number of nuclei per level 1 cell type class. Glutamatergic classifications by their projection properties: CT = corticothalamic projecting; ET = extratelencephalic projecting; NP = near-projecting; IT = intratelencephalic; L* = cortical layer *. GABAergic classifications by marker genes: LAMP5 = Lysosomal Associated Membrane Protein Family Member 5; PAX6 = Paired box protein Pax-6; PVALB = parvalbumin; SST = somatostatin; VIP = vasoactive intestinal polypeptide. Non-neuronal abbreviations: OPC = oligodendrocyte precursor cell."}
+
+annotation %>% 
+  dplyr::count(level1class) %>% 
+  ggplot(
+    aes(
+      x = 
+        forcats::fct_reorder(.f = level1class, .x = n, .fun = median, .desc = T),
+      y = n
+    )
+  ) +
+  geom_col() +
+  geom_text(
+    aes(label = n), 
+    size = 3,
+    vjust = -0.25
+    ) +
+  labs(
+    x = "Cell type",
+    y = "Number of nuclei"
+  )
+
+```
+
+<br><br>
+
+# Session info
+
+<details>
+  <summary>Show/hide</summary>
+
+```{r reproducibility, echo = FALSE}
+# Session info
+library("sessioninfo")
+options(width = 120)
+session_info()
+```
+
+</details> 

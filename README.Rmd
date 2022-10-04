@@ -74,6 +74,7 @@ Within this repository you will find:
 | [R](https://github.com/RHReynolds/MarkerGenes/tree/master/R)| Repository functions |
 | [results](https://github.com/RHReynolds/MarkerGenes/tree/master/results) | Results relating to .Rmds in [workflows](https://github.com/RHReynolds/MarkerGenes/tree/master/workflows) |
 | [specificity_df](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df) | Folder of specificity dataframes |
-| [specificity_matrices](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices) | Folder of specificity matrices |
+| [specificity_matrices](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices) | Folder of specificity matrices compatible with the defunct [EWCE v1.3.0](https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html) available on Bioconductor v3.5 |
+| [specificity_matrices_new](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices) | Folder of specificity matrices compatible with the new [EWCE](https://nathanskene.github.io/EWCE/index.html) that is available in Bioconductor>=3.14 |
 | [vignettes](https://github.com/RHReynolds/MarkerGenes/tree/master/vignettes) | Repository vignette |
 | [workflows](https://github.com/RHReynolds/MarkerGenes/tree/master/workflows) | Miscellaneous .Rmds |

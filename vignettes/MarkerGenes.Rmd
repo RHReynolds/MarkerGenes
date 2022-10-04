@@ -35,14 +35,16 @@ Resource that contains data related to:
 
 - Brain-relevant cell-type markers in the form of [flat lists of genes](https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists).
 - Gene specificity to cell type/tissues in the form of:  
-    - [Specificity matrices.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/)
+    - [Specificity matrices.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/). **Please note that these are compatible with different versions of EWCE.**
+        - [specificity_matrices/](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/) - specificity matrices compatible with the defunct [EWCE v1.3.0](https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html) available on Bioconductor v3.5
+        - [specificity_matrices_new/](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices_new/) - specificity matrices compatible with the new [EWCE](https://nathanskene.github.io/EWCE/index.html) that is available in Bioconductor>=3.14
     - [Dataframe of specificity values.](https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df/)
 - For metadata on the available lists/matrices, please refer to: [dataset metadata](https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html).
 
-Resouce also contains a number of functions that:
+Resource also contains a number of functions that:
 
-- Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [tutorial](https://rhreynolds.github.io/MarkerGenes/articles/articles/query_gene_ctd_tutorial.html)) 
-- Summarise the output of `query_gene_ctd()` using ([`summarise_specificity_plot()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R)).
+- Allow users to query specificity matrices ([`query_gene_ctd()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R) - for more details, see [tutorial](https://rhreynolds.github.io/MarkerGenes/articles/articles/query_gene_ctd_tutorial.html)). **Be aware that this is only compatible with old-style EWCE specificity matrices.** 
+- Summarise the output of `query_gene_ctd()` using ([`summarise_specificity_plot()`](https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R)). **Be aware that this is only compatible with old-style EWCE specificity matrices.** 
 
 ## What is gene specificity?
 - Specificity of a gene represents the proportion of the total expression of a gene found in one cell type as compared to that in all cell types (i.e., the mean expression in one cell type divided by the mean expression in all cell types). If the expression of a gene is shared between two or more cell types, it will get a lower specificity measure.
