@@ -9,7 +9,30 @@ This repository contains gene cell-type/tissue specificity matrices, which can b
 
 ## Installation instructions
 
-To access the datasets within this package, please clone the repository to your local directory.
+To access the datasets within this package, either clone the repository to your local directory or use the following code chunk (and edit accordingly):
+
+``` r
+
+args <- 
+  list(
+    url = "https://github.com/RHReynolds/MarkerGenes/raw/master/specificity_matrices_new/ctd_aibsMultipleCrtxSmrtSeq.rda",
+    file_name = "ctd_aibsMultipleCrtxSmrtSeq.rda",
+    out_dir = here::here("tmp")
+  )
+
+# create temporary directory
+dir.create(args$out_dir)
+
+# check if file exists and download if it doesn't
+if (!file.exists(file.path(args$out_dir, args$file_name))) {
+
+  download.file(
+    url = args$url,
+    destfile = file.path(args$out_dir, args$file_name)
+  )
+
+}
+```
 
 To use functions within the package, install from github. This can be done using the following lines of code:
 
@@ -117,13 +140,17 @@ Within this repository you will find:
 </tr>
 <tr class="even">
 <td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices">specificity_matrices</a></td>
-<td>Folder of specificity matrices</td>
+<td>Folder of specificity matrices compatible with the defunct <a href="https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html">EWCE v1.3.0</a> available on Bioconductor v3.5</td>
 </tr>
 <tr class="odd">
+<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices">specificity_matrices_new</a></td>
+<td>Folder of specificity matrices compatible with the new <a href="https://nathanskene.github.io/EWCE/index.html">EWCE</a> that is available in Bioconductor&gt;=3.14</td>
+</tr>
+<tr class="even">
 <td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/vignettes">vignettes</a></td>
 <td>Repository vignette</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/workflows">workflows</a></td>
 <td>Miscellaneous .Rmds</td>
 </tr>

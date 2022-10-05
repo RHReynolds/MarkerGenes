@@ -62,7 +62,7 @@ readxl::read_excel(
 - The majority of specificity matrices have been downloaded from external sources (primarily [Skene 2018](https://pubmed.ncbi.nlm.nih.gov/29785013/); with specificity matrices made available in the associated [GitHub repo](https://github.com/NathanSkene/MAGMA_Celltyping/tree/master/data)).
 - A few specificity matrices have been specifically generated within the `MarkerGene` package. These can be divided into their compatibility with EWCE versions:
     - Compatible with the defunct [EWCE v1.3.0](https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html) available on Bioconductor v3.5
-        - Zeisel et al. 2018 (see: `r  xfun::embed_file(path = "/home/rreynolds/projects/LDSC_Regression/R/EWCE/Zeisel2018_CNSClusters_FormattingDataForEWCE.R", name = "Zeisel2018_CNSClusters_FormattingDataForEWCE.R", text = "Zeisel2018_CNSClusters_FormattingDataForEWCE.R")`)
+        - Zeisel et al. 2018 (see: [Zeisel2018_CNSClusters_FormattingDataForEWCE.R](https://github.com/RHReynolds/MarkerGenes/blob/master/data-raw/Zeisel2018_CNSClusters_FormattingDataForEWCE.R))
         - Allen Brain Atlas 2018 **(only MTG)**. 
             - Downloaded from [AIBS](https://portal.brain-map.org/atlases-and-data/rnaseq/human-mtg-smart-seq).
             - Used gene-level (exonic) read count values.

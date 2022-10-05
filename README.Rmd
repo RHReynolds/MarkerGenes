@@ -24,7 +24,31 @@ This repository contains gene cell-type/tissue specificity matrices, which can b
 
 ## Installation instructions
 
-To access the datasets within this package, please clone the repository to your local directory.
+To access the datasets within this package, either clone the repository to your local directory or use the following code chunk (and edit accordingly):
+
+```{r "download", eval = FALSE}
+
+args <- 
+  list(
+    url = "https://github.com/RHReynolds/MarkerGenes/raw/master/specificity_matrices_new/ctd_aibsMultipleCrtxSmrtSeq.rda",
+    file_name = "ctd_aibsMultipleCrtxSmrtSeq.rda",
+    out_dir = here::here("tmp")
+  )
+
+# create temporary directory
+dir.create(args$out_dir)
+
+# check if file exists and download if it doesn't
+if (!file.exists(file.path(args$out_dir, args$file_name))) {
+
+  download.file(
+    url = args$url,
+    destfile = file.path(args$out_dir, args$file_name)
+  )
+
+}
+
+```
 
 To use functions within the package, install from github. This can be done using the following lines of code:
 
