@@ -81,39 +81,40 @@
 <div class="page-header"><h1 id="markergenes">MarkerGenes<a class="anchor" aria-label="anchor" href="#markergenes"></a>
 </h1></div>
 <!-- badges: start -->
+
 <p>This repository contains gene cell-type/tissue specificity matrices, which can be used to determine the specificity of a gene to a particular cell type or tissue.</p>
 <div class="section level2">
 <h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
 <p>To access the datasets within this package, either clone the repository to your local directory or use the following code chunk (and edit accordingly):</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">args</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    url <span class="op">=</span> <span class="st">"https://github.com/RHReynolds/MarkerGenes/raw/master/specificity_matrices_new/ctd_aibsMultipleCrtxSmrtSeq.rda"</span>,
-    file_name <span class="op">=</span> <span class="st">"ctd_aibsMultipleCrtxSmrtSeq.rda"</span>,
-    out_dir <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"tmp"</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="co"># create temporary directory</span>
-<span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span><span class="op">)</span>
-
-<span class="co"># check if file exists and download if it doesn't</span>
-<span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span>, <span class="va">args</span><span class="op">$</span><span class="va">file_name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-
-  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span>
-    url <span class="op">=</span> <span class="va">args</span><span class="op">$</span><span class="va">url</span>,
-    destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span>, <span class="va">args</span><span class="op">$</span><span class="va">file_name</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">args</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    url <span class="op">=</span> <span class="st">"https://github.com/RHReynolds/MarkerGenes/raw/master/specificity_matrices_new/ctd_aibsMultipleCrtxSmrtSeq.rda"</span>,</span>
+<span>    file_name <span class="op">=</span> <span class="st">"ctd_aibsMultipleCrtxSmrtSeq.rda"</span>,</span>
+<span>    out_dir <span class="op">=</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"tmp"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create temporary directory</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># check if file exists and download if it doesn't</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span>, <span class="va">args</span><span class="op">$</span><span class="va">file_name</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span></span>
+<span>    url <span class="op">=</span> <span class="va">args</span><span class="op">$</span><span class="va">url</span>,</span>
+<span>    destfile <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">args</span><span class="op">$</span><span class="va">out_dir</span>, <span class="va">args</span><span class="op">$</span><span class="va">file_name</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>To use functions within the package, install from github. This can be done using the following lines of code:</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"devtools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"RHReynolds/MarkerGenes"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"devtools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"RHReynolds/MarkerGenes"</span><span class="op">)</span></span></code></pre></div>
 <p>Please note that there is no plan to ever submit this code to <code>CRAN</code> or <code>Bioconductor</code>. This code was developed for personal use.</p>
 </div>
 <div class="section level2">
@@ -131,22 +132,22 @@
 </h2>
 <p>If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html" class="external-link">dataset_metadata.html</a>.</p>
 <p>Below is the citation output from using <code>citation('MarkerGenes')</code> in R. Please run this yourself to check for any updates on how to cite <strong>MarkerGenes</strong>.</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"MarkerGenes"</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Reynolds RH (2022). _MarkerGenes_.</span>
-<span class="co">#&gt; https://github.com/RHReynolds/MarkerGenes - R package version 0.99.0,</span>
-<span class="co">#&gt; &lt;URL: https://github.com/RHReynolds/MarkerGenes&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Manual{,</span>
-<span class="co">#&gt;     title = {MarkerGenes},</span>
-<span class="co">#&gt;     author = {Regina H. Reynolds},</span>
-<span class="co">#&gt;     year = {2022},</span>
-<span class="co">#&gt;     url = {https://github.com/RHReynolds/MarkerGenes},</span>
-<span class="co">#&gt;     note = {https://github.com/RHReynolds/MarkerGenes - R package version 0.99.0},</span>
-<span class="co">#&gt;   }</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"MarkerGenes"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Reynolds RH (2022). _MarkerGenes_.</span></span>
+<span><span class="co">#&gt; https://github.com/RHReynolds/MarkerGenes - R package version 0.99.0,</span></span>
+<span><span class="co">#&gt; &lt;URL: https://github.com/RHReynolds/MarkerGenes&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {MarkerGenes},</span></span>
+<span><span class="co">#&gt;     author = {Regina H. Reynolds},</span></span>
+<span><span class="co">#&gt;     year = {2022},</span></span>
+<span><span class="co">#&gt;     url = {https://github.com/RHReynolds/MarkerGenes},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/RHReynolds/MarkerGenes - R package version 0.99.0},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level1">
@@ -159,71 +160,133 @@
 <col width="88%">
 </colgroup>
 <thead><tr class="header">
-<th>Directory</th>
-<th>Description</th>
+<th>
+Directory
+</th>
+<th>
+Description
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data" class="external-link">data</a></td>
-<td>Package data.</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a></td>
-<td>Scripts related to generation of data available in repository</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/docs" class="external-link">docs</a></td>
-<td>Source files for repository website</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists" class="external-link">flat_lists</a></td>
-<td>Marker genes from various sources, as described in folder readme.txt</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/inst" class="external-link">inst</a></td>
-<td>External data used in <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data" class="external-link">data</a>
+</td>
+<td>
+Package data.
 </td>
 </tr>
 <tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/man" class="external-link">man</a></td>
-<td>Function documentation</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/metadata" class="external-link">metadata</a></td>
-<td>Metadata related to specificity matrices/dataframes</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/nohup_logs" class="external-link">nohup_logs</a></td>
-<td>For any scripts that were run outside of an <code>.Rmd</code> (e.g. scripts from the <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a> directory), a log file was recorded and can be accessed here</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/R" class="external-link">R</a></td>
-<td>Repository functions</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/results" class="external-link">results</a></td>
-<td>Results relating to .Rmds in <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/workflows" class="external-link">workflows</a>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a>
+</td>
+<td>
+Scripts related to generation of data available in repository
 </td>
 </tr>
 <tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df" class="external-link">specificity_df</a></td>
-<td>Folder of specificity dataframes</td>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/docs" class="external-link">docs</a>
+</td>
+<td>
+Source files for repository website
+</td>
 </tr>
 <tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices" class="external-link">specificity_matrices</a></td>
-<td>Folder of specificity matrices compatible with the defunct <a href="https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html" class="external-link">EWCE v1.3.0</a> available on Bioconductor v3.5</td>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists" class="external-link">flat_lists</a>
+</td>
+<td>
+Marker genes from various sources, as described in folder readme.txt
+</td>
 </tr>
 <tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices" class="external-link">specificity_matrices_new</a></td>
-<td>Folder of specificity matrices compatible with the new <a href="https://nathanskene.github.io/EWCE/index.html" class="external-link">EWCE</a> that is available in Bioconductor&gt;=3.14</td>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/inst" class="external-link">inst</a>
+</td>
+<td>
+External data used in <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a>
+</td>
 </tr>
 <tr class="even">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/vignettes" class="external-link">vignettes</a></td>
-<td>Repository vignette</td>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/man" class="external-link">man</a>
+</td>
+<td>
+Function documentation
+</td>
 </tr>
 <tr class="odd">
-<td><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/workflows" class="external-link">workflows</a></td>
-<td>Miscellaneous .Rmds</td>
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/metadata" class="external-link">metadata</a>
+</td>
+<td>
+Metadata related to specificity matrices/dataframes
+</td>
+</tr>
+<tr class="even">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/nohup_logs" class="external-link">nohup_logs</a>
+</td>
+<td>
+For any scripts that were run outside of an <code>.Rmd</code> (e.g. scripts from the <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/data-raw" class="external-link">data-raw</a> directory), a log file was recorded and can be accessed here
+</td>
+</tr>
+<tr class="odd">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/R" class="external-link">R</a>
+</td>
+<td>
+Repository functions
+</td>
+</tr>
+<tr class="even">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/results" class="external-link">results</a>
+</td>
+<td>
+Results relating to .Rmds in <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/workflows" class="external-link">workflows</a>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df" class="external-link">specificity_df</a>
+</td>
+<td>
+Folder of specificity dataframes
+</td>
+</tr>
+<tr class="even">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices" class="external-link">specificity_matrices</a>
+</td>
+<td>
+Folder of specificity matrices compatible with the defunct <a href="https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html" class="external-link">EWCE v1.3.0</a> available on Bioconductor v3.5
+</td>
+</tr>
+<tr class="odd">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices" class="external-link">specificity_matrices_new</a>
+</td>
+<td>
+Folder of specificity matrices compatible with the new <a href="https://nathanskene.github.io/EWCE/index.html" class="external-link">EWCE</a> that is available in Bioconductor&gt;=3.14
+</td>
+</tr>
+<tr class="even">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/vignettes" class="external-link">vignettes</a>
+</td>
+<td>
+Repository vignette
+</td>
+</tr>
+<tr class="odd">
+<td>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/workflows" class="external-link">workflows</a>
+</td>
+<td>
+Miscellaneous .Rmds
+</td>
 </tr>
 </tbody>
 </table>

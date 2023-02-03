@@ -78,12 +78,13 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to MarkerGenes</h1>
-                        <h4 data-toc-skip class="author">Regina H. Reynolds</h4>
+                        <h4 data-toc-skip class="author">Regina H.
+Reynolds</h4>
             <address class="author_afil">
-      UCL<br><a class="author_email" href="mailto:#"></a><a href="mailto:regina.reynolds.16@ucl.ac.uk">regina.reynolds.16@ucl.ac.uk</a>
+      UCL<br><a class="author_email" href="mailto:#"></a><a href="mailto:regina.reynolds.16@ucl.ac.uk" class="email">regina.reynolds.16@ucl.ac.uk</a>
       </address>
                   
-            <h4 data-toc-skip class="date">5 October 2022</h4>
+            <h4 data-toc-skip class="date">3 February 2023</h4>
       
       
       <div class="hidden name"><code>MarkerGenes.Rmd</code></div>
@@ -100,36 +101,53 @@
 </h3>
 <p>Resource that contains data related to:</p>
 <ul>
-<li>Brain-relevant cell-type markers in the form of <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists" class="external-link">flat lists of genes</a>.</li>
+<li>Brain-relevant cell-type markers in the form of <a href="https://github.com/RHReynolds/MarkerGenes/tree/master/flat_lists" class="external-link">flat
+lists of genes</a>.</li>
 <li>Gene specificity to cell type/tissues in the form of:
 <ul>
 <li>
-<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/" class="external-link">Specificity matrices.</a>. <strong>Please note that these are compatible with different versions of EWCE.</strong>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/" class="external-link">Specificity
+matrices.</a>. <strong>Please note that these are compatible with
+different versions of EWCE.</strong>
 <ul>
 <li>
-<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/" class="external-link">specificity_matrices/</a> - specificity matrices compatible with the defunct <a href="https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html" class="external-link">EWCE v1.3.0</a> available on Bioconductor v3.5</li>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices/" class="external-link">specificity_matrices/</a>
+- specificity matrices compatible with the defunct <a href="https://bioconductor.riken.jp/packages/3.5/bioc/html/EWCE.html" class="external-link">EWCE
+v1.3.0</a> available on Bioconductor v3.5</li>
 <li>
-<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices_new/" class="external-link">specificity_matrices_new/</a> - specificity matrices compatible with the new <a href="https://nathanskene.github.io/EWCE/index.html" class="external-link">EWCE</a> that is available in Bioconductor&gt;=3.14</li>
+<a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_matrices_new/" class="external-link">specificity_matrices_new/</a>
+- specificity matrices compatible with the new <a href="https://nathanskene.github.io/EWCE/index.html" class="external-link">EWCE</a> that is
+available in Bioconductor&gt;=3.14</li>
 </ul>
 </li>
-<li><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df/" class="external-link">Dataframe of specificity values.</a></li>
+<li><a href="https://github.com/RHReynolds/MarkerGenes/tree/master/specificity_df/" class="external-link">Dataframe
+of specificity values.</a></li>
 </ul>
 </li>
-<li>For metadata on the available lists/matrices, please refer to: <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html" class="external-link">dataset metadata</a>.</li>
+<li>For metadata on the available lists/matrices, please refer to: <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html" class="external-link">dataset
+metadata</a>.</li>
 </ul>
 <p>Resource also contains a number of functions that:</p>
 <ul>
-<li>Allow users to query specificity matrices (<a href="https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R" class="external-link"><code>query_gene_ctd()</code></a> - for more details, see <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/query_gene_ctd_tutorial.html" class="external-link">tutorial</a>).</li>
+<li>Allow users to query specificity matrices (<a href="https://github.com/RHReynolds/MarkerGenes/blob/master/R/query_gene_ctd.R" class="external-link"><code>query_gene_ctd()</code></a>
+- for more details, see <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/query_gene_ctd_tutorial.html" class="external-link">tutorial</a>).</li>
 <li>Summarise the output of <code><a href="../reference/query_gene_ctd.html">query_gene_ctd()</a></code> using (<a href="https://github.com/RHReynolds/MarkerGenes/blob/master/R/summarise_specificity_plot.R" class="external-link"><code>summarise_specificity_plot()</code></a>).</li>
 </ul>
-<p><strong>Please note that the above functions are only compatible with old-style EWCE specificity matrices.</strong></p>
+<p><strong>Please note that the above functions are only compatible with
+old-style EWCE specificity matrices.</strong></p>
 </div>
 <div class="section level3">
 <h3 id="what-is-gene-specificity">What is gene specificity?<a class="anchor" aria-label="anchor" href="#what-is-gene-specificity"></a>
 </h3>
 <ul>
-<li>Specificity of a gene represents the proportion of the total expression of a gene found in one cell type as compared to that in all cell types (i.e., the mean expression in one cell type divided by the mean expression in all cell types). If the expression of a gene is shared between two or more cell types, it will get a lower specificity measure.</li>
-<li>For a description of how it's calculated, please refer to <a href="https://www.frontiersin.org/articles/10.3389/fnins.2016.00016/full" class="external-link">Skene et al. 2016</a>.</li>
+<li>Specificity of a gene represents the proportion of the total
+expression of a gene found in one cell type as compared to that in all
+cell types (i.e., the mean expression in one cell type divided by the
+mean expression in all cell types). If the expression of a gene is
+shared between two or more cell types, it will get a lower specificity
+measure.</li>
+<li>For a description of how it’s calculated, please refer to <a href="https://www.frontiersin.org/articles/10.3389/fnins.2016.00016/full" class="external-link">Skene
+et al. 2016</a>.</li>
 </ul>
 </div>
 <div class="section level3">
@@ -139,20 +157,29 @@
 <h4 id="structure-of-a-specificity-matrix">Structure of a specificity matrix<a class="anchor" aria-label="anchor" href="#structure-of-a-specificity-matrix"></a>
 </h4>
 <ul>
-<li>Each .rda file represents one single-cell dataset and typically contains two lists (some datasets may only have level 1 cell types). These two lists represent:
+<li>Each .rda file represents one single-cell dataset and typically
+contains two lists (some datasets may only have level 1 cell types).
+These two lists represent:
 <ul>
-<li>Level 1 cell types – broad cell type categories e.g. astrocyte, glutamatergic neuron, etc.</li>
-<li>Level 2 cell types – subtypes of the broader cell type categories</li>
+<li>Level 1 cell types – broad cell type categories e.g. astrocyte,
+glutamatergic neuron, etc.</li>
+<li>Level 2 cell types – subtypes of the broader cell type
+categories</li>
 </ul>
 </li>
-<li>With each of the two lists there are three additional lists, which typically have the same name.
+<li>With each of the two lists there are three additional lists, which
+typically have the same name.
 <ul>
 <li>
-<code>annot</code>: a character vector that provides the level 1 or level 2 cell type assigned to each single cell, which was used in the calculation</li>
+<code>annot</code>: a character vector that provides the level 1 or
+level 2 cell type assigned to each single cell, which was used in the
+calculation</li>
 <li>
-<code>mean_exp</code>: a matrix of mean expression for all genes (rows) across each cell type (columns)</li>
+<code>mean_exp</code>: a matrix of mean expression for all genes
+(rows) across each cell type (columns)</li>
 <li>
-<code>specificity</code>: a matrix of the specificity values for all genes (rows) across each cell type (columns)</li>
+<code>specificity</code>: a matrix of the specificity values for all
+genes (rows) across each cell type (columns)</li>
 </ul>
 </li>
 </ul>
@@ -161,7 +188,8 @@
 <h4 id="structure-of-a-specificity-dataframe">Structure of a specificity dataframe<a class="anchor" aria-label="anchor" href="#structure-of-a-specificity-dataframe"></a>
 </h4>
 <ul>
-<li>Dataframe of gene, tissue/cell-type, mean_expression, and specificity.</li>
+<li>Dataframe of gene, tissue/cell-type, mean_expression, and
+specificity.</li>
 </ul>
 </div>
 </div>
@@ -169,86 +197,92 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>If you use any specificity matrices from this repository, please make sure you cite the original publication the specificity values were derived from. For details, please refer to: <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html" class="external-link">dataset metadata</a>.</p>
+<p>If you use any specificity matrices from this repository, please make
+sure you cite the original publication the specificity values were
+derived from. For details, please refer to: <a href="https://rhreynolds.github.io/MarkerGenes/articles/articles/dataset_metadata.html" class="external-link">dataset
+metadata</a>.</p>
 <p>MarkerGenes can be cited using:</p>
-<div class="sourceCode"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"MarkerGenes"</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Reynolds RH (2022). _MarkerGenes_. doi: 10.5281/zenodo.6418605 (URL:</span>
-<span class="co">#&gt; https://doi.org/10.5281/zenodo.6418605),</span>
-<span class="co">#&gt; https://github.com/RHReynolds/MarkerGenes - R package version 0.99.1,</span>
-<span class="co">#&gt; &lt;URL: https://github.com/RHReynolds/MarkerGenes&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Manual{,</span>
-<span class="co">#&gt;     title = {MarkerGenes},</span>
-<span class="co">#&gt;     author = {Regina H. Reynolds},</span>
-<span class="co">#&gt;     year = {2022},</span>
-<span class="co">#&gt;     url = {https://github.com/RHReynolds/MarkerGenes},</span>
-<span class="co">#&gt;     note = {https://github.com/RHReynolds/MarkerGenes - R package version 0.99.1},</span>
-<span class="co">#&gt;     doi = {10.5281/zenodo.6418605},</span>
-<span class="co">#&gt;   }</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"MarkerGenes"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; To cite package 'MarkerGenes' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Reynolds RH (2023). _MarkerGenes_. doi:10.5281/zenodo.6418605</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.5281/zenodo.6418605&gt;,</span></span>
+<span><span class="co">#&gt;   https://github.com/RHReynolds/MarkerGenes - R package version 0.99.1,</span></span>
+<span><span class="co">#&gt;   &lt;https://github.com/RHReynolds/MarkerGenes&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {MarkerGenes},</span></span>
+<span><span class="co">#&gt;     author = {Regina H. Reynolds},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     url = {https://github.com/RHReynolds/MarkerGenes},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/RHReynolds/MarkerGenes - R package version 0.99.1},</span></span>
+<span><span class="co">#&gt;     doi = {10.5281/zenodo.6418605},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<p><details><summary>Show/hide</summary></details></p>
-<pre><code><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
-<span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span>
-<span class="co">#&gt;  version  R version 4.0.5 (2021-03-31)</span>
-<span class="co">#&gt;  os       Ubuntu 16.04.7 LTS</span>
-<span class="co">#&gt;  system   x86_64, linux-gnu</span>
-<span class="co">#&gt;  ui       X11</span>
-<span class="co">#&gt;  language en</span>
-<span class="co">#&gt;  collate  en_GB.UTF-8</span>
-<span class="co">#&gt;  ctype    en_GB.UTF-8</span>
-<span class="co">#&gt;  tz       Europe/London</span>
-<span class="co">#&gt;  date     2022-10-05</span>
-<span class="co">#&gt;  pandoc   1.19.2.1 @ /usr/lib/rstudio-server/bin/pandoc/ (via rmarkdown)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
-<span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package    </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span>
-<span class="co">#&gt;  BiocManager   1.30.18 <span style="color: #555555;">2022-05-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  BiocStyle   * 2.18.1  <span style="color: #555555;">2020-11-24</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">Bioconductor</span></span>
-<span class="co">#&gt;  bookdown      0.22    <span style="color: #555555;">2021-04-22</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  bslib         0.3.1   <span style="color: #555555;">2021-10-06</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  cachem        1.0.6   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  cli           3.4.0   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  desc          1.4.2   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  digest        0.6.29  <span style="color: #555555;">2021-12-01</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  evaluate      0.16    <span style="color: #555555;">2022-08-09</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  fastmap       1.1.0   <span style="color: #555555;">2021-01-25</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  fs            1.5.2   <span style="color: #555555;">2021-12-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  htmltools     0.5.2   <span style="color: #555555;">2021-08-25</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  jquerylib     0.1.4   <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  jsonlite      1.7.2   <span style="color: #555555;">2020-12-09</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  knitr         1.40    <span style="color: #555555;">2022-08-24</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  magrittr      2.0.1   <span style="color: #555555;">2020-11-17</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  memoise       2.0.1   <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  pkgdown       2.0.6   <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  purrr         0.3.4   <span style="color: #555555;">2020-04-17</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  R6            2.5.1   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  ragg          1.2.0   <span style="color: #555555;">2021-10-30</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  rlang         1.0.5   <span style="color: #555555;">2022-08-31</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  rmarkdown     2.16    <span style="color: #555555;">2022-08-24</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  rprojroot     2.0.2   <span style="color: #555555;">2020-11-15</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  rstudioapi    0.14    <span style="color: #555555;">2022-08-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  sass          0.4.0   <span style="color: #555555;">2021-05-12</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  sessioninfo * 1.2.2   <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  stringi       1.7.6   <span style="color: #555555;">2021-11-29</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  stringr       1.4.0   <span style="color: #555555;">2019-02-10</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  systemfonts   1.0.3   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  textshaping   0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  xfun          0.33    <span style="color: #555555;">2022-09-12</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt;  yaml          2.2.1   <span style="color: #555555;">2020-02-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.0.5)</span></span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; <span style="color: #555555;"> [1] /tmp/Rtmpeo2jEB/temp_libpath1d28c1faba693</span></span>
-<span class="co">#&gt; <span style="color: #555555;"> [2] /home/rreynolds/R/x86_64-pc-linux-gnu-library/4.0</span></span>
-<span class="co">#&gt; <span style="color: #555555;"> [3] /opt/R/4.0.5/lib/R/library</span></span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></code></pre>
-<p></p>
+<details><summary>
+Show/hide
+</summary><pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>
+<span><span class="co">#&gt;  version  R version 4.2.2 (2022-10-31)</span></span>
+<span><span class="co">#&gt;  os       macOS Monterey 12.6.2</span></span>
+<span><span class="co">#&gt;  system   aarch64, darwin21.6.0</span></span>
+<span><span class="co">#&gt;  ui       unknown</span></span>
+<span><span class="co">#&gt;  language en</span></span>
+<span><span class="co">#&gt;  collate  en_GB.UTF-8</span></span>
+<span><span class="co">#&gt;  ctype    en_GB.UTF-8</span></span>
+<span><span class="co">#&gt;  tz       Europe/London</span></span>
+<span><span class="co">#&gt;  date     2023-02-03</span></span>
+<span><span class="co">#&gt;  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">package    </span> <span style="color: #555555; font-style: italic;">*</span> <span style="color: #555555; font-style: italic;">version</span> <span style="color: #555555; font-style: italic;">date (UTC)</span> <span style="color: #555555; font-style: italic;">lib</span> <span style="color: #555555; font-style: italic;">source</span></span></span>
+<span><span class="co">#&gt;  BiocManager   1.30.18 <span style="color: #555555;">2022-05-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  BiocStyle   * 2.24.0  <span style="color: #555555;">2022-04-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">Bioconductor</span></span></span>
+<span><span class="co">#&gt;  bookdown      0.29    <span style="color: #555555;">2022-09-12</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  bslib         0.4.0   <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  cachem        1.0.6   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  cli           3.4.1   <span style="color: #555555;">2022-09-23</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  desc          1.4.2   <span style="color: #555555;">2022-09-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.2)</span></span></span>
+<span><span class="co">#&gt;  digest        0.6.30  <span style="color: #555555;">2022-10-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  evaluate      0.18.2  <span style="color: #555555;">2022-12-09</span> <span style="color: #555555;">[2]</span> <span style="color: #BB00BB; font-weight: bold;">Github (hadley/evaluate@abd01c4)</span></span></span>
+<span><span class="co">#&gt;  fastmap       1.1.0   <span style="color: #555555;">2021-01-25</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  fs            1.5.2   <span style="color: #555555;">2021-12-08</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  htmltools     0.5.3   <span style="color: #555555;">2022-07-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  jquerylib     0.1.4   <span style="color: #555555;">2021-04-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  jsonlite      1.8.4   <span style="color: #555555;">2022-12-06</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  knitr         1.40    <span style="color: #555555;">2022-08-24</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  magrittr      2.0.3   <span style="color: #555555;">2022-03-30</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  memoise       2.0.1   <span style="color: #555555;">2021-11-26</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  pkgdown       2.0.6   <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  purrr         0.3.5   <span style="color: #555555;">2022-10-06</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  R6            2.5.1   <span style="color: #555555;">2021-08-19</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  ragg          1.2.3   <span style="color: #555555;">2022-09-29</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  rlang         1.0.6   <span style="color: #555555;">2022-09-24</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  rmarkdown     2.19    <span style="color: #555555;">2022-12-15</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.2)</span></span></span>
+<span><span class="co">#&gt;  rprojroot     2.0.3   <span style="color: #555555;">2022-04-02</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  rstudioapi    0.14    <span style="color: #555555;">2022-08-22</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  sass          0.4.2   <span style="color: #555555;">2022-07-16</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  sessioninfo * 1.2.2   <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  stringi       1.7.8   <span style="color: #555555;">2022-07-11</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  stringr       1.4.1   <span style="color: #555555;">2022-08-20</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  systemfonts   1.0.4   <span style="color: #555555;">2022-02-11</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  textshaping   0.3.6   <span style="color: #555555;">2021-10-13</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  xfun          0.34    <span style="color: #555555;">2022-10-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt;  yaml          2.3.6   <span style="color: #555555;">2022-10-18</span> <span style="color: #555555;">[2]</span> <span style="color: #555555;">CRAN (R 4.2.1)</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [1] /private/var/folders/_0/35fxwrtj5gdbg3t0kj3z732c0000gn/T/RtmpOnyVeW/temp_libpathe51d730274d2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [2] /opt/homebrew/lib/R/4.2/site-library</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;"> [3] /opt/homebrew/Cellar/r/4.2.2/lib/R/library</span></span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span></code></pre>
+</details>
 </div>
   </div>
 
